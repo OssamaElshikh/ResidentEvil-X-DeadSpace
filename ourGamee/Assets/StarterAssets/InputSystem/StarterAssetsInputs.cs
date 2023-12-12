@@ -106,10 +106,8 @@ namespace StarterAssets
 			}
 
 		}
-
-
-
+		
 
 	}
-
+	
 }
