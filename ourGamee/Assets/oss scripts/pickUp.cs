@@ -7,10 +7,26 @@ public class NewBehaviourScript : MonoBehaviour
 {
     // Start is called before the first frame update
     public bool hasrifle = false;
-    public int ammo0, ammo1, ammo2;
+    public GameObject bulletPrefab;
+    public float bulletSpeed = 10;
+    public int ammo0, ammo1, ammo2=0;
+    public Transform bulletPoint;
+    public StarterAssets.StarterAssetsInputs st;
+    public string weapon = "pistol";
     private void Update()
     {
-        
+        if (st.isAiming == false)
+        {
+            {
+
+
+                if (Input.GetKeyDown(KeyCode.K) && weapon=="pistol")
+                {
+                    var bullet = Instantiate(bulletPrefab, bulletPoint.position, bulletPoint.rotation);
+                    bullet.GetComponent<Rigidbody>().velocity = bulletPoint.forward * bulletSpeed;
+                }
+            }
+        }
     }
     private void OnTriggerEnter(Collider other)
     {  

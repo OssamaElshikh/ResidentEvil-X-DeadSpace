@@ -6,6 +6,10 @@ TagManager:
   tags:
   - CinemachineTarget
   - doors
+  - rifle
+  - ammo1
+  - ammo0
+  - ammo2
   layers:
   - Default
   - TransparentFX
