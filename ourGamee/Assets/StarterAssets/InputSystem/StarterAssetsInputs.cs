@@ -109,28 +109,7 @@ namespace StarterAssets
 		{
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 		}
-		private void HandleAim(bool isAimingPressed)
-		{
-			if (isAimingPressed)
-			{
-				// Toggle aiming state
-				isAiming = !isAiming;
-				
-
-				// Activate/deactivate cameras based on aiming state
-				if (isAiming)
-				{
-					camera2.Priority = 0;
-					
-				}
-				else
-				{
-					camera2.Priority = 15;
-					
-				}
-			}
-
-		}
+		
 
 
 
