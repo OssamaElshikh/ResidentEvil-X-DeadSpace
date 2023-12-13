@@ -10,15 +10,13 @@ namespace StarterAssets
 	public class StarterAssetsInputs : MonoBehaviour
 	{
 
-
 		[Header("Character Input Values")]
 		public Vector2 move;
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
 		public CinemachineVirtualCamera camera2;
-		public bool isAiming=false;
-		public Animator anim;
+		private bool isAiming=false;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -42,25 +40,6 @@ namespace StarterAssets
 
 			}
 		}
-        public void Update()
-        {
-			if (Input.GetMouseButtonDown(0))
-            {
-				isAiming = !isAiming;
-				if (isAiming)
-				{
-					camera2.Priority = 0;
-
-				}
-				else
-				{
-					camera2.Priority = 15;
-
-				}
-			}
-
-			anim.SetBool("aiming", isAiming);
-		}
 
 		public void OnJump(InputValue value)
 		{
@@ -71,12 +50,11 @@ namespace StarterAssets
 		{
 			SprintInput(value.isPressed);
 		}
-		//public void OnAim(InputValue value)
-  //      {
-		//	HandleAim(value.isPressed);
+		public void OnAim(InputValue value)
+        {
+			HandleAim(value.isPressed);
 
-		//}
-
+		}
 #endif
 
 
@@ -115,18 +93,15 @@ namespace StarterAssets
 			{
 				// Toggle aiming state
 				isAiming = !isAiming;
-				
 
 				// Activate/deactivate cameras based on aiming state
 				if (isAiming)
 				{
 					camera2.Priority = 0;
-					
 				}
 				else
 				{
 					camera2.Priority = 15;
-					
 				}
 			}
 
