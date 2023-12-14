@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class firing : MonoBehaviour
 {
+    public int ammo0, ammo1, ammo2 = 0;
     public GameObject bulletPrefab;
     public GameObject shotgunbullet;
     public float bulletSpeed = 10;
