@@ -10,7 +10,6 @@ public class bullet : MonoBehaviour
         Destroy(gameObject, 3);
     }
 
-    // Update is called once per frame
     private void OnCollisionEnter(Collision collision)
     {
         Destroy(gameObject);
