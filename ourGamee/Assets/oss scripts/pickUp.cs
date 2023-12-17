@@ -11,28 +11,35 @@ public class NewBehaviourScript : MonoBehaviour
     public bool candestroy = false;
     public int goldcount = 30;
     public bool hasRevCard = false;
+    public bool hasSpadeKey = false;
+    public bool hasDiamondKey = false;
+    public bool hasRevolver = false;
+
 
     //door animators:
     public Animator revD;
+    public Animator normalDoorA;
+    public Animator spadeDoorA;
+    public Animator diamondDoorA;
 
     //public GameObject rifle;
     //public bool rifleFlag=true;
-    public GameObject ammo00;
+    public GameObject revolver;
     public bool bool1 = true;
-    public GameObject ammo01;
-    public bool bool2 = true;
-    public GameObject ammo10;
-    public bool bool3 = true;
-    public GameObject ammo11;
-    public bool bool4 = true;
-    public GameObject ammo20;
-    public bool bool5 = true;
-    public GameObject ammo21;
-    public bool bool6 = true;
-    public GameObject gunpowder1;
-    public bool bool7 = true;
-    public GameObject gunpowder2;
-    public bool bool8 = true;
+    //public GameObject ammo01;
+    //public bool bool2 = true;
+    //public GameObject ammo10;
+    //public bool bool3 = true;
+    //public GameObject ammo11;
+    //public bool bool4 = true;
+    //public GameObject ammo20;
+    //public bool bool5 = true;
+    //public GameObject ammo21;
+    //public bool bool6 = true;
+    //public GameObject gunpowder1;
+    //public bool bool7 = true;
+    //public GameObject gunpowder2;
+    //public bool bool8 = true;
     public GameObject gold1, gold2, gold3, gold4, gold5, gold6,gold7;
     public bool  bool9=true;
     public bool bool10 = true;
@@ -45,8 +52,16 @@ public class NewBehaviourScript : MonoBehaviour
     public bool bool16;
     public GameObject revDoor;
     public bool bool17;
-
-
+    public GameObject spadeKey;
+    public bool bool18;
+    public GameObject spadeDoor;
+    public bool bool19;
+    public GameObject diamondKey;
+    public bool bool20;
+    public GameObject diamondDoor;
+    public bool bool21;
+    public GameObject normalDoor;
+    public bool bool22;
 
 
     private GameObject currentObject;
@@ -57,48 +72,48 @@ public class NewBehaviourScript : MonoBehaviour
   
     private void Update()
     {
-        Debug.Log("hi" + bool11);
+        
         candestroy = false;
         ui.SetActive(false);
         doorUI.SetActive(false);
 
         // check the nearest object to pickup
 
-        if (bool1 == true && Vector3.Distance(transform.position, ammo00.transform.position)<2  )
+        if (bool1 == true && Vector3.Distance(transform.position, revolver.transform.position)<2  )
         {
             ui.SetActive(true);
-            currentObject = ammo00;
+            currentObject = revolver;
             candestroy = true;
             
         }
-         if (bool2 == true && Vector3.Distance(transform.position, ammo01.transform.position) < 2)
-        {
-            ui.SetActive(true);
-            currentObject = ammo01;
-            candestroy = true;
+        // if (bool2 == true && Vector3.Distance(transform.position, ammo01.transform.position) < 2)
+        //{
+        //    ui.SetActive(true);
+        //    currentObject = ammo01;
+        //    candestroy = true;
             
-        }
-         if (bool3 == true && Vector3.Distance(transform.position, ammo10.transform.position) < 2)
-        {
-            ui.SetActive(true);
-            currentObject = ammo10;
-            candestroy = true;
+        //}
+        // if (bool3 == true && Vector3.Distance(transform.position, ammo10.transform.position) < 2)
+        //{
+        //    ui.SetActive(true);
+        //    currentObject = ammo10;
+        //    candestroy = true;
             
-        }
-         if (bool4 == true && Vector3.Distance(transform.position, ammo11.transform.position) < 2)
-        {
-            ui.SetActive(true);
-            currentObject = ammo11;
-            candestroy = true;
+        //}
+        // if (bool4 == true && Vector3.Distance(transform.position, ammo11.transform.position) < 2)
+        //{
+        //    ui.SetActive(true);
+        //    currentObject = ammo11;
+        //    candestroy = true;
             
-        }
-         if (bool5 == true && Vector3.Distance(transform.position, ammo20.transform.position) < 2)
-        {
-            ui.SetActive(true);
-            currentObject = ammo20;
-            candestroy = true;
+        //}
+        // if (bool5 == true && Vector3.Distance(transform.position, ammo20.transform.position) < 2)
+        //{
+        //    ui.SetActive(true);
+        //    currentObject = ammo20;
+        //    candestroy = true;
             
-        }
+        //}
         //if (rifleFlag == true && Vector3.Distance(transform.position, rifle.transform.position) < 2)
         //{
         //    ui.SetActive(true);
@@ -106,27 +121,27 @@ public class NewBehaviourScript : MonoBehaviour
         //    candestroy = true;
 
         //}
-        if (bool6 == true && Vector3.Distance(transform.position, ammo21.transform.position) < 2)
-        {
-            ui.SetActive(true);
-            currentObject = ammo21;
-            candestroy = true;
+        //if (bool6 == true && Vector3.Distance(transform.position, ammo21.transform.position) < 2)
+        //{
+        //    ui.SetActive(true);
+        //    currentObject = ammo21;
+        //    candestroy = true;
 
-        }
-        if (bool7 == true && Vector3.Distance(transform.position, gunpowder1.transform.position) < 2)
-        {
-            ui.SetActive(true);
-            currentObject = gunpowder1;
-            candestroy = true;
+        //}
+        //if (bool7 == true && Vector3.Distance(transform.position, gunpowder1.transform.position) < 2)
+        //{
+        //    ui.SetActive(true);
+        //    currentObject = gunpowder1;
+        //    candestroy = true;
 
-        }
-        if (bool8 == true && Vector3.Distance(transform.position, gunpowder2.transform.position) < 2)
-        {
-            ui.SetActive(true);
-            currentObject = gunpowder2;
-            candestroy = true;
+        //}
+        //if (bool8 == true && Vector3.Distance(transform.position, gunpowder2.transform.position) < 2)
+        //{
+        //    ui.SetActive(true);
+        //    currentObject = gunpowder2;
+        //    candestroy = true;
 
-        }
+        //}
         if (bool9 == true && Vector3.Distance(transform.position, gold1.transform.position) < 2)
         {
             ui.SetActive(true);
@@ -188,14 +203,43 @@ public class NewBehaviourScript : MonoBehaviour
             doorUI.SetActive(true);
             currentDoor = revDoor;
         }
+        if (bool18 == true && Vector3.Distance(transform.position, spadeKey.transform.position) < 2)
+        {
+            ui.SetActive(true);
+            currentObject = spadeKey;
+            candestroy = true;
+
+        }
+        if (bool20 == true && Vector3.Distance(transform.position, diamondKey.transform.position) < 2)
+        {
+            ui.SetActive(true);
+            currentObject = diamondKey;
+            candestroy = true;
+
+        }
+        if (bool19 == true && Vector3.Distance(transform.position, spadeDoor.transform.position) < 2)
+        {
+            doorUI.SetActive(true);
+            currentDoor = spadeDoor;
+        }
+        if (bool21 == true && Vector3.Distance(transform.position, diamondDoor.transform.position) < 2)
+        {
+            doorUI.SetActive(true);
+            currentDoor = diamondDoor;
+        }
+        if (bool22 == true && Vector3.Distance(transform.position, normalDoor.transform.position) < 2)
+        {
+            doorUI.SetActive(true);
+            currentDoor = normalDoor;
+        }
+
 
         //for opening doors
         if (Input.GetKeyDown(KeyCode.O))
         {
-            if (hasRevCard == true)
-            {
+            
                 OpenDoor();
-            }
+            
         }
 
 
@@ -216,14 +260,14 @@ public class NewBehaviourScript : MonoBehaviour
     public void PickUPs()
     {
         //if (currentObject == rifle) { rifleFlag =false; }
-        if (currentObject == ammo00) { bool1 = false; }
-        if (currentObject == ammo01) { bool2 = false; }
-        if (currentObject == ammo10) { bool3 = false; }
-        if (currentObject == ammo11) { bool4 = false; }
-        if (currentObject == ammo20) { bool5 = false; }
-        if (currentObject == ammo21) { bool6 = false; }
-        if (currentObject == gunpowder1) { bool7 = false; }
-        if (currentObject == gunpowder2) { bool8 = false; }
+        if (currentObject == revolver) { bool1 = false; hasRevolver = true; }
+        //if (currentObject == ammo01) { bool2 = false; }
+        //if (currentObject == ammo10) { bool3 = false; }
+        //if (currentObject == ammo11) { bool4 = false; }
+        //if (currentObject == ammo20) { bool5 = false; }
+        //if (currentObject == ammo21) { bool6 = false; }
+        //if (currentObject == gunpowder1) { bool7 = false; }
+        //if (currentObject == gunpowder2) { bool8 = false; }
         if (currentObject == gold1) { bool9 = false; goldcount += 10; }
         if (currentObject == gold2) { bool10 = false; goldcount += 10; }
         if (currentObject == gold3) { bool11= false; goldcount += 10; }
@@ -232,6 +276,8 @@ public class NewBehaviourScript : MonoBehaviour
         if (currentObject == gold6) { bool14 = false; goldcount += 10; }
         if (currentObject == gold7) { bool15 = false; goldcount += 10; }
         if (currentObject == revCard) { bool16 = false; hasRevCard = true; }
+        if (currentObject == spadeKey) { bool18 = false; hasSpadeKey = true; Debug.Log(hasSpadeKey); }
+        if (currentObject == diamondKey) { bool20 = false; hasDiamondKey = true; }
 
 
         Destroy(currentObject);
@@ -240,10 +286,29 @@ public class NewBehaviourScript : MonoBehaviour
 
     public void OpenDoor()
     {
-        if (currentDoor == revDoor)
+        if (currentDoor == revDoor && hasRevCard==true)
         {
+            bool17 = false;
             revD.SetTrigger("revdoor");
         }
+        if (currentDoor == spadeDoor && hasSpadeKey == true)
+        {
+            Debug.Log("hi");
+            bool19 = false;
+            spadeDoorA.SetTrigger("openDoor");
+        }
+        if (currentDoor == diamondDoor && hasDiamondKey == true)
+        {
+            bool21 = false;
+            diamondDoorA.SetTrigger("openDoor");
+        }
+        if (currentDoor == normalDoor) {
+            bool22 = false;
+            normalDoorA.SetTrigger("openDoor");
+        }
+
+
+
     }
  
 }
