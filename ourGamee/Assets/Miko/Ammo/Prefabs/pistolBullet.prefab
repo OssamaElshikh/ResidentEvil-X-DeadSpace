@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -3789960681933143411}
   - component: {fileID: -5130412180533824423}
   m_Layer: 0
-  m_Name: bullet
+  m_Name: pistolBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,7 +94,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3111123709821073303}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 2
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
