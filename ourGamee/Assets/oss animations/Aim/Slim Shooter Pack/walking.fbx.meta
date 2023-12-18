@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6750ca1fa0d324acbba9026dbb830c3b
+guid: 7a8d52320b20744148a82161b2af4077
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -15,7 +15,7 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
-    motionNodeName: <Root Transform>
+    motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
@@ -33,7 +33,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: newAimWalking
+      name: riflewalk2
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
@@ -48,7 +48,7 @@ ModelImporter:
       loopBlend: 1
       loopBlendOrientation: 1
       loopBlendPositionY: 1
-      loopBlendPositionXZ: 1
+      loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 1
@@ -544,13 +544,13 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: Walking(Clone)
+    - name: walking(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:Hips
-      parentName: Walking(Clone)
+      parentName: walking(Clone)
       position: {x: -0.04370075, y: 9.849409, z: -0.07319508}
       rotation: {x: -0.058812123, y: -0.054628454, z: 0.036220446, w: 0.99611497}
       scale: {x: 1, y: 1, z: 1}

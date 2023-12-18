@@ -29,9 +29,14 @@ public class firing : MonoBehaviour
 
     //capacity:
     public int pistolCap = 12;
-    public int RifleCap = 30;
+    public int rifleCap = 30;
     public int shotGunCap = 8;
     public int revolverCap = 6;
+
+    public int pistAv;
+    public int rifAv;
+    public int shotAv;
+    public int revAv;
 
     public int pistDam = 2;
     public int rifleDam = 1;
@@ -116,7 +121,34 @@ public class firing : MonoBehaviour
 
                 bullet.GetComponent<Rigidbody>().velocity = revTrans.forward * bulletSpeed;
             }
+            if (Input.GetKeyDown(KeyCode.R))
+                {
+                if (weapon == 1 )
+                {
+                    pistAv += pistolCap;
+                    anim.SetTrigger("relode");
 
+                }
+                if (weapon == 2)
+                {
+                    rifAv += rifleCap;
+                    anim.SetTrigger("relode");
+
+                }
+                if (weapon == 3)
+                {
+                    shotAv += shotGunCap;
+                    anim.SetTrigger("relode");
+
+                }
+                if (weapon == 4)
+                {
+                    revAv += revolverCap;
+                    anim.SetTrigger("relode");
+
+                }
+
+            }
 
 
 
