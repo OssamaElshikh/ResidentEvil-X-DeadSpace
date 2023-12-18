@@ -36,7 +36,7 @@ public class grenades : MonoBehaviour
         {
             anim.SetTrigger("bomb");
             hasExploded = false;
-            Throw ();
+            Invoke("Throw", 1.2f);
         }
         
     }
@@ -70,7 +70,7 @@ public class grenades : MonoBehaviour
 
         if (!hasExploded)
         {
-            Invoke("Explode", 3f);
+            Invoke("Explode", 4f);
         }
 
         Invoke(nameof(ResetThrow), throwCoolDown);

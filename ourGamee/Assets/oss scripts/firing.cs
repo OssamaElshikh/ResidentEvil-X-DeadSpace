@@ -24,7 +24,7 @@ public class firing : MonoBehaviour
 
 
     // 1 for pistol 2 for shotgun 3 for rifle 4 for revolver
-    public int weapon = 1;
+    public int weapon = 0;
     public StarterAssets.StarterAssetsInputs st;
 
     //capacity:
@@ -43,12 +43,37 @@ public class firing : MonoBehaviour
     public Transform revTrans;
     public Transform riffleTrans;
 
+    public Animator anim;
 
+    public bool isAiming;
+
+    private void Start()
+    {
+        isAiming = false;
+        weapon = 0;
+    }
 
     void Update()
     {
-        //firing
-        if (st.isAiming == false)
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            isAiming = !isAiming;
+            if (weapon == 0)
+            {
+                isAiming = !isAiming;
+            }
+            if (weapon == 2 || weapon == 3)
+            {
+                anim.SetBool("aiming", isAiming);
+            }
+            if (weapon==1 || weapon == 4)
+            {
+                anim.SetBool("pistolAiming", isAiming);
+            }
+        }
+            //firing
+            if (st.isAiming == false)
         {
 
 
@@ -56,7 +81,7 @@ public class firing : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.K) && weapon == 1)
             {
                 // Create a rotation Quaternion with a 90-degree rotation around the Y-axis
-                Quaternion bulletRotation = Quaternion.Euler(0f, 0f, 90f);
+                Quaternion bulletRotation = Quaternion.Euler(-90f, 0f, 0f);
 
                 // Instantiate the bullet prefab with the specified rotation
                 var bullet = Instantiate(bulletPrefab, bulletPoint.position, bulletRotation);
@@ -68,15 +93,16 @@ public class firing : MonoBehaviour
             //shotgun
             if (Input.GetKeyDown(KeyCode.K) && weapon == 2)
                 {
-                    Quaternion bulletRotation = Quaternion.Euler(0f, 0f, 90f);
+                    Quaternion bulletRotation = Quaternion.Euler(0f, -90f, 90f);
 
                     var bullet = Instantiate(shotgunbullet, shotguntrans.position, bulletRotation);
 
                     bullet.GetComponent<Rigidbody>().velocity = shotguntrans.forward * bulletSpeed;
                 }
-            if (Input.GetKeyDown(KeyCode.K) && weapon == 3)
+            //rifle
+            if (Input.GetKey(KeyCode.K) && weapon == 3)
             {
-                Quaternion bulletRotation = Quaternion.Euler(0f, 0f, 90f);
+                Quaternion bulletRotation = Quaternion.Euler(0f, -90f, 90f);
 
                 var bullet = Instantiate(riffleBullet, riffleTrans.position, bulletRotation);
 
@@ -84,7 +110,7 @@ public class firing : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.K) && weapon == 4)
             {
-                Quaternion bulletRotation = Quaternion.Euler(0f, 0f, 90f);
+                Quaternion bulletRotation = Quaternion.Euler(-90f, 0f, 0f);
 
                 var bullet = Instantiate(revBullet, revTrans.position, bulletRotation);
 
@@ -95,10 +121,10 @@ public class firing : MonoBehaviour
 
 
         }
-        if (Input.GetKeyDown(KeyCode.U)) { weapon = 1; SetActiveWeapon(); }
-        if (Input.GetKeyDown(KeyCode.I)) { weapon = 2; SetActiveWeapon(); }
-        if (Input.GetKeyDown(KeyCode.O)) { weapon = 3; SetActiveWeapon(); }
-        if (Input.GetKeyDown(KeyCode.P)) { weapon = 4; SetActiveWeapon(); }
+        if (Input.GetKeyDown(KeyCode.U) && isAiming==false) { weapon = 1; SetActiveWeapon(); }
+        if (Input.GetKeyDown(KeyCode.I) && isAiming == false) { weapon = 2; SetActiveWeapon(); }
+        if (Input.GetKeyDown(KeyCode.O) && isAiming == false) { weapon = 3; SetActiveWeapon(); }
+        if (Input.GetKeyDown(KeyCode.P) && isAiming == false) { weapon = 4; SetActiveWeapon(); }
 
 
 

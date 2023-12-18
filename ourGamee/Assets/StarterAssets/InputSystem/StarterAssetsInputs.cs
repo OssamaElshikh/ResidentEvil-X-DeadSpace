@@ -42,25 +42,25 @@ namespace StarterAssets
 
 			}
 		}
-        public void Update()
-        {
-			if (Input.GetMouseButtonDown(0))
-            {
-				isAiming = !isAiming;
-				if (isAiming)
-				{
-					camera2.Priority = 0;
+  //      public void Update()
+  //      {
+		//	if (Input.GetMouseButtonDown(0))
+  //          {
+		//		isAiming = !isAiming;
+		//		if (isAiming)
+		//		{
+		//			camera2.Priority = 0;
 
-				}
-				else
-				{
-					camera2.Priority = 15;
+		//		}
+		//		else
+		//		{
+		//			camera2.Priority = 15;
 
-				}
-			}
+		//		}
+		//	}
 
-			anim.SetBool("aiming", isAiming);
-		}
+		//	anim.SetBool("aiming", isAiming);
+		//}
 
 		public void OnJump(InputValue value)
 		{
