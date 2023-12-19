@@ -12,6 +12,7 @@ public class firing : MonoBehaviour
     public GameObject revolver;
     public GameObject shotgun;
     public GameObject riffle;
+    public GameObject knife;
 
 
     public GameObject bulletPrefab;
@@ -64,7 +65,7 @@ public class firing : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             isAiming = !isAiming;
-            if (weapon == 0)
+            if (weapon == 0 || weapon ==5)
             {
                 isAiming = !isAiming;
             }
@@ -77,6 +78,11 @@ public class firing : MonoBehaviour
                 anim.SetBool("pistolAiming", isAiming);
             }
         }
+        if (Input.GetKeyDown(KeyCode.K) && weapon == 5)
+        {
+            anim.SetTrigger("stab");
+        }
+
             //firing
             if (st.isAiming == false)
         {
@@ -113,6 +119,7 @@ public class firing : MonoBehaviour
 
                 bullet.GetComponent<Rigidbody>().velocity = riffleTrans.forward * bulletSpeed;
             }
+            //revolver
             if (Input.GetKeyDown(KeyCode.K) && weapon == 4)
             {
                 Quaternion bulletRotation = Quaternion.Euler(-90f, 0f, 0f);
@@ -147,6 +154,7 @@ public class firing : MonoBehaviour
                     anim.SetTrigger("relode");
 
                 }
+                
 
             }
 
@@ -157,6 +165,8 @@ public class firing : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I) && isAiming == false) { weapon = 2; SetActiveWeapon(); }
         if (Input.GetKeyDown(KeyCode.O) && isAiming == false) { weapon = 3; SetActiveWeapon(); }
         if (Input.GetKeyDown(KeyCode.P) && isAiming == false) { weapon = 4; SetActiveWeapon(); }
+        if (Input.GetKeyDown(KeyCode.Z) && isAiming == false) { weapon = 5; SetActiveWeapon(); }
+
 
 
 
@@ -164,7 +174,9 @@ public class firing : MonoBehaviour
     }
     void SetActiveWeapon()
     {
-        if (weapon == 1) {
+        if (weapon == 1)
+        {
+            knife.SetActive(false);
             riffle.SetActive(false);
             shotgun.SetActive(false);
             revolver.SetActive(false);
@@ -173,6 +185,7 @@ public class firing : MonoBehaviour
         }
         if (weapon == 2)
         {
+            knife.SetActive(false);
             riffle.SetActive(false);
             revolver.SetActive(false);
             pistol.SetActive(false);
@@ -181,6 +194,7 @@ public class firing : MonoBehaviour
         }
         if (weapon == 3)
         {
+            knife.SetActive(false);
             revolver.SetActive(false);
             pistol.SetActive(false);
             shotgun.SetActive(false);
@@ -188,10 +202,19 @@ public class firing : MonoBehaviour
         }
         if (weapon == 4)
         {
+            knife.SetActive(false);
             pistol.SetActive(false);
             riffle.SetActive(false);
             shotgun.SetActive(false);
             revolver.SetActive(true);
+        }
+        if (weapon == 5)
+        {
+            pistol.SetActive(false);
+            riffle.SetActive(false);
+            shotgun.SetActive(false);
+            revolver.SetActive(false);
+            knife.SetActive(true);
         }
 
     }
