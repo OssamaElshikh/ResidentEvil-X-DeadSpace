@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Flooded_Grounds/Scenes/Bebo Folder/StoreScene.unity
+    guid: 172224e99572f43a69214edaa7be91b7
+  - enabled: 1
+    path: Assets/Flooded_Grounds/Scenes/ourScene.unity
+    guid: becca19b86da74b4696c89ff8d644228
   m_configObjects: {}
