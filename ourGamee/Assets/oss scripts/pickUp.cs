@@ -7,6 +7,7 @@ public class pickUpScript : MonoBehaviour
 {
     // Start is called before the first frame update
     public int playerHealth = 8;
+    private bool playerDead = false;
     
     public bool candestroy = false;
     public int goldcount = 30;
@@ -278,6 +279,24 @@ public class pickUpScript : MonoBehaviour
 
 
     }
+
+    public void TakeDamage(int damageAmount)
+    {
+        playerHealth -= damageAmount;
+        Debug.Log("PLayer Health ");
+        Debug.Log(playerHealth);
+
+        if (playerHealth <= 0)
+        {
+            playerDead = true;
+            //Play Death animation 
+        }
+        else
+        {
+            //Play Damage Animation
+        }
+    }
+ 
    
 
 }

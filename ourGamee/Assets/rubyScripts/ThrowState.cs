@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class ThrowState : StateMachineBehaviour
 {
-    GameObject projectilePrefab;
-    public float throwForce = 10f;
 
     private Transform player;
-    public Transform weaponHand;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -19,11 +16,11 @@ public class ThrowState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        float distance = Vector3.Distance(animator.transform.position, player.position);
-        if (distance > 20)
-        {
-            animator.SetBool("isThrowing", true);
-        }
+        //float distance = Vector3.Distance(animator.transform.position, player.position);
+        //if (distance > 20)
+        //{
+        //    animator.SetBool("isThrowing", true);
+        //}
 
     }
 
