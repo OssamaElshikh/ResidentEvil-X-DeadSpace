@@ -15,6 +15,8 @@ public class pickUpScript : MonoBehaviour
     public bool hasSpadeKey = false;
     public bool hasDiamondKey = false;
     public bool hasRevolver = false;
+    public bool hasEmerald = false;
+
 
 
     //door animators:
@@ -23,6 +25,9 @@ public class pickUpScript : MonoBehaviour
     public Animator normalDoorA;
     public Animator spadeDoorA;
     public Animator diamondDoorA;
+    public Animator emeraldDoorA;
+
+
 
     //public GameObject rifle;
     //public bool rifleFlag=true;
@@ -64,6 +69,11 @@ public class pickUpScript : MonoBehaviour
     public bool bool21;
     public GameObject normalDoor;
     public bool bool22;
+    public GameObject emerald;
+    public bool bool23;
+    public GameObject emeraldDoor;
+    public bool bool24;
+
 
 
     private GameObject currentObject;
@@ -179,7 +189,18 @@ public class pickUpScript : MonoBehaviour
             doorUI.SetActive(true);
             currentDoor = normalDoor;
         }
+        if (bool23 == true && Vector3.Distance(transform.position, emerald.transform.position) < 2)
+        {
+            ui.SetActive(true);
+            currentObject = emerald;
+            candestroy = true;
 
+        }
+        if (bool24 == true && Vector3.Distance(transform.position, emeraldDoor.transform.position) < 2)
+        {
+            doorUI.SetActive(true);
+            currentDoor = emeraldDoor;
+        }
 
         //for opening doors
         if (Input.GetKeyDown(KeyCode.O))
@@ -218,6 +239,9 @@ public class pickUpScript : MonoBehaviour
         if (currentObject == revCard) { bool16 = false; hasRevCard = true; }
         if (currentObject == spadeKey) { bool18 = false; hasSpadeKey = true; Debug.Log(hasSpadeKey); }
         if (currentObject == diamondKey) { bool20 = false; hasDiamondKey = true; }
+        if (currentObject == emerald) { bool23 = false; hasEmerald = true; }
+
+        
 
 
         Destroy(currentObject);
@@ -247,7 +271,11 @@ public class pickUpScript : MonoBehaviour
             bool22 = false;
             normalDoorA.SetTrigger("openDoor");
         }
-
+        if (currentDoor == emeraldDoor && hasEmerald==true)
+        {
+            bool24 = false;
+            emeraldDoorA.SetTrigger("openDoor");
+        }
 
 
     }
@@ -269,4 +297,6 @@ public class pickUpScript : MonoBehaviour
         }
     }
  
+   
+
 }
