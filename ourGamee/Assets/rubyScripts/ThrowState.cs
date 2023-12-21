@@ -16,11 +16,11 @@ public class ThrowState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        float distance = Vector3.Distance(animator.transform.position, player.position);
-        if (distance > 20)
-        {
-            animator.SetBool("isThrowing", true);
-        }
+        //float distance = Vector3.Distance(animator.transform.position, player.position);
+        //if (distance > 20)
+        //{
+        //    animator.SetBool("isThrowing", true);
+        //}
 
     }
 

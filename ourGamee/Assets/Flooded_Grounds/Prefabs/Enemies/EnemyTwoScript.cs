@@ -9,13 +9,19 @@ public class EnemyTwoScript : MonoBehaviour
 
     public GameObject projectile;
     public Transform projectilePoint;
+    private bool hasShot = false;  // Flag to check if shot has been fired
+
     // Start is called before the first frame update
 
-   public void Shoot()
+    public void Shoot()
     {
-        Rigidbody rb = Instantiate(projectile, projectilePoint.position, Quaternion.identity).GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * 30f, ForceMode.Impulse);
-        rb.AddForce(transform.up * 7, ForceMode.Impulse);
+        if (!hasShot)
+        {
+            Rigidbody rb = Instantiate(projectile, projectilePoint.position, Quaternion.identity).GetComponent<Rigidbody>();
+            rb.AddForce(transform.forward * 30f, ForceMode.Impulse);
+            hasShot = true;
+        }
+        
 
     }
    
