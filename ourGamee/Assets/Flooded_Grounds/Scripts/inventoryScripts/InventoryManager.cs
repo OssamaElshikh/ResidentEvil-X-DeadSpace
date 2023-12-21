@@ -11,7 +11,7 @@ public class InventoryManager : MonoBehaviour
     public Transform ItemContent;
     public GameObject InventoryItem;
 
-    public Image InvalidModal;
+    public Image ErrorMessage;
     public GameObject Health;
     public GameObject Stasis;
     public GameObject Gold;
@@ -82,7 +82,7 @@ public class InventoryManager : MonoBehaviour
         {
             item.count = Items.Count+1;
             //Debug.Log(item.count);
-            InvalidModal.gameObject.SetActive(true);
+            ErrorMessage.gameObject.SetActive(true);
         }
     }
 
@@ -92,7 +92,7 @@ public class InventoryManager : MonoBehaviour
         {
             if (selectedItem.itemType == Item.ItemType.Weapon || selectedItem.itemType == Item.ItemType.Grenade || selectedItem.itemType == Item.ItemType.KeyItem)
             {
-                InvalidModal.gameObject.SetActive(true);
+                ErrorMessage.gameObject.SetActive(true);
             }
             else
             {
@@ -110,7 +110,7 @@ public class InventoryManager : MonoBehaviour
         {
             if (selectedItem.itemType != Item.ItemType.Weapon && selectedItem.itemType != Item.ItemType.Grenade)
             {
-                InvalidModal.gameObject.SetActive(true);
+                ErrorMessage.gameObject.SetActive(true);
             }
             else if (selectedItem.itemType == Item.ItemType.Weapon)
             {
@@ -133,7 +133,7 @@ public class InventoryManager : MonoBehaviour
         {
             if (selectedItem.itemType != Item.ItemType.Herb && selectedItem.itemType != Item.ItemType.Mixture)
             {
-                InvalidModal.gameObject.SetActive(true);
+                ErrorMessage.gameObject.SetActive(true);
             }
             else if (selectedItem.itemName == "Green Herb")
             {
@@ -299,7 +299,7 @@ public class InventoryManager : MonoBehaviour
                 }
                 else
                 {
-                    InvalidModal.gameObject.SetActive(true);
+                    ErrorMessage.gameObject.SetActive(true);
                     selected.transform.localScale = Vector3.one;
                     combineItem = null;
                     combineObject = null;
@@ -313,7 +313,7 @@ public class InventoryManager : MonoBehaviour
                     Debug.Log("Combined Normal Gunpowder with Normal Gunpowder");
                     Items.Remove(selectedItem);
                     Items.Remove(combineItem);
-                    Item newItem = new Item { itemName = "pistolAmmo", itemType = Item.ItemType.Ammo };
+                    Item newItem = new Item { itemName = "pistol Ammo", itemType = Item.ItemType.Ammo };
                    
                     newItem.icon = pistolAmmo;
                     newItem.count = 1;
@@ -332,10 +332,55 @@ public class InventoryManager : MonoBehaviour
                   
                     ListItems();
                 }
+                if (selectedItem.itemName == "Normal Gunpowder" && combineItem.itemName == "High-Grade Gunpowder")
+                {
+                    Debug.Log("Combined Normal Gunpowder with Normal Gunpowder");
+                    Items.Remove(selectedItem);
+                    Items.Remove(combineItem);
+                    Item newItem = new Item { itemName = "shotgunAmmo", itemType = Item.ItemType.Ammo };
+
+                    newItem.icon = shotgunAmmo;
+                    newItem.count = 1;
+                    newItem.buyPrice = 40;
+                    newItem.sellPrice = 0;
+                    newItem.ammo = 8;
+
+                    if (Items.Contains(newItem))
+                    {
+                        GetExistingItemAndUpdateAmmo(newItem);
+                    }
+                    else
+                    {
+                        Items.Add(newItem);
+                    }
+
+                    ListItems();
+                }
+                if (selectedItem.itemName == "High-Grade Gunpowder" && combineItem.itemName == "High-Grade Gunpowder")
+                {
+                    Debug.Log("Combined Normal Gunpowder with Normal Gunpowder");
+                    Items.Remove(selectedItem);
+                    Items.Remove(combineItem);
+                    Item newItem = new Item { itemName = "riffleAmmo", itemType = Item.ItemType.Ammo };
+                    newItem.icon = riffleAmmo;
+                    newItem.count = 1;
+                    newItem.buyPrice = 50;
+                    newItem.sellPrice = 0;
+                    newItem.ammo = 30;
+                    if (Items.Contains(newItem))
+                    {
+                        GetExistingItemAndUpdateAmmo(newItem);
+                    }
+                    else
+                    {
+                        Items.Add(newItem);
+                    }
+                    ListItems();
+                }
             }
             else
             {
-                InvalidModal.gameObject.SetActive(true);
+                ErrorMessage.gameObject.SetActive(true);
                 selected.transform.localScale = Vector3.one;
                 combineItem = null;
                 combineObject = null;
