@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class pickUpScript : MonoBehaviour
 {
     // Start is called before the first frame update
-
+    public int playerHealth = 8;
     
     public bool candestroy = false;
     public int goldcount = 30;
@@ -17,6 +17,7 @@ public class NewBehaviourScript : MonoBehaviour
 
 
     //door animators:
+    public Animator playerAnim;
     public Animator revD;
     public Animator normalDoorA;
     public Animator spadeDoorA;
@@ -86,62 +87,7 @@ public class NewBehaviourScript : MonoBehaviour
             candestroy = true;
             
         }
-        // if (bool2 == true && Vector3.Distance(transform.position, ammo01.transform.position) < 2)
-        //{
-        //    ui.SetActive(true);
-        //    currentObject = ammo01;
-        //    candestroy = true;
-            
-        //}
-        // if (bool3 == true && Vector3.Distance(transform.position, ammo10.transform.position) < 2)
-        //{
-        //    ui.SetActive(true);
-        //    currentObject = ammo10;
-        //    candestroy = true;
-            
-        //}
-        // if (bool4 == true && Vector3.Distance(transform.position, ammo11.transform.position) < 2)
-        //{
-        //    ui.SetActive(true);
-        //    currentObject = ammo11;
-        //    candestroy = true;
-            
-        //}
-        // if (bool5 == true && Vector3.Distance(transform.position, ammo20.transform.position) < 2)
-        //{
-        //    ui.SetActive(true);
-        //    currentObject = ammo20;
-        //    candestroy = true;
-            
-        //}
-        //if (rifleFlag == true && Vector3.Distance(transform.position, rifle.transform.position) < 2)
-        //{
-        //    ui.SetActive(true);
-        //    currentObject = rifle;
-        //    candestroy = true;
 
-        //}
-        //if (bool6 == true && Vector3.Distance(transform.position, ammo21.transform.position) < 2)
-        //{
-        //    ui.SetActive(true);
-        //    currentObject = ammo21;
-        //    candestroy = true;
-
-        //}
-        //if (bool7 == true && Vector3.Distance(transform.position, gunpowder1.transform.position) < 2)
-        //{
-        //    ui.SetActive(true);
-        //    currentObject = gunpowder1;
-        //    candestroy = true;
-
-        //}
-        //if (bool8 == true && Vector3.Distance(transform.position, gunpowder2.transform.position) < 2)
-        //{
-        //    ui.SetActive(true);
-        //    currentObject = gunpowder2;
-        //    candestroy = true;
-
-        //}
         if (bool9 == true && Vector3.Distance(transform.position, gold1.transform.position) < 2)
         {
             ui.SetActive(true);
@@ -253,21 +199,14 @@ public class NewBehaviourScript : MonoBehaviour
 
             }
         }
+            if (playerHealth <= 0) { playerAnim.SetTrigger("die");  }
 
 
     }
-
+    //performed when pressing pickup key
     public void PickUPs()
     {
-        //if (currentObject == rifle) { rifleFlag =false; }
         if (currentObject == revolver) { bool1 = false; hasRevolver = true; }
-        //if (currentObject == ammo01) { bool2 = false; }
-        //if (currentObject == ammo10) { bool3 = false; }
-        //if (currentObject == ammo11) { bool4 = false; }
-        //if (currentObject == ammo20) { bool5 = false; }
-        //if (currentObject == ammo21) { bool6 = false; }
-        //if (currentObject == gunpowder1) { bool7 = false; }
-        //if (currentObject == gunpowder2) { bool8 = false; }
         if (currentObject == gold1) { bool9 = false; goldcount += 10; }
         if (currentObject == gold2) { bool10 = false; goldcount += 10; }
         if (currentObject == gold3) { bool11= false; goldcount += 10; }
@@ -284,6 +223,7 @@ public class NewBehaviourScript : MonoBehaviour
         candestroy = false;
     }
 
+    //performed when pressing open door
     public void OpenDoor()
     {
         if (currentDoor == revDoor && hasRevCard==true)
