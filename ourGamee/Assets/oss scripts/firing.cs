@@ -14,6 +14,7 @@ public class firing : MonoBehaviour
     public GameObject riffle;
     public GameObject knife;
 
+    public pickUpScript pickUpScript;
 
     public GameObject bulletPrefab;
     public GameObject shotgunbullet;
@@ -164,7 +165,7 @@ public class firing : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.U) && isAiming==false) { weapon = 1; SetActiveWeapon(); }
         if (Input.GetKeyDown(KeyCode.I) && isAiming == false) { weapon = 2; SetActiveWeapon(); }
         if (Input.GetKeyDown(KeyCode.O) && isAiming == false) { weapon = 3; SetActiveWeapon(); }
-        if (Input.GetKeyDown(KeyCode.P) && isAiming == false) { weapon = 4; SetActiveWeapon(); }
+        if (Input.GetKeyDown(KeyCode.P) && isAiming == false && pickUpScript.hasRevolver==true) { weapon = 4; SetActiveWeapon(); }
         if (Input.GetKeyDown(KeyCode.Z) && isAiming == false) { weapon = 5; SetActiveWeapon(); }
 
 
