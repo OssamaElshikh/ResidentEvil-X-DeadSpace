@@ -34,32 +34,32 @@ public class InventoryManager : MonoBehaviour
     private GameObject combineObject;
     private Item combineItem;
 
-    private bool isInventoryOpen = false;
+    //private bool isInventoryOpen = false;
 
-    public void OnInventoryButtonClick()
-    {
-        ToggleInventory();
-    }
+    //public void OnInventoryButtonClick()
+    //{
+    //    ToggleInventory();
+    //}
 
-    void ToggleInventory()
-    {
-        isInventoryOpen = !isInventoryOpen;
+    //void ToggleInventory()
+    //{
+    //    isInventoryOpen = !isInventoryOpen;
 
-        if (isInventoryOpen)
-        {
-            // Pause the game
-            Time.timeScale = 0f;
-            // Show the inventory panel
+    //    if (isInventoryOpen)
+    //    {
+    //        // Pause the game
+    //        Time.timeScale = 0f;
+    //        // Show the inventory panel
            
-        }
-        else
-        {
-            // Unpause the game
-            Time.timeScale = 1f;
-            // Hide the inventory panel
+    //    }
+    //    else
+    //    {
+    //        // Unpause the game
+    //        Time.timeScale = 1f;
+    //        // Hide the inventory panel
       
-        }
-    }
+    //    }
+    //}
 
     private void Awake()
     {
@@ -72,15 +72,23 @@ public class InventoryManager : MonoBehaviour
     {
         if (Items.Count < 6)
         {
-            item.count = Items.Count;
-            //Debug.Log(item.count);
-            Items.Add(item);
-            
+            item.ItemsCount = Items.Count;
+            Debug.Log(item.ItemsCount);
+
+            if (Items.Contains(item))
+            {
+                GetExistingItemAndUpdateCount(item);
+            }
+            else
+            {
+                Items.Add(item);
+            }
+
 
         }
         else
         {
-            item.count = Items.Count+1;
+            item.ItemsCount = Items.Count+1;
             //Debug.Log(item.count);
             ErrorMessage.gameObject.SetActive(true);
         }
@@ -206,7 +214,7 @@ public class InventoryManager : MonoBehaviour
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
             var button = obj.GetComponent<Button>();
 
-            itemName.text = item.itemName;
+            itemName.text = item.itemName + " x" + item.count;
             itemIcon.sprite = item.icon;
             
             if (item.itemName == "Pistol" || item.itemName == "Shotgun"  || item.itemName == "Riffle" || item.itemName == "Revolver")
@@ -398,6 +406,23 @@ public class InventoryManager : MonoBehaviour
         {
             // Item already exists, update its properties (e.g., ammo)
             existingItem.ammo += newItem.ammo; // Adjust as needed
+        }
+
+        return existingItem;
+    }
+    public Item GetExistingItemAndUpdateCount(Item newItem)
+    {
+        // Check if an item with the same properties already exists in the list
+        Item existingItem = Items.Find(item => item.Equals(newItem));
+
+        if (existingItem != null)
+        {
+            // Item already exists, update its properties (e.g., ammo)
+            Debug.Log("Count before "+existingItem.count);
+
+            existingItem.count += 1; // Adjust as needed
+            Debug.Log(existingItem.itemName);
+            Debug.Log("count after "+existingItem.count); 
         }
 
         return existingItem;

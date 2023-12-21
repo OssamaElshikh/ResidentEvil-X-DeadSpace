@@ -10,6 +10,7 @@ public class Item : ScriptableObject
     public int ammo;
     public Sprite icon;
     public ItemType itemType;
+    public int ItemsCount; 
 
     public enum ItemType
     {
@@ -21,5 +22,20 @@ public class Item : ScriptableObject
         KeyItem,
         Treasure,
         Gunpowder
+    }
+    public override bool Equals(object obj)
+    {
+        if (obj == null || GetType() != obj.GetType())
+        {
+            return false;
+        }
+
+        // Compare items based on their unique properties (e.g., Name)
+        return itemName == ((Item)obj).itemName;
+    }
+
+    public override int GetHashCode()
+    {
+        return itemName.GetHashCode();
     }
 }

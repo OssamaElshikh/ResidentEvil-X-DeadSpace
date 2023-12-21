@@ -9,8 +9,8 @@ public class ItemPickup : MonoBehaviour
     void Pickup()
     {
         InventoryManager.Instance.Add(item);
-        Debug.Log(item.count);
-        if (item.count < 6)
+        Debug.Log("item count "+ item.count);
+        if (item.ItemsCount < 6)
         {
             Destroy(gameObject);
         }
