@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class pickUpScript : MonoBehaviour
 {
     // Start is called before the first frame update
 
@@ -63,13 +63,16 @@ public class NewBehaviourScript : MonoBehaviour
     public GameObject normalDoor;
     public bool bool22;
 
+    public bool InventoryGold=false;
 
     private GameObject currentObject;
     private GameObject currentDoor;
 
     public GameObject doorUI;
     public GameObject ui;
-  
+
+    public Item item;
+
     private void Update()
     {
         
@@ -260,7 +263,7 @@ public class NewBehaviourScript : MonoBehaviour
     public void PickUPs()
     {
         //if (currentObject == rifle) { rifleFlag =false; }
-        if (currentObject == revolver) { bool1 = false; hasRevolver = true; }
+        if (currentObject == revolver) { bool1 = false; hasRevolver = true; item.itemName = "revolver"; item.itemType = Item.ItemType.Weapon;  }
         //if (currentObject == ammo01) { bool2 = false; }
         //if (currentObject == ammo10) { bool3 = false; }
         //if (currentObject == ammo11) { bool4 = false; }
@@ -268,8 +271,12 @@ public class NewBehaviourScript : MonoBehaviour
         //if (currentObject == ammo21) { bool6 = false; }
         //if (currentObject == gunpowder1) { bool7 = false; }
         //if (currentObject == gunpowder2) { bool8 = false; }
-        if (currentObject == gold1) { bool9 = false; goldcount += 10; }
-        if (currentObject == gold2) { bool10 = false; goldcount += 10; }
+        if (currentObject == gold1) {
+            bool9 = false; goldcount += 10;
+            InventoryGold = true; 
+            //item.itemName = "gold"; item.itemType = Item.ItemType.Treasure;
+        }
+        if (currentObject == gold2) { bool10 = false; goldcount += 10;  }
         if (currentObject == gold3) { bool11= false; goldcount += 10; }
         if (currentObject == gold4) { bool12= false; goldcount += 10; }
         if (currentObject == gold5) { bool13 = false; goldcount += 10; }
@@ -279,9 +286,18 @@ public class NewBehaviourScript : MonoBehaviour
         if (currentObject == spadeKey) { bool18 = false; hasSpadeKey = true; Debug.Log(hasSpadeKey); }
         if (currentObject == diamondKey) { bool20 = false; hasDiamondKey = true; }
 
+        //InventoryManager.Instance.Add(item);
+
+        //Debug.Log("item count " + item.count);
+        //if (item.ItemsCount < 6)
+        //{
+        //    Destroy(currentObject);
+        //    candestroy = false;
+        //}
 
         Destroy(currentObject);
         candestroy = false;
+
     }
 
     public void OpenDoor()

@@ -51,7 +51,7 @@ public class ShopInteraction : MonoBehaviour
 
 
 
-    void PauseGame()
+    public void PauseGame()
     {
         isPaused = true;
         previousLockMode = Cursor.lockState; // Store the current cursor lock mode
