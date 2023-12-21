@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class enemyDamage : MonoBehaviour
 {
+    public pickUpScript pickUpScript;
     public int enemyHealth = 5;
     public Animator anim;
     // Start is called before the first frame update
@@ -23,6 +24,7 @@ public class enemyDamage : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("collison");
         if (collision.collider.CompareTag("pistolBullet")){
             enemyHealth -= 2;
         }
@@ -40,9 +42,19 @@ public class enemyDamage : MonoBehaviour
         }
         if (collision.collider.CompareTag("revolverBullet"))
         {
-            Debug.Log("col");
 
-            enemyHealth -= 25;
+            enemyHealth -= 5;
+        }
+     
+        if (collision.collider.CompareTag("Player"))
+        {
+            Debug.Log("hi");
+            pickUpScript.playerHealth--;
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("trig");
+    }
+
 }
