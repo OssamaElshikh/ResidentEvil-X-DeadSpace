@@ -8,6 +8,8 @@ public class MovingAround : StateMachineBehaviour
 {
     NavMeshAgent agent;
     Transform player;
+    pickUpScript playerPickUpScript; // Reference to the pickUpScript on the player
+
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -15,6 +17,8 @@ public class MovingAround : StateMachineBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = animator.GetComponent<NavMeshAgent>();
         agent.speed = 3.5f;
+        playerPickUpScript = player.GetComponent<pickUpScript>(); // Get the pickUpScript from the player
+
 
 
     }
@@ -30,6 +34,7 @@ public class MovingAround : StateMachineBehaviour
         }
         if (distance < 1.8f)
         {
+
             animator.SetBool("isSwinging", true);
         }
     }

@@ -18,7 +18,10 @@ public class EnemyTwoScript : MonoBehaviour
         if (!hasShot)
         {
             Rigidbody rb = Instantiate(projectile, projectilePoint.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 30f, ForceMode.Impulse);
+            Vector3 shootDirection = transform.forward - transform.right * 0.1f;  // Adjust the 0.1f to control the rightward deviation
+            shootDirection.Normalize();  // Normalize to maintain consistent force
+
+            rb.AddForce(shootDirection * 30f, ForceMode.Impulse);
             hasShot = true;
         }
         
