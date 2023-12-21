@@ -10,6 +10,11 @@ TagManager:
   - ammo1
   - ammo0
   - ammo2
+  - revolverBullet
+  - rifleBullet
+  - shotgunBullet
+  - pistolBullet
+  - enemy
   layers:
   - Default
   - TransparentFX

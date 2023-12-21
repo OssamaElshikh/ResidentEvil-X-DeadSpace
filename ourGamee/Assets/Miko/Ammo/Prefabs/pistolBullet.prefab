@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -5130412180533824423}
   m_Layer: 0
   m_Name: pistolBullet
-  m_TagString: Untagged
+  m_TagString: pistolBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff631fb4b5a2a44cdad8e25cc82c1587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 2
 --- !u!136 &-5130412180533824423
 CapsuleCollider:
   m_ObjectHideFlags: 0

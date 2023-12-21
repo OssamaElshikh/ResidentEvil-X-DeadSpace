@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3594019165424491587}
   - component: {fileID: 7636906410637586}
   m_Layer: 0
-  m_Name: part66
+  m_Name: particleWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4835,7 +4835,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bda51370a1cdf45fe85568b58b112914, type: 2}
+  - {fileID: 2100000, guid: 9dd096cd1e2d9417abba6785db1bd3d5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
