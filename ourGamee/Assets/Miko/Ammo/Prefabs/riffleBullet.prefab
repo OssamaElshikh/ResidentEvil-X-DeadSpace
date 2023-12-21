@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6834121401285123384}
   m_Layer: 0
   m_Name: riffleBullet
-  m_TagString: Untagged
+  m_TagString: rifleBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,3 +148,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 939118c61807b49878e73072401b23ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
