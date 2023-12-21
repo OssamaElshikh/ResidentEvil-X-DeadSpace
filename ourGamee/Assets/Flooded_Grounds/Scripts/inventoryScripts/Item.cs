@@ -7,6 +7,7 @@ public class Item : ScriptableObject
     public int buyPrice;
     public int sellPrice;
     public int count;
+    public int ammo;
     public Sprite icon;
     public ItemType itemType;
 
@@ -17,6 +18,8 @@ public class Item : ScriptableObject
         Herb,
         Mixture,
         Grenade,
-        KeyItem
+        KeyItem,
+        Treasure,
+        Gunpowder
     }
 }
