@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
-    public pickUpScript pickUpScript;
     public Item item;
-
-    public float pickupDistance = 2f;
+    float pickupDistance = 2f;
 
     private void Update()
     {

@@ -47,8 +47,18 @@ public class InventoryManager : MonoBehaviour
     {
         if (item.count < 6)
         {
-            Items.Add(item);
-            Debug.Log("ADD"); 
+            item.ItemsCount = Items.Count;
+            Debug.Log(item.ItemsCount);
+
+            if (Items.Contains(item))
+            {
+                GetExistingItemAndUpdateCount(item);
+            }
+            else
+            {
+                Items.Add(item);
+            }
+            ListItems();
         }
         else
         {
@@ -66,10 +76,12 @@ public class InventoryManager : MonoBehaviour
         {
             // Toggle the inventory canvas state
             isInventoryActive = !isInventoryActive;
-            ListItems();
+            
             // Set the Inventory Canvas based on the state
             inventoryCanvas.SetActive(isInventoryActive);
+
         }
+        
     }
     public void Remove()
     {
@@ -174,7 +186,6 @@ public class InventoryManager : MonoBehaviour
 
     public void ListItems()
     {
-        Debug.Log("ListItems");
         foreach (Transform item in ItemContent)
         {
             Destroy(item.gameObject);
@@ -183,13 +194,22 @@ public class InventoryManager : MonoBehaviour
         foreach (var item in Items)
         {
             GameObject obj = Instantiate(InventoryItem, ItemContent);
+
             var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
+
+
+
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
             var button = obj.GetComponent<Button>();
 
-            itemName.text = item.itemName;
+            itemName.text = item.itemName + " x" + item.count;
             itemIcon.sprite = item.icon;
 
+            if (item.itemName == "Pistol" || item.itemName == "Shotgun" || item.itemName == "Riffle" || item.itemName == "Revolver")
+            {
+                itemName.text += " : ";
+                itemName.text += item.ammo;
+            }
             button.onClick.AddListener(() => SelectItem(obj, item));
         }
     }

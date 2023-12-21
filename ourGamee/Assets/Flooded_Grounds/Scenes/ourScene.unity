@@ -11649,9 +11649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e42d77f2101ad498921343b210345f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpScript: {fileID: 0}
   item: {fileID: 11400000, guid: 0e2bfa709841549c781dafd5abec9ddd, type: 2}
-  pickupDistance: 2
 --- !u!114 &308787609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26827,6 +26825,32 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4060935145248132896, guid: b89f8fb2af547486daca80f60a24f09f, type: 3}
   m_PrefabInstance: {fileID: 2056389279}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &695950235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248434015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81a4d60482535a040b0a937df5cd04ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 0e2bfa709841549c781dafd5abec9ddd, type: 2}
+--- !u!114 &695950236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248434015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5e42d77f2101ad498921343b210345f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 0e2bfa709841549c781dafd5abec9ddd, type: 2}
 --- !u!1001 &696938521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34862,11 +34886,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4060935145248132896, guid: b89f8fb2af547486daca80f60a24f09f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.317999
+      value: -18.263
       objectReference: {fileID: 0}
     - target: {fileID: 4060935145248132896, guid: b89f8fb2af547486daca80f60a24f09f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0999985
+      value: 1.058
       objectReference: {fileID: 0}
     - target: {fileID: 4060935145248132896, guid: b89f8fb2af547486daca80f60a24f09f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -59764,9 +59788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e42d77f2101ad498921343b210345f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpScript: {fileID: 0}
   item: {fileID: 11400000, guid: 0e2bfa709841549c781dafd5abec9ddd, type: 2}
-  pickupDistance: 2
 --- !u!1001 &1555909189
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81563,7 +81585,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4060935145248363264, guid: b89f8fb2af547486daca80f60a24f09f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 695950236}
+    - targetCorrespondingSourceObject: {fileID: 4060935145248363264, guid: b89f8fb2af547486daca80f60a24f09f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 695950235}
   m_SourcePrefab: {fileID: 100100000, guid: b89f8fb2af547486daca80f60a24f09f, type: 3}
 --- !u!1001 &2056979725
 PrefabInstance:
@@ -83918,35 +83946,6 @@ MonoBehaviour:
   throwForce: 15
   throwUpwardForce: 0
   hasExploded: 0
---- !u!114 &2123500311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2123500290}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc0f0bfcec1970f4d8a38c5402e01328, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Items: []
-  ItemContent: {fileID: 0}
-  InventoryItem: {fileID: 0}
-  ErrorMessage: {fileID: 0}
-  Health: {fileID: 0}
-  Stasis: {fileID: 0}
-  Gold: {fileID: 0}
-  Weapon: {fileID: 0}
-  Knife: {fileID: 0}
-  Grenade: {fileID: 0}
-  greenMixIcon: {fileID: 0}
-  redMixIcon: {fileID: 0}
-  yellowMixIcon: {fileID: 0}
-  pistolAmmo: {fileID: 0}
-  shotgunAmmo: {fileID: 0}
-  riffleAmmo: {fileID: 0}
-  inventoryCanvas: {fileID: 0}
 --- !u!1001 &2124823952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86395,9 +86394,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6433552253127928896, guid: 33359195ec64940a2a39784f366ce28c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2123500305}
-    - targetCorrespondingSourceObject: {fileID: 6433552253127928896, guid: 33359195ec64940a2a39784f366ce28c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2123500311}
   m_SourcePrefab: {fileID: 100100000, guid: 33359195ec64940a2a39784f366ce28c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
