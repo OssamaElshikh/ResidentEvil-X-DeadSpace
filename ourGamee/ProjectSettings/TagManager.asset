@@ -15,6 +15,7 @@ TagManager:
   - shotgunBullet
   - pistolBullet
   - enemy
+  - rightArm
   layers:
   - Default
   - TransparentFX
