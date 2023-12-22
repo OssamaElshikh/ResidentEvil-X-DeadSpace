@@ -73,6 +73,7 @@ public class pickUpScript : MonoBehaviour
     public bool bool23;
     public GameObject emeraldDoor;
     public bool bool24;
+    public GameObject treasure;
 
 
 
@@ -81,10 +82,15 @@ public class pickUpScript : MonoBehaviour
 
     public GameObject doorUI;
     public GameObject ui;
-  
+    public GameObject winUI;
+
+
+
     private void Update()
     {
-        
+        if (playerHealth <= 0) { playerAnim.SetTrigger("die"); }
+
+
         candestroy = false;
         ui.SetActive(false);
         doorUI.SetActive(false);
@@ -201,9 +207,13 @@ public class pickUpScript : MonoBehaviour
             doorUI.SetActive(true);
             currentDoor = emeraldDoor;
         }
+        if ( Vector3.Distance(transform.position, treasure.transform.position) < 3)
+        {
+            winUI.SetActive(true);
+        }
 
-        //for opening doors
-        if (Input.GetKeyDown(KeyCode.O))
+            //for opening doors
+            if (Input.GetKeyDown(KeyCode.O))
         {
             
                 OpenDoor();
@@ -221,7 +231,6 @@ public class pickUpScript : MonoBehaviour
 
             }
         }
-            if (playerHealth <= 0) { playerAnim.SetTrigger("die");  }
 
 
     }
