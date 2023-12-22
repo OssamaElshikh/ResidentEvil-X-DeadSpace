@@ -7,6 +7,8 @@ public class enemyDamage : MonoBehaviour
     public pickUpScript pickUpScript;
     public int enemyHealth = 5;
     public Animator anim;
+
+    public AudioSource dieSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,8 @@ public class enemyDamage : MonoBehaviour
         if (enemyHealth <= 0)
         {
             anim.SetTrigger("die");
+            dieSound.Play();
+
         }
     }
     
@@ -45,7 +49,13 @@ public class enemyDamage : MonoBehaviour
 
             enemyHealth -= 5;
         }
-     
+        if (collision.collider.CompareTag("explosion"))
+        {
+
+            enemyHealth -= 5;
+        }
+
+
         if (collision.collider.CompareTag("Player"))
         {
             Debug.Log("hi");
@@ -54,7 +64,10 @@ public class enemyDamage : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("trig");
+        if (other.CompareTag("explosion"))
+        {
+            enemyHealth -= 5;
+        }
     }
 
 }

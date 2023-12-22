@@ -21,6 +21,9 @@ public class firing : MonoBehaviour
     public GameObject riffleBullet;
     public GameObject revBullet;
 
+    public AudioSource relodeAudio;
+    public AudioSource fireAudio;
+
 
     public int bulletSpeed = 2;
 
@@ -100,6 +103,8 @@ public class firing : MonoBehaviour
 
                 // Set the velocity of the bullet
                 bullet.GetComponent<Rigidbody>().velocity = bulletPoint.forward * bulletSpeed;
+
+                fireAudio.Play();
             }
 
             //shotgun
@@ -110,7 +115,9 @@ public class firing : MonoBehaviour
                     var bullet = Instantiate(shotgunbullet, shotguntrans.position, bulletRotation);
 
                     bullet.GetComponent<Rigidbody>().velocity = shotguntrans.forward * bulletSpeed;
-                }
+                fireAudio.Play();
+
+            }
             //rifle
             if (Input.GetKey(KeyCode.K) && weapon == 3)
             {
@@ -119,6 +126,8 @@ public class firing : MonoBehaviour
                 var bullet = Instantiate(riffleBullet, riffleTrans.position, bulletRotation);
 
                 bullet.GetComponent<Rigidbody>().velocity = riffleTrans.forward * bulletSpeed;
+                fireAudio.Play();
+
             }
             //revolver
             if (Input.GetKeyDown(KeyCode.K) && weapon == 4)
@@ -128,6 +137,8 @@ public class firing : MonoBehaviour
                 var bullet = Instantiate(revBullet, revTrans.position, bulletRotation);
 
                 bullet.GetComponent<Rigidbody>().velocity = revTrans.forward * bulletSpeed;
+                fireAudio.Play();
+
             }
             if (Input.GetKeyDown(KeyCode.R))
                 {
@@ -135,27 +146,31 @@ public class firing : MonoBehaviour
                 {
                     pistAv += pistolCap;
                     anim.SetTrigger("relode");
+                    relodeAudio.Play();
 
                 }
                 if (weapon == 2)
                 {
                     rifAv += rifleCap;
                     anim.SetTrigger("relode");
+                    relodeAudio.Play();
 
                 }
                 if (weapon == 3)
                 {
                     shotAv += shotGunCap;
                     anim.SetTrigger("relode");
+                    relodeAudio.Play();
 
                 }
                 if (weapon == 4)
                 {
                     revAv += revolverCap;
                     anim.SetTrigger("relode");
+                    relodeAudio.Play();
 
                 }
-                
+
 
             }
 

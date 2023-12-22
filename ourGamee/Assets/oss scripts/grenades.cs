@@ -26,6 +26,8 @@ public class grenades : MonoBehaviour
     public bool hasExploded;
     private GameObject dest;
 
+    public AudioSource explodeAudio;
+
     bool readyToThrow;
 
     // Start is called before the first frame update
@@ -131,9 +133,9 @@ public class grenades : MonoBehaviour
         GameObject ex =Instantiate(explostion, currentGren.transform.position, Quaternion.identity);
         dest = ex;
         hasExploded = true;
-        Destroy(currentGren);
+        currentGren.SetActive(false);
         Invoke("DestroyX", 2);
-        
+        explodeAudio.Play();
        
 
     }
@@ -144,7 +146,7 @@ public class grenades : MonoBehaviour
         hasExploded = true;
         Destroy(currentGren);
         Invoke("DestroyX", 2);
-
+        explodeAudio.Play();
 
 
     }

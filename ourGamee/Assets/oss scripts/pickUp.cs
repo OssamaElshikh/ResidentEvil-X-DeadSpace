@@ -102,11 +102,14 @@ public class pickUpScript : MonoBehaviour
     public GameObject normalGunpowder;
     public GameObject heavyGunPowder;
 
-
+    public AudioSource dieAudio;
+    public bool dieAudioBool=true;
+    public AudioSource openDoorAudio;
+    public AudioSource hitAudio;
 
     private void Update()
     {
-        if (playerHealth <= 0) { playerAnim.SetTrigger("die"); }
+        if (playerHealth <= 0) { playerAnim.SetTrigger("die");PlayDie(); }
 
 
         candestroy = false;
@@ -332,26 +335,35 @@ public class pickUpScript : MonoBehaviour
         {
             bool17 = false;
             revD.SetTrigger("revdoor");
+            openDoorAudio.Play();
         }
         if (currentDoor == spadeDoor && hasSpadeKey == true)
         {
             Debug.Log("hi");
             bool19 = false;
             spadeDoorA.SetTrigger("openDoor");
+            openDoorAudio.Play();
+
         }
         if (currentDoor == diamondDoor && hasDiamondKey == true)
         {
             bool21 = false;
             diamondDoorA.SetTrigger("openDoor");
+            openDoorAudio.Play();
+
         }
         if (currentDoor == normalDoor) {
             bool22 = false;
             normalDoorA.SetTrigger("openDoor");
+            openDoorAudio.Play();
+
         }
         if (currentDoor == emeraldDoor && hasEmerald==true)
         {
             bool24 = false;
             emeraldDoorA.SetTrigger("openDoor");
+            openDoorAudio.Play();
+
         }
 
 
@@ -362,6 +374,7 @@ public class pickUpScript : MonoBehaviour
         playerHealth -= damageAmount;
         Debug.Log("PLayer Health ");
         Debug.Log(playerHealth);
+        hitAudio.Play();
 
         if (playerHealth <= 0)
         {
@@ -374,6 +387,20 @@ public class pickUpScript : MonoBehaviour
         }
     }
  
-   
+   void PlayDie()
+    {
+        if (dieAudioBool )
+        {
+            dieAudio.Play();
+            dieAudioBool = false;
+        }
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("explosion"))
+        {
+            Debug.Log("bomb");
+        }
+    }
 }

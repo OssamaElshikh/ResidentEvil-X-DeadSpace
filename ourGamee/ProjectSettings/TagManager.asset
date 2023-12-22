@@ -16,6 +16,7 @@ TagManager:
   - pistolBullet
   - enemy
   - rightArm
+  - explosion
   layers:
   - Default
   - TransparentFX
