@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a265d26c73affc84ca367550653111ac, type: 3}
-  m_Name: ruby
+  m_Name: emerald
   m_EditorClassIdentifier: 
-  itemName: ruby
+  itemName: emerald
   buyPrice: 0
-  sellPrice: 200
+  sellPrice: 500
   count: 1
-  ammo: 0
   icon: {fileID: 21300000, guid: 607da87263d9c4ea1801fd4dda525a4f, type: 3}
   itemType: 6
+  ammo: 0
   ItemsCount: 0
+  associatedGameObject: {fileID: 0}

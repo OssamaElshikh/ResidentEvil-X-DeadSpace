@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: 'Key Diamond '
   buyPrice: 0
   sellPrice: 0
-  count: 0
+  count: 1
   icon: {fileID: 21300000, guid: d66085f581ac0400b819e98be6c37fe2, type: 3}
   itemType: 5
   ammo: 0
