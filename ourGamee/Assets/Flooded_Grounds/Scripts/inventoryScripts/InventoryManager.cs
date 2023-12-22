@@ -43,12 +43,13 @@ public class InventoryManager : MonoBehaviour
         Instance = this;
     }
 
+
     public void Add(Item item)
     {
-        if (item.count < 6)
+        if (item.ItemsCount < 6)
         {
             item.ItemsCount = Items.Count;
-            Debug.Log(item.ItemsCount);
+            Debug.Log("items count "+item.ItemsCount);
 
             if (Items.Contains(item))
             {
@@ -68,6 +69,7 @@ public class InventoryManager : MonoBehaviour
     void Update()
     {
         ActivateInventory();
+      
     }
 
     public void ActivateInventory()

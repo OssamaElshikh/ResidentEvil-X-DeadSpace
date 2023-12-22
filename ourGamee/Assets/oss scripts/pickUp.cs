@@ -262,19 +262,13 @@ public class pickUpScript : MonoBehaviour
 
     public void PickUPs()
     {
-        //if (currentObject == rifle) { rifleFlag =false; }
+       
         if (currentObject == revolver) { bool1 = false; hasRevolver = true; item.itemName = "revolver"; item.itemType = Item.ItemType.Weapon;  }
-        //if (currentObject == ammo01) { bool2 = false; }
-        //if (currentObject == ammo10) { bool3 = false; }
-        //if (currentObject == ammo11) { bool4 = false; }
-        //if (currentObject == ammo20) { bool5 = false; }
-        //if (currentObject == ammo21) { bool6 = false; }
-        //if (currentObject == gunpowder1) { bool7 = false; }
-        //if (currentObject == gunpowder2) { bool8 = false; }
+
         if (currentObject == gold1) {
             bool9 = false; goldcount += 10;
             InventoryGold = true; 
-            //item.itemName = "gold"; item.itemType = Item.ItemType.Treasure;
+           
         }
         if (currentObject == gold2) { bool10 = false; goldcount += 10;  }
         if (currentObject == gold3) { bool11= false; goldcount += 10; }

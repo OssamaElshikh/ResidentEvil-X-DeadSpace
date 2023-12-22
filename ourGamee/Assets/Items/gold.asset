@@ -15,9 +15,9 @@ MonoBehaviour:
   itemName: gold
   buyPrice: 0
   sellPrice: 100
-  count: 1
+  count: 0
   icon: {fileID: 21300000, guid: 38c1d58a2cd894d70b449e662ee41770, type: 3}
   itemType: 7
   ammo: 0
-  ItemsCount: 0
+  ItemsCount: 1
   associatedGameObject: {fileID: 4944159361292024838, guid: f2d0ba7653ed3435d853019d6dff0743, type: 3}

@@ -6,9 +6,14 @@ public class ItemPickup : MonoBehaviour
 {
     public Item item;
     float pickupDistance = 2f;
+    //public GameObject ui;
 
     private void Update()
     {
+        //if (IsPlayerInRange())
+        //{
+        //    ui.SetActive(true);
+        //}
         // Check if the player is within the pickup distance and presses the "E" key
         if (Input.GetKeyDown(KeyCode.E) && IsPlayerInRange())
         {
