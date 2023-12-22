@@ -26,7 +26,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3249747332497518836, guid: b8a596f6cd328ea4e9ca6055fef737a3, type: 3}
       propertyPath: m_IsActive
+<<<<<<< Updated upstream
       value: 0
+=======
+      value: 1
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 4019591926554743526, guid: b8a596f6cd328ea4e9ca6055fef737a3, type: 3}
       propertyPath: m_Pivot.x

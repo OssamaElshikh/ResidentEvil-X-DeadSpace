@@ -8,13 +8,21 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager Instance;
 
     public List<Item> Items = new List<Item>();
+<<<<<<< Updated upstream
     public List<Item> ItemsStorage = new List<Item>();
+=======
+    public List<Item> storageItems = new List<Item>();
+
+>>>>>>> Stashed changes
     public Transform ItemContent;
 
     public Transform StorageContent;
     public GameObject StorageItem;
 
     public GameObject InventoryItem;
+
+    public Transform StorageContent;
+    public GameObject StorageItem;
 
     public Image ErrorMessage;
     public GameObject Health;
@@ -94,10 +102,16 @@ public class InventoryManager : MonoBehaviour
         }
         else
         {
+<<<<<<< Updated upstream
             //ErrorMessage.gameObject.SetActive(true);
             ItemsStorage.Add(item);
             ListItemsStorage();
 
+=======
+            storageItems.Add(item);
+            storageListItems();
+            //ErrorMessage.gameObject.SetActive(true);
+>>>>>>> Stashed changes
         }
     }
 
@@ -237,15 +251,23 @@ public class InventoryManager : MonoBehaviour
             button.onClick.AddListener(() => SelectItem(obj, item));
         }
     }
+<<<<<<< Updated upstream
 
     public void ListItemsStorage()
+=======
+    public void storageListItems()
+>>>>>>> Stashed changes
     {
         foreach (Transform item in StorageContent)
         {
             Destroy(item.gameObject);
         }
 
+<<<<<<< Updated upstream
         foreach (var item in ItemsStorage)
+=======
+        foreach (var item in Items)
+>>>>>>> Stashed changes
         {
             GameObject obj = Instantiate(StorageItem, StorageContent);
 
