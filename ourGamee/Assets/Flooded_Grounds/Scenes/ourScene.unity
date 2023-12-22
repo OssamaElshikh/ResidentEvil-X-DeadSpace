@@ -20711,6 +20711,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 416178, guid: fe546dac68b4ae943a161dec60c98fed, type: 3}
   m_PrefabInstance: {fileID: 566029462}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &566127451 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1906945527240309986, guid: eb2bcf13c07a943dea7708f423c5a63a, type: 3}
+  m_PrefabInstance: {fileID: 1457491292}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &566127455 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1908238330453968270, guid: eb2bcf13c07a943dea7708f423c5a63a, type: 3}
@@ -90143,6 +90148,8 @@ MonoBehaviour:
   bool21: 1
   normalDoor: {fileID: 1294354643}
   bool22: 1
+  emerald: {fileID: 566127451}
+  bool23: 1
   emeraldDoor: {fileID: 391428480}
   bool24: 1
   bool25: 1

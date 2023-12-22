@@ -75,8 +75,8 @@ public class pickUpScript : MonoBehaviour
     public bool bool21;
     public GameObject normalDoor;
     public bool bool22;
-    //public GameObject emerald;
-    //public bool bool23;
+    public GameObject emerald;
+    public bool bool23;
     public GameObject emeraldDoor;
     public bool bool24;
     public bool bool25;
@@ -215,13 +215,13 @@ public class pickUpScript : MonoBehaviour
             doorUI.SetActive(true);
             currentDoor = normalDoor;
         }
-        //if (bool23 == true && Vector3.Distance(transform.position, emerald.transform.position) < 2)
-        //{
-          //  ui.SetActive(true);
-           // currentObject = emerald;
-            //candestroy = true;
+        if (bool23 == true && Vector3.Distance(transform.position, emerald.transform.position) < 2)
+        {
+            ui.SetActive(true);
+            currentObject = emerald;
+            candestroy = true;
 
-        //}
+        }
         if (bool24 == true && Vector3.Distance(transform.position, emeraldDoor.transform.position) < 2)
         {
             doorUI.SetActive(true);
@@ -308,8 +308,9 @@ public class pickUpScript : MonoBehaviour
         
         if (currentObject == spadeKey) { bool18 = false; hasSpadeKey = true; Debug.Log(hasSpadeKey); }
         if (currentObject == diamondKey) { bool20 = false; hasDiamondKey = true; }
-        /*
+        
         if (currentObject == emerald) { bool23 = false; hasEmerald = true; }
+        /*
         if(currentObject == greenHerb) {  bool25 = false;hasGreenHerb = true; }
         if (currentObject == redHerb) { bool26 = false; hasRedHerb = true; }
         if (currentObject == grenade) {  bool27 = false; hasGrenade = true; }
@@ -317,7 +318,7 @@ public class pickUpScript : MonoBehaviour
         if(currentObject == normalGunpowder) {  bool29 = false; hasNormalGunpowder = true; }
         if (currentObject == heavyGunPowder) { bool30 = false; hasHeavyGunpoder = true; }
         */
-        
+
 
 
         Destroy(currentObject);
