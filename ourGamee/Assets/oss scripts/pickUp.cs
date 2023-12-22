@@ -52,16 +52,17 @@ public class pickUpScript : MonoBehaviour
     //public bool bool7 = true;
     //public GameObject gunpowder2;
     //public bool bool8 = true;
-    public GameObject gold1, gold2, gold3, gold4, gold5, gold6,gold7;
-    public bool  bool9=true;
-    public bool bool10 = true;
-    public bool bool11 = true;
-    public bool bool12 = true;
-    public bool bool13 = true;
-    public bool bool14 = true;
-    public bool bool15 = true;
-    public GameObject revCard;
-    public bool bool16;
+    /*     public GameObject gold1, gold2, gold3, gold4, gold5, gold6,gold7;
+         public bool  bool9=true;
+         public bool bool10 = true;
+         public bool bool11 = true;
+         public bool bool12 = true;
+         public bool bool13 = true;
+         public bool bool14 = true;
+         public bool bool15 = true;
+    */
+     public GameObject revCard;
+     public bool bool16;
     public GameObject revDoor;
     public bool bool17;
     public GameObject spadeKey;
@@ -74,8 +75,8 @@ public class pickUpScript : MonoBehaviour
     public bool bool21;
     public GameObject normalDoor;
     public bool bool22;
-    public GameObject emerald;
-    public bool bool23;
+    //public GameObject emerald;
+    //public bool bool23;
     public GameObject emeraldDoor;
     public bool bool24;
     public bool bool25;
@@ -114,7 +115,7 @@ public class pickUpScript : MonoBehaviour
 
         // check the nearest object to pickup
 
-        if (bool1 == true && Vector3.Distance(transform.position, revolver.transform.position)<2  )
+       /* if (bool1 == true && Vector3.Distance(transform.position, revolver.transform.position)<2  )
         {
             ui.SetActive(true);
             currentObject = revolver;
@@ -171,6 +172,7 @@ public class pickUpScript : MonoBehaviour
             candestroy = true;
 
         }
+       */
         if (bool16 == true && Vector3.Distance(transform.position, revCard.transform.position) < 2)
         {
             ui.SetActive(true);
@@ -178,6 +180,7 @@ public class pickUpScript : MonoBehaviour
             candestroy = true;
 
         }
+
         if (bool17 == true && Vector3.Distance(transform.position, revDoor.transform.position) < 2)
         {
             doorUI.SetActive(true);
@@ -212,19 +215,19 @@ public class pickUpScript : MonoBehaviour
             doorUI.SetActive(true);
             currentDoor = normalDoor;
         }
-        if (bool23 == true && Vector3.Distance(transform.position, emerald.transform.position) < 2)
-        {
-            ui.SetActive(true);
-            currentObject = emerald;
-            candestroy = true;
+        //if (bool23 == true && Vector3.Distance(transform.position, emerald.transform.position) < 2)
+        //{
+          //  ui.SetActive(true);
+           // currentObject = emerald;
+            //candestroy = true;
 
-        }
+        //}
         if (bool24 == true && Vector3.Distance(transform.position, emeraldDoor.transform.position) < 2)
         {
             doorUI.SetActive(true);
             currentDoor = emeraldDoor;
         }
-        if (bool25 == true && Vector3.Distance(transform.position,greenHerb.transform.position) < 2)
+      /*  if (bool25 == true && Vector3.Distance(transform.position,greenHerb.transform.position) < 2)
         {
             ui.SetActive(true);
             currentObject = greenHerb;
@@ -260,6 +263,7 @@ public class pickUpScript : MonoBehaviour
             currentObject = heavyGunPowder;
             candestroy = true;
         }
+      */
         if ( Vector3.Distance(transform.position, treasure.transform.position) < 3)
         {
             winUI.SetActive(true);
@@ -291,6 +295,7 @@ public class pickUpScript : MonoBehaviour
     public void PickUPs()
     {
         if (currentObject == revolver) { bool1 = false; hasRevolver = true; }
+        /*
         if (currentObject == gold1) { bool9 = false; goldcount += 10; }
         if (currentObject == gold2) { bool10 = false; goldcount += 10; }
         if (currentObject == gold3) { bool11= false; goldcount += 10; }
@@ -298,9 +303,12 @@ public class pickUpScript : MonoBehaviour
         if (currentObject == gold5) { bool13 = false; goldcount += 10; }
         if (currentObject == gold6) { bool14 = false; goldcount += 10; }
         if (currentObject == gold7) { bool15 = false; goldcount += 10; }
+        */
         if (currentObject == revCard) { bool16 = false; hasRevCard = true; }
+        
         if (currentObject == spadeKey) { bool18 = false; hasSpadeKey = true; Debug.Log(hasSpadeKey); }
         if (currentObject == diamondKey) { bool20 = false; hasDiamondKey = true; }
+        /*
         if (currentObject == emerald) { bool23 = false; hasEmerald = true; }
         if(currentObject == greenHerb) {  bool25 = false;hasGreenHerb = true; }
         if (currentObject == redHerb) { bool26 = false; hasRedHerb = true; }
@@ -308,7 +316,7 @@ public class pickUpScript : MonoBehaviour
         if (currentObject == flashGrenade) { bool28 = false; hasFlashGrenade = true; }
         if(currentObject == normalGunpowder) {  bool29 = false; hasNormalGunpowder = true; }
         if (currentObject == heavyGunPowder) { bool30 = false; hasHeavyGunpoder = true; }
-
+        */
         
 
 

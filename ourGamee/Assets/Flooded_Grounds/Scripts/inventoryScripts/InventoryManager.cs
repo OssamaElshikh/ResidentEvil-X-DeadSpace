@@ -11,7 +11,7 @@ public class InventoryManager : MonoBehaviour
     public Transform ItemContent;
     public GameObject InventoryItem;
 
-    public Image InvalidModal;
+    public Image ErrorMessage;
     public GameObject Health;
     public GameObject Stasis;
     public GameObject Gold;
@@ -23,6 +23,10 @@ public class InventoryManager : MonoBehaviour
     public Sprite redMixIcon;
     public Sprite yellowMixIcon;
 
+    public Sprite pistolAmmo;
+    public Sprite shotgunAmmo;
+    public Sprite riffleAmmo;
+    public Sprite revolverAmmo;
 
 
     private GameObject selectedObject;
@@ -32,22 +36,61 @@ public class InventoryManager : MonoBehaviour
     private GameObject combineObject;
     private Item combineItem;
 
+    public GameObject inventoryCanvas;
+    private bool isInventoryActive = false;
+
+
+
     private void Awake()
     {
         Instance = this;
     }
+    //==============================================================================
 
+    void Update()
+    {
+        ActivateInventory();
+    }
+    //==============================================================================
+
+    public void ActivateInventory()
+    {
+        if (Input.GetKeyUp(KeyCode.H))
+        {
+            // Toggle the inventory canvas state
+            isInventoryActive = !isInventoryActive;
+
+            // Set the Inventory Canvas based on the state
+            inventoryCanvas.SetActive(isInventoryActive);
+
+        }
+
+    }
+    //==============================================================================
     public void Add(Item item)
     {
-        if (item.count < 6)
+        if (Items.Count < 6)
         {
-            Items.Add(item);
+            item.ItemsCount = Items.Count;
+            Debug.Log("items count " + item.ItemsCount);
+
+            if (Items.Contains(item))
+            {
+                GetExistingItemAndUpdateCount(item);
+            }
+            else
+            {
+                Items.Add(item);
+            }
+            ListItems();
         }
         else
         {
-            InvalidModal.gameObject.SetActive(true);
+            ErrorMessage.gameObject.SetActive(true);
         }
     }
+
+    //==============================================================================
 
     public void Remove()
     {
@@ -55,7 +98,7 @@ public class InventoryManager : MonoBehaviour
         {
             if (selectedItem.itemType == Item.ItemType.Weapon || selectedItem.itemType == Item.ItemType.Grenade || selectedItem.itemType == Item.ItemType.KeyItem)
             {
-                InvalidModal.gameObject.SetActive(true);
+                ErrorMessage.gameObject.SetActive(true);
             }
             else
             {
@@ -66,6 +109,7 @@ public class InventoryManager : MonoBehaviour
             }
         }
     }
+    //==============================================================================
 
     public void Equip()
     {
@@ -73,7 +117,7 @@ public class InventoryManager : MonoBehaviour
         {
             if (selectedItem.itemType != Item.ItemType.Weapon && selectedItem.itemType != Item.ItemType.Grenade)
             {
-                InvalidModal.gameObject.SetActive(true);
+                ErrorMessage.gameObject.SetActive(true);
             }
             else if (selectedItem.itemType == Item.ItemType.Weapon)
             {
@@ -88,14 +132,14 @@ public class InventoryManager : MonoBehaviour
             }
         }
     }
-
+    //==============================================================================
     public void Use()
     {
         if (selectedItem != null && selectedObject != null)
         {
             if (selectedItem.itemType != Item.ItemType.Herb && selectedItem.itemType != Item.ItemType.Mixture)
             {
-                InvalidModal.gameObject.SetActive(true);
+                ErrorMessage.gameObject.SetActive(true);
             }
             else if (selectedItem.itemName == "Green Herb")
             {
@@ -145,11 +189,14 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    //==============================================================================
+
     public void Combine()
     {
         isCombining = true;
     }
 
+    //==============================================================================
     public void ListItems()
     {
         foreach (Transform item in ItemContent)
@@ -160,17 +207,26 @@ public class InventoryManager : MonoBehaviour
         foreach (var item in Items)
         {
             GameObject obj = Instantiate(InventoryItem, ItemContent);
+
             var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
+
+
+
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
             var button = obj.GetComponent<Button>();
 
-            itemName.text = item.itemName;
+            itemName.text = item.itemName + " x" + item.count;
             itemIcon.sprite = item.icon;
 
+            if (item.itemName == "Pistol" || item.itemName == "Shotgun" || item.itemName == "Riffle" || item.itemName == "Revolver")
+            {
+                itemName.text += " : ";
+                itemName.text += item.ammo;
+            }
             button.onClick.AddListener(() => SelectItem(obj, item));
         }
     }
-
+    //==============================================================================
     public void SelectItem(GameObject selected, Item item)
     {
         if (!isCombining)
@@ -252,21 +308,159 @@ public class InventoryManager : MonoBehaviour
                 }
                 else
                 {
-                    InvalidModal.gameObject.SetActive(true);
+                    ErrorMessage.gameObject.SetActive(true);
                     selected.transform.localScale = Vector3.one;
                     combineItem = null;
                     combineObject = null;
                 }
 
             }
+            else if (selectedItem.itemType == Item.ItemType.Gunpowder)
+            {
+                if (selectedItem.itemName == "Normal Gunpowder" && combineItem.itemName == "Normal Gunpowder")
+                {
+                    Debug.Log("Combined Normal Gunpowder with Normal Gunpowder");
+                    Items.Remove(selectedItem);
+                    Items.Remove(combineItem);
+                    Item newItem = new Item { itemName = "pistol Ammo", itemType = Item.ItemType.Ammo };
+
+                    newItem.icon = pistolAmmo;
+                    newItem.count = 1;
+                    newItem.buyPrice = 30;
+                    newItem.sellPrice = 0;
+                    newItem.ammo = 12;
+
+                    if (Items.Contains(newItem))
+                    {
+                        GetExistingItemAndUpdateAmmo(newItem);
+                    }
+                    else
+                    {
+                        Items.Add(newItem);
+                    }
+
+                    ListItems();
+                }
+                if (selectedItem.itemName == "Normal Gunpowder" && combineItem.itemName == "High-Grade Gunpowder")
+                {
+                    Debug.Log("Combined Normal Gunpowder with Normal Gunpowder");
+                    Items.Remove(selectedItem);
+                    Items.Remove(combineItem);
+                    Item newItem = new Item { itemName = "shotgunAmmo", itemType = Item.ItemType.Ammo };
+
+                    newItem.icon = shotgunAmmo;
+                    newItem.count = 1;
+                    newItem.buyPrice = 40;
+                    newItem.sellPrice = 0;
+                    newItem.ammo = 8;
+
+                    if (Items.Contains(newItem))
+                    {
+                        GetExistingItemAndUpdateAmmo(newItem);
+                    }
+                    else
+                    {
+                        Items.Add(newItem);
+                    }
+
+                    ListItems();
+                }
+                if (selectedItem.itemName == "High-Grade Gunpowder" && combineItem.itemName == "High-Grade Gunpowder")
+                {
+                    Debug.Log("Combined Normal Gunpowder with Normal Gunpowder");
+                    Items.Remove(selectedItem);
+                    Items.Remove(combineItem);
+                    Item newItem = new Item { itemName = "riffleAmmo", itemType = Item.ItemType.Ammo };
+                    newItem.icon = riffleAmmo;
+                    newItem.count = 1;
+                    newItem.buyPrice = 50;
+                    newItem.sellPrice = 0;
+                    newItem.ammo = 30;
+                    if (Items.Contains(newItem))
+                    {
+                        GetExistingItemAndUpdateAmmo(newItem);
+                    }
+                    else
+                    {
+                        Items.Add(newItem);
+                    }
+                    ListItems();
+                }
+            }
             else
             {
-                InvalidModal.gameObject.SetActive(true);
+                ErrorMessage.gameObject.SetActive(true);
                 selected.transform.localScale = Vector3.one;
                 combineItem = null;
                 combineObject = null;
             }
             isCombining = false;
+        }
+    }
+
+    //==============================================================================
+
+    public Item GetExistingItemAndUpdateAmmo(Item newItem)
+    {
+        // Check if an item with the same properties already exists in the list
+        Item existingItem = Items.Find(item => item.Equals(newItem));
+
+        if (existingItem != null)
+        {
+            // Item already exists, update its properties (e.g., ammo)
+            existingItem.ammo += newItem.ammo; // Adjust as needed
+        }
+
+        return existingItem;
+    }
+    //==============================================================================
+
+    public Item GetExistingItemAndUpdateCount(Item newItem)
+    {
+        // Check if an item with the same properties already exists in the list
+        Item existingItem = Items.Find(item => item.Equals(newItem));
+
+        if (existingItem != null)
+        {
+            // Item already exists, update its properties (e.g., ammo)
+            Debug.Log("Count before " + existingItem.count);
+
+            existingItem.count += 1; // Adjust as needed
+            //Debug.Log(existingItem.itemName);
+            Debug.Log("count after " + existingItem.count);
+        }
+
+        return existingItem;
+    }
+
+    //==============================================================================
+
+    public void UseInventoryItem(string itemName)
+    {
+        // Find the item in the inventory based on its name
+        Item item = Items.Find(i => i.itemName == itemName);
+
+        if (item != null)
+        {
+            // If the item count is more than 1, decrease the count
+            if (item.count > 1)
+            {
+                item.count--;
+            }
+            else
+            {
+                // If the item count is 1 or less, remove the item from the inventory
+                Items.Remove(item);
+            }
+
+            // Update the inventory UI
+            ListItems();
+
+            Debug.Log("Used 1 " + itemName);
+        }
+        else
+        {
+            Debug.LogWarning("Item not found in inventory: " + itemName);
         }
     }
 

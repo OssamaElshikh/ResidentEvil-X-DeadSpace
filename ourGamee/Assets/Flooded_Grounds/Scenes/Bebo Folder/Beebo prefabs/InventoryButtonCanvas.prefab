@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 7064075143564340727}
   - component: {fileID: 3683680857635587954}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: InventoryButtonCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
