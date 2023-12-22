@@ -8,7 +8,12 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager Instance;
 
     public List<Item> Items = new List<Item>();
+    public List<Item> ItemsStorage = new List<Item>();
     public Transform ItemContent;
+
+    public Transform StorageContent;
+    public GameObject StorageItem;
+
     public GameObject InventoryItem;
 
     public Image ErrorMessage;
@@ -37,6 +42,9 @@ public class InventoryManager : MonoBehaviour
     private Item combineItem;
 
     public GameObject inventoryCanvas;
+
+    public GameObject storageCanvas;
+
     private bool isInventoryActive = false;
 
 
@@ -86,7 +94,10 @@ public class InventoryManager : MonoBehaviour
         }
         else
         {
-            ErrorMessage.gameObject.SetActive(true);
+            //ErrorMessage.gameObject.SetActive(true);
+            ItemsStorage.Add(item);
+            ListItemsStorage();
+
         }
     }
 
@@ -226,6 +237,37 @@ public class InventoryManager : MonoBehaviour
             button.onClick.AddListener(() => SelectItem(obj, item));
         }
     }
+
+    public void ListItemsStorage()
+    {
+        foreach (Transform item in StorageContent)
+        {
+            Destroy(item.gameObject);
+        }
+
+        foreach (var item in ItemsStorage)
+        {
+            GameObject obj = Instantiate(StorageItem, StorageContent);
+
+            var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
+
+
+
+            var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
+            var button = obj.GetComponent<Button>();
+
+            itemName.text = item.itemName + " x" + item.count;
+            itemIcon.sprite = item.icon;
+
+            if (item.itemName == "Pistol" || item.itemName == "Shotgun" || item.itemName == "Riffle" || item.itemName == "Revolver")
+            {
+                itemName.text += " : ";
+                itemName.text += item.ammo;
+            }
+            button.onClick.AddListener(() => SelectItem(obj, item));
+        }
+    }
+
     //==============================================================================
     public void SelectItem(GameObject selected, Item item)
     {
