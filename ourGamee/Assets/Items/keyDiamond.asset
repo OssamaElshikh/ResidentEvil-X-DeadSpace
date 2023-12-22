@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a265d26c73affc84ca367550653111ac, type: 3}
-  m_Name: riffle
+  m_Name: keyDiamond
   m_EditorClassIdentifier: 
-  itemName: Riffle
+  itemName: 'Key Diamond '
   buyPrice: 0
   sellPrice: 0
-  count: 1
-  icon: {fileID: 21300000, guid: a743f740c5c39455ea79d4650a66e332, type: 3}
-  itemType: 0
-  ammo: 30
+  count: 0
+  icon: {fileID: 21300000, guid: d66085f581ac0400b819e98be6c37fe2, type: 3}
+  itemType: 5
+  ammo: 0
   ItemsCount: 0
   associatedGameObject: {fileID: 0}

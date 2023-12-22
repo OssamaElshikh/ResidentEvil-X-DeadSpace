@@ -37,16 +37,38 @@ public class InventoryManager : MonoBehaviour
 
     public GameObject inventoryCanvas;
     private bool isInventoryActive = false;
+    
+
 
     private void Awake()
     {
         Instance = this;
     }
+    //==============================================================================
 
+    void Update()
+    {
+        ActivateInventory();
+    }
+//==============================================================================
 
+    public void ActivateInventory()
+    {
+        if (Input.GetKeyUp(KeyCode.H))
+        {
+            // Toggle the inventory canvas state
+            isInventoryActive = !isInventoryActive;
+
+            // Set the Inventory Canvas based on the state
+            inventoryCanvas.SetActive(isInventoryActive);
+
+        }
+
+    }
+//==============================================================================
     public void Add(Item item)
     {
-        if (item.ItemsCount < 6)
+        if (Items.Count < 6)
         {
             item.ItemsCount = Items.Count;
             Debug.Log("items count "+item.ItemsCount);
@@ -66,25 +88,9 @@ public class InventoryManager : MonoBehaviour
             ErrorMessage.gameObject.SetActive(true);
         }
     }
-    void Update()
-    {
-        ActivateInventory();
-      
-    }
 
-    public void ActivateInventory()
-    {
-        if (Input.GetKeyUp(KeyCode.H))
-        {
-            // Toggle the inventory canvas state
-            isInventoryActive = !isInventoryActive;
-            
-            // Set the Inventory Canvas based on the state
-            inventoryCanvas.SetActive(isInventoryActive);
+//==============================================================================
 
-        }
-        
-    }
     public void Remove()
     {
         if (selectedItem != null && selectedObject != null)
@@ -102,6 +108,7 @@ public class InventoryManager : MonoBehaviour
             }
         }
     }
+//==============================================================================
 
     public void Equip()
     {
@@ -124,7 +131,7 @@ public class InventoryManager : MonoBehaviour
             }
         }
     }
-
+//==============================================================================
     public void Use()
     {
         if (selectedItem != null && selectedObject != null)
@@ -181,11 +188,14 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+//==============================================================================
+
     public void Combine()
     {
         isCombining = true;
     }
 
+//==============================================================================
     public void ListItems()
     {
         foreach (Transform item in ItemContent)
@@ -215,7 +225,7 @@ public class InventoryManager : MonoBehaviour
             button.onClick.AddListener(() => SelectItem(obj, item));
         }
     }
-
+//==============================================================================
     public void SelectItem(GameObject selected, Item item)
     {
         if (!isCombining)
@@ -386,6 +396,9 @@ public class InventoryManager : MonoBehaviour
             isCombining = false;
         }
     }
+
+//==============================================================================
+
     public Item GetExistingItemAndUpdateAmmo(Item newItem)
     {
         // Check if an item with the same properties already exists in the list
@@ -399,6 +412,8 @@ public class InventoryManager : MonoBehaviour
 
         return existingItem;
     }
+//==============================================================================
+
     public Item GetExistingItemAndUpdateCount(Item newItem)
     {
         // Check if an item with the same properties already exists in the list
@@ -417,4 +432,36 @@ public class InventoryManager : MonoBehaviour
         return existingItem;
     }
 
+    //==============================================================================
+
+    public void UseInventoryItem(string itemName)
+    {
+        // Find the item in the inventory based on its name
+        Item item = Items.Find(i => i.itemName == itemName);
+
+        if (item != null)
+        {
+            // If the item count is more than 1, decrease the count
+            if (item.count > 1)
+            {
+                item.count--;
+            }
+            else
+            {
+                // If the item count is 1 or less, remove the item from the inventory
+                Items.Remove(item);
+            }
+
+            // Update the inventory UI
+            ListItems();
+
+            Debug.Log("Used 1 " + itemName);
+        }
+        else
+        {
+            Debug.LogWarning("Item not found in inventory: " + itemName);
+        }
+    }
+
 }
+

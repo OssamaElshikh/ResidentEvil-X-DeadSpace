@@ -16,7 +16,8 @@ MonoBehaviour:
   buyPrice: 0
   sellPrice: 0
   count: 1
-  ammo: 6
   icon: {fileID: 21300000, guid: 02483e8decabb419bb69b4735a127ab9, type: 3}
   itemType: 0
-  ItemsCount: 7
+  ammo: 6
+  ItemsCount: 0
+  associatedGameObject: {fileID: 0}
