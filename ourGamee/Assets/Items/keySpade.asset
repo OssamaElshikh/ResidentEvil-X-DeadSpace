@@ -15,9 +15,9 @@ MonoBehaviour:
   itemName: Key Spade
   buyPrice: 0
   sellPrice: 0
-  count: 0
+  count: 1
   icon: {fileID: 21300000, guid: 0d33d7374df254633b9a62b3a18382d4, type: 3}
   itemType: 5
   ammo: 0
-  ItemsCount: 0
+  ItemsCount: 1
   associatedGameObject: {fileID: 0}

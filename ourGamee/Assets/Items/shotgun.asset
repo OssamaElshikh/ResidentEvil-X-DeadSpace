@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Shotgun
   buyPrice: 0
   sellPrice: 0
-  count: 0
+  count: 1
   icon: {fileID: 21300000, guid: a56aaeb991c354bfeaa51f5f83f49c2c, type: 3}
   itemType: 0
   ammo: 8

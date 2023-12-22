@@ -40,6 +40,7 @@ public class InventoryManager : MonoBehaviour
     private bool isInventoryActive = false;
 
 
+    public GameObject ui;
 
     private void Awake()
     {
@@ -69,12 +70,12 @@ public class InventoryManager : MonoBehaviour
     //==============================================================================
     public void Add(Item item)
     {
-        if (Items.Count < 6)
+        if (Items.Count < 6 )
         {
-            item.ItemsCount = Items.Count;
-            Debug.Log("items count " + item.ItemsCount);
+            
+            //Debug.Log("items count " + item.ItemsCount);
 
-            if (Items.Contains(item))
+            if (item.itemName=="shotgunAmmo"|| item.itemName == "riffleAmmo"|| item.itemName == "pistolAmmo" || item.itemName == "revolverAmmo")
             {
                 GetExistingItemAndUpdateCount(item);
             }
