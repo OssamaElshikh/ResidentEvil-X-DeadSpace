@@ -8,8 +8,11 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager Instance;
 
     public List<Item> Items = new List<Item>();
+    public List<Item> storageItems = new List<Item>();
     public Transform ItemContent;
     public GameObject InventoryItem;
+    public Transform storageItemContent;
+    public GameObject storageItem;
 
     public Image ErrorMessage;
     public GameObject Health;
@@ -89,6 +92,41 @@ public class InventoryManager : MonoBehaviour
         {
             ErrorMessage.gameObject.SetActive(true);
         }
+    }
+
+    public void MoveToStorage()
+    {
+        if (selectedItem != null && selectedObject != null)
+        {
+            if (selectedItem.itemType == Item.ItemType.Weapon && selectedItem.itemName== "pisol")
+            {
+                ErrorMessage.gameObject.SetActive(true);
+            }
+            else
+            {
+                Items.Remove(selectedItem);
+                storageItems.Add(selectedItem);
+                selectedItem = null;
+                selectedObject = null;
+                ListItems();
+                storageListItems();
+            }
+        }
+
+    }
+
+    public void MoveToInventory()
+    {
+        if (Items.Count > 6)
+        {
+            ErrorMessage.gameObject.SetActive(true);
+        }
+        else
+        {
+            Add(selectedItem);
+
+        }
+       
     }
 
     //==============================================================================
@@ -208,6 +246,36 @@ public class InventoryManager : MonoBehaviour
         foreach (var item in Items)
         {
             GameObject obj = Instantiate(InventoryItem, ItemContent);
+
+            var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
+
+
+
+            var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
+            var button = obj.GetComponent<Button>();
+
+            itemName.text = item.itemName + " x" + item.count;
+            itemIcon.sprite = item.icon;
+
+            if (item.itemName == "Pistol" || item.itemName == "Shotgun" || item.itemName == "Riffle" || item.itemName == "Revolver")
+            {
+                itemName.text += " : ";
+                itemName.text += item.ammo;
+            }
+            button.onClick.AddListener(() => SelectItem(obj, item));
+        }
+    }
+
+    public void storageListItems()
+    {
+        foreach (Transform item in storageItemContent)
+        {
+            Destroy(item.gameObject);
+        }
+
+        foreach (var item in Items)
+        {
+            GameObject obj = Instantiate(storageItem, storageItemContent);
 
             var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
 
