@@ -1,11 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
+
+
     public static InventoryManager Instance;
+    public TextMeshProUGUI invKnifeDurabilityText;
+    public TextMeshProUGUI buyGoldCoinsText; // Reference to the Text UI element displaying gold coins
+    public TextMeshProUGUI invGoldCoinsText;
+    private int goldCoins = 30;
+    public TextMeshProUGUI DebugText; // Reference to the Text UI element displaying gold coins
 
     public List<Item> Items = new List<Item>();
     public List<Item> storageItems = new List<Item>();
@@ -42,9 +50,20 @@ public class InventoryManager : MonoBehaviour
     public GameObject inventoryCanvas;
     private bool isInventoryActive = false;
 
+    private bool isPaused = false;
+    private CursorLockMode previousLockMode; // To store the previous cursor lock mode
+
 
     public GameObject ui;
 
+
+     
+
+    private void Start()
+    {
+
+        UpdateGoldCoinsInvText();
+    }
     private void Awake()
     {
         Instance = this;
@@ -53,21 +72,95 @@ public class InventoryManager : MonoBehaviour
 
     void Update()
     {
-        ActivateInventory();
+        if (!isPaused && Input.GetKeyDown(KeyCode.H))
+        {
+            PauseGame();
+            ActivateInventory();
+        }
+        else if (isPaused && Input.GetKeyDown(KeyCode.H))
+        {
+            ResumeGame();
+            DeactivateInventory();
+        }
+    }
+
+    public void PauseGame()
+    {
+        isPaused = true;
+        previousLockMode = Cursor.lockState; // Store the current cursor lock mode
+        Time.timeScale = 0f; // Set the time scale to 0 to pause the game
+        Cursor.lockState = CursorLockMode.None; // Unlock the cursor
+        Cursor.visible = true; // Show the cursor
+    }
+
+    public void ResumeGame()
+    {
+        isPaused = false;
+        Time.timeScale = 1f; // Restore the time scale
+        Cursor.lockState = previousLockMode; // Restore the previous cursor lock mode
+        Cursor.visible = false; // Hide the cursor
     }
     //==============================================================================
 
-    public void ActivateInventory()
-    {
-        if (Input.GetKeyUp(KeyCode.H))
-        {
-            // Toggle the inventory canvas state
-            isInventoryActive = !isInventoryActive;
 
-            // Set the Inventory Canvas based on the state
-            inventoryCanvas.SetActive(isInventoryActive);
+    public void UpdateGoldCoinsStoreText()
+    {
+        buyGoldCoinsText.text = "Gold: " + goldCoins.ToString();
+    }
+
+    public void UpdateGoldCoinsInvText()
+    {
+        invGoldCoinsText.text = "Gold: " + goldCoins.ToString();
+    }
+
+
+
+
+
+
+
+
+    public void OnPurchaseButtonClicked(int itemCost)
+    {
+        if (goldCoins >= itemCost)
+        {
+
+            goldCoins -= itemCost;
+            UpdateGoldCoinsStoreText();
+            UpdateGoldCoinsInvText();
+            DebugText.text = "Purchase successful!";
+        }
+        else
+        {
+            DebugText.text = "Not enough gold coins!";
 
         }
+    }
+
+    public void DeactivateInventory()
+    {
+
+
+        // Toggle the inventory canvas state
+
+
+        // Set the Inventory Canvas based on the state
+        inventoryCanvas.SetActive(false);
+
+
+
+    }
+    public void ActivateInventory()
+    {
+        
+        
+            // Toggle the inventory canvas state
+            
+
+            // Set the Inventory Canvas based on the state
+            inventoryCanvas.SetActive(true);
+
+        
 
     }
     //==============================================================================

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class StoreUI : MonoBehaviour
 {
-    public TextMeshProUGUI goldCoinsText; // Reference to the Text UI element displaying gold coins
+    public TextMeshProUGUI buygoldCoinsText; // Reference to the Text UI element displaying gold coins
     private int goldCoins = 30;
     public TextMeshProUGUI DebugText; // Reference to the Text UI element displaying gold coins
     void Start()
@@ -14,7 +14,7 @@ public class StoreUI : MonoBehaviour
    
     void UpdateGoldCoinsText()
     {
-        goldCoinsText.text = "Gold: " + goldCoins.ToString();
+        buygoldCoinsText.text = "Gold: " + goldCoins.ToString();
     }
 
     // Method to handle a purchase
