@@ -5,7 +5,7 @@ public class KnifeDurabilityUI : MonoBehaviour
 {
     public TextMeshProUGUI goldCoinsText; // Reference to the Text UI element on the canvas
     public TextMeshProUGUI KnifeDurabilityText;
-    public TextMeshProUGUI DebugTxt;
+    private TextMeshProUGUI DebugTxt;
     private int KnifeDurability = 5;
     private int goldCoins = 500; // Example starting amount of gold coins
 
@@ -32,11 +32,11 @@ public class KnifeDurabilityUI : MonoBehaviour
     {
         if ( goldCoins < 100)
         {
-            DebugTxt.text = ("No Enough Coins.");
+            //DebugTxt.text = ("No Enough Coins.");
         }
         else if (KnifeDurability == 10)
         {
-            DebugTxt.text = ("Durability is already Full.");
+            //DebugTxt.text = ("Durability is already Full.");
         }
         
         else
@@ -46,7 +46,7 @@ public class KnifeDurabilityUI : MonoBehaviour
             KnifeDurability = 10;
             UpdateKnifeDurabilityText();
             UpdateGoldCoinsText();
-            DebugTxt.text = "Durability charged" ;
+           // DebugTxt.text = "Durability charged" ;
 
 
         }
