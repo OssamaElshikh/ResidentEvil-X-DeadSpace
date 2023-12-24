@@ -46779,8 +46779,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1361721066}
-        m_TargetAssemblyTypeName: KnifeDurabilityUI, Assembly-CSharp
+      - m_Target: {fileID: 1400161430}
+        m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
         m_MethodName: OnRepairButtonPressed
         m_Mode: 1
         m_Arguments:
@@ -59138,8 +59138,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4157b5ab765403e478ffd6ec447354be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldCoinsText: {fileID: 344212632}
+  knifeGoldCoinsText: {fileID: 0}
   KnifeDurabilityText: {fileID: 218021925}
+  fire: {fileID: 0}
+  goldCoins: 500
 --- !u!4 &1361721067
 Transform:
   m_ObjectHideFlags: 0
@@ -97986,6 +97988,14 @@ PrefabInstance:
       propertyPath: invGoldCoinsText
       value: 
       objectReference: {fileID: 2008699108}
+    - target: {fileID: 6843520033859848169, guid: 6c57e1de15327e6498ec3457dd94d9fd, type: 3}
+      propertyPath: knifeGoldCoinsText
+      value: 
+      objectReference: {fileID: 344212632}
+    - target: {fileID: 6843520033859848169, guid: 6c57e1de15327e6498ec3457dd94d9fd, type: 3}
+      propertyPath: KnifeDurabilityText
+      value: 
+      objectReference: {fileID: 218021925}
     - target: {fileID: 6843520033859848169, guid: 6c57e1de15327e6498ec3457dd94d9fd, type: 3}
       propertyPath: invKnifeDurabilityText
       value: 
