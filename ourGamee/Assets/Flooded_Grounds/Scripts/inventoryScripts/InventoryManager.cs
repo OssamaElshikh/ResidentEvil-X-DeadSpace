@@ -7,12 +7,16 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
 
+    public TextMeshProUGUI knifeGoldCoinsText;
+    public TextMeshProUGUI KnifeDurabilityText;
+    private firing fire; // Reference to the firing script
+
 
     public static InventoryManager Instance;
     public TextMeshProUGUI invKnifeDurabilityText;
     public TextMeshProUGUI buyGoldCoinsText; // Reference to the Text UI element displaying gold coins
     public TextMeshProUGUI invGoldCoinsText;
-    private int goldCoins = 30;
+    private int goldCoins = 110;
     public TextMeshProUGUI DebugText; // Reference to the Text UI element displaying gold coins
 
     public List<Item> Items = new List<Item>();
@@ -61,8 +65,64 @@ public class InventoryManager : MonoBehaviour
 
     private void Start()
     {
+        fire = FindObjectOfType<firing>();
 
+        if (fire != null)
+        {
+            UpdateKnifeDurabilityText();
+            UpdateKnifeGoldCoinsText();
+        }
+        else
+        {
+            Debug.LogError("firing script component not found!");
+        }
+
+        UpdateKnifeGoldCoinsText();
         UpdateGoldCoinsInvText();
+        UpdateGoldCoinsStoreText();
+
+    }
+
+    void UpdateKnifeGoldCoinsText()
+    {
+        knifeGoldCoinsText.text = "Gold: " + goldCoins.ToString();
+    }
+
+    public void UpdateKnifeDurabilityText()
+    {
+        if (fire != null)
+        {
+            KnifeDurabilityText.text = "Knife Durability: " + fire.KnifeDUR.ToString();
+        }
+    }
+
+    public void OnRepairButtonPressed()
+    {
+        if (fire != null)
+        {
+            if (goldCoins < 100)
+            {
+                // DebugTxt.text = ("Not Enough Coins.");
+            }
+            else if (fire.KnifeDUR == 10)
+            {
+                // DebugTxt.text = ("Durability is already Full.");
+            }
+            else
+            {
+                goldCoins -= 100;
+                fire.KnifeDUR = 10;
+                UpdateKnifeDurabilityText();
+                UpdateKnifeGoldCoinsText();
+                UpdateGoldCoinsInvText() ;
+                UpdateGoldCoinsStoreText();
+                // DebugTxt.text = "Durability charged";
+            }
+        }
+        else
+        {
+            Debug.LogError("firing script component not found!");
+        }
     }
     private void Awake()
     {
@@ -127,8 +187,9 @@ public class InventoryManager : MonoBehaviour
         {
 
             goldCoins -= itemCost;
-            UpdateGoldCoinsStoreText();
+            UpdateKnifeGoldCoinsText();
             UpdateGoldCoinsInvText();
+            UpdateGoldCoinsStoreText();
             DebugText.text = "Purchase successful!";
         }
         else

@@ -97393,6 +97393,7 @@ MonoBehaviour:
   rifleAmmo: 0
   shotGunAmmo: 0
   revAmmo: 0
+  KnifeDUR: 8
   pistol: {fileID: 2078253381}
   revolver: {fileID: 1693803599}
   shotgun: {fileID: 1971843458}

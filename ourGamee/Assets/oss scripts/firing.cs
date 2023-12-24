@@ -1,13 +1,15 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
+
 using UnityEngine;
 
 public class firing : MonoBehaviour
 {
     public int pistolAmmo, rifleAmmo, shotGunAmmo,revAmmo = 0;
+    private InventoryManager KnifeDurabilityU;
 
+
+    public int KnifeDUR;
     public GameObject pistol;
     public GameObject revolver;
     public GameObject shotgun;
@@ -59,6 +61,7 @@ public class firing : MonoBehaviour
 
     private void Start()
     {
+        
         isAiming = false;
         weapon = 0;
     }
@@ -84,6 +87,12 @@ public class firing : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.K) && weapon == 5)
         {
+
+            KnifeDUR--;
+            Debug.Log("Knife Stab!"+ KnifeDUR);
+            KnifeDurabilityU = FindObjectOfType<InventoryManager>();
+            KnifeDurabilityU.UpdateKnifeDurabilityText();
+
             anim.SetTrigger("stab");
         }
 
