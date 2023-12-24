@@ -191,6 +191,7 @@ public class InventoryManager : MonoBehaviour
             UpdateGoldCoinsInvText();
             UpdateGoldCoinsStoreText();
             DebugText.text = "Purchase successful!";
+
         }
         else
         {
