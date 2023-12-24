@@ -201,11 +201,12 @@ public class InventoryManager : MonoBehaviour
             UpdateGoldCoinsInvText();
             UpdateGoldCoinsStoreText();
             DebugText.text = "Purchase successful!";
-
+            Debug.Log("purchased!!"); 
         }
         else
         {
             DebugText.text = "Not enough gold coins!";
+            Debug.Log("not enough coins !!");
 
         }
     }
