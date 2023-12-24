@@ -16,6 +16,7 @@ public class InventoryManager : MonoBehaviour
     public TextMeshProUGUI invKnifeDurabilityText;
     public TextMeshProUGUI buyGoldCoinsText; // Reference to the Text UI element displaying gold coins
     public TextMeshProUGUI invGoldCoinsText;
+
     private int goldCoins = 110;
     public TextMeshProUGUI DebugText; // Reference to the Text UI element displaying gold coins
 
@@ -80,6 +81,7 @@ public class InventoryManager : MonoBehaviour
         UpdateKnifeGoldCoinsText();
         UpdateGoldCoinsInvText();
         UpdateGoldCoinsStoreText();
+        UpdateInvKnifeDurabilityText();
 
     }
 
@@ -93,6 +95,13 @@ public class InventoryManager : MonoBehaviour
         if (fire != null)
         {
             KnifeDurabilityText.text = "Knife Durability: " + fire.KnifeDUR.ToString();
+        }
+    }
+    public void UpdateInvKnifeDurabilityText()
+    {
+        if (fire != null)
+        {
+            invKnifeDurabilityText.text = "Knife Durability: " + fire.KnifeDUR.ToString();
         }
     }
 
@@ -113,6 +122,7 @@ public class InventoryManager : MonoBehaviour
                 goldCoins -= 100;
                 fire.KnifeDUR = 10;
                 UpdateKnifeDurabilityText();
+                UpdateInvKnifeDurabilityText();
                 UpdateKnifeGoldCoinsText();
                 UpdateGoldCoinsInvText() ;
                 UpdateGoldCoinsStoreText();
