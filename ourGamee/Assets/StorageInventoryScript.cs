@@ -381,6 +381,11 @@ public class StorageInventoryScript : MonoBehaviour
         else
         {
             InventoryManager.Instance.Add(selectedItem);
+            storageItems.Remove(selectedItem);
+            selectedItem = null;
+            selectedObject = null;
+            ListItems();
+            storageListItems();
 
         }
 
