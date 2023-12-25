@@ -52,11 +52,11 @@ public class StorageInventoryScript : MonoBehaviour
 
     void Update()
     {
-        if (!isPaused && Input.GetKeyDown(KeyCode.V))
+        if (!isPaused && Input.GetKeyDown(KeyCode.B))
         {
             PauseGame();
         }
-        else if (isPaused && Input.GetKeyDown(KeyCode.V))
+        else if (isPaused && Input.GetKeyDown(KeyCode.B))
         {
             ResumeGame();
         }
