@@ -17524,6 +17524,9 @@ MonoBehaviour:
   invManager: {fileID: 1400161430}
   ItemContent: {fileID: 1550493153}
   InventoryItem: {fileID: 3093459216673354325, guid: a364a3ba441922a4f96f7182e6c1be08, type: 3}
+  storageItems: []
+  storageItemContent: {fileID: 1753846263}
+  storageItem: {fileID: 3093459216673354325, guid: a364a3ba441922a4f96f7182e6c1be08, type: 3}
   greenMixIcon: {fileID: 21300000, guid: 62a3e292a3fc7d24088df10c26a5230b, type: 3}
   redMixIcon: {fileID: 21300000, guid: 87e0fe32ad0472c4eb1b5647f1fe0e64, type: 3}
   yellowMixIcon: {fileID: 21300000, guid: a6dce03c16344b84bb1026e047589423, type: 3}
@@ -37467,8 +37470,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1400161430}
-        m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
+      - m_Target: {fileID: 416139603}
+        m_TargetAssemblyTypeName: StorageInventoryScript, Assembly-CSharp
         m_MethodName: MoveToStorage
         m_Mode: 1
         m_Arguments:
@@ -91193,8 +91196,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1400161430}
-        m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
+      - m_Target: {fileID: 416139603}
+        m_TargetAssemblyTypeName: StorageInventoryScript, Assembly-CSharp
         m_MethodName: MoveToInventory
         m_Mode: 1
         m_Arguments:

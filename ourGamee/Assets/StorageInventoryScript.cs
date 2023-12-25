@@ -11,9 +11,15 @@ public class StorageInventoryScript : MonoBehaviour
     public GameObject InventoryItem;
 
     List<Item> Items;
+    public List<Item> storageItems = new List<Item>();
 
     private GameObject selectedObject;
     private Item selectedItem;
+
+
+    public Transform storageItemContent;
+    public GameObject storageItem;
+
 
     private bool isCombining = false;
     private GameObject combineObject;
@@ -105,6 +111,42 @@ public class StorageInventoryScript : MonoBehaviour
             button.onClick.AddListener(() => SelectItem(obj, item));
         }
     }
+
+    public void storageListItems()
+    {
+        foreach (Transform item in storageItemContent)
+        {
+            Destroy(item.gameObject);
+        }
+
+        foreach (var item in storageItems)
+        {
+            GameObject obj = Instantiate(storageItem, storageItemContent);
+            Debug.Log(storageItem);
+            Debug.Log(storageItemContent);
+
+            var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
+
+
+
+            var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
+            var button = obj.GetComponent<Button>();
+
+            itemName.text = item.itemName + " x" + item.count;
+            itemIcon.sprite = item.icon;
+
+            if (item.itemName == "Pistol" || item.itemName == "Shotgun" || item.itemName == "Riffle" || item.itemName == "Revolver")
+            {
+                itemName.text += " : ";
+                itemName.text += item.ammo;
+            }
+
+            button.onClick.AddListener(() => SelectItem(obj, item));
+
+            Debug.Log("storage: " + item.itemName);
+        }
+    }
+
     public void SelectItem(GameObject selected, Item item)
     {
         if (!isCombining)
@@ -308,6 +350,40 @@ public class StorageInventoryScript : MonoBehaviour
         }
         ListItems();
         return existingItem;
+    }
+    public void MoveToStorage()
+    {
+        if (selectedItem != null && selectedObject != null)
+        {
+            if (selectedItem.itemType == Item.ItemType.Weapon && selectedItem.itemName == "pisol")
+            {
+                ErrorMessage.gameObject.SetActive(true);
+            }
+            else
+            {
+                Items.Remove(selectedItem);
+                storageItems.Add(selectedItem);
+                selectedItem = null;
+                selectedObject = null;
+                ListItems();
+                storageListItems();
+            }
+        }
+
+    }
+
+    public void MoveToInventory()
+    {
+        if (Items.Count > 6)
+        {
+            ErrorMessage.gameObject.SetActive(true);
+        }
+        else
+        {
+            InventoryManager.Instance.Add(selectedItem);
+
+        }
+
     }
 
 }

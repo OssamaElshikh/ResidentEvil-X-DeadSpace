@@ -22,8 +22,10 @@ public class InventoryManager : MonoBehaviour
 
     public List<Item> Items = new List<Item>();
     public List<Item> storageItems = new List<Item>();
+
     public Transform ItemContent;
     public GameObject InventoryItem;
+
     public Transform storageItemContent;
     public GameObject storageItem;
 
@@ -248,7 +250,7 @@ public class InventoryManager : MonoBehaviour
                 Items.Add(item);
             }
             ListItems();
-            storageListItems(); 
+            //storageListItems(); 
         }
         else
         {
@@ -271,7 +273,7 @@ public class InventoryManager : MonoBehaviour
                 selectedItem = null;
                 selectedObject = null;
                 ListItems();
-                storageListItems();
+                //storageListItems();
             }
         }
 
@@ -428,40 +430,40 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void storageListItems()
-    {
-        foreach (Transform item in storageItemContent)
-        {
-            Destroy(item.gameObject);
-        }
+    //public void storageListItems()
+    //{
+    //    foreach (Transform item in storageItemContent)
+    //    {
+    //        Destroy(item.gameObject);
+    //    }
 
-        foreach (var item in storageItems)
-        {
-            GameObject obj = Instantiate(storageItem, storageItemContent);
-            Debug.Log(storageItem);
-            Debug.Log(storageItemContent);
+    //    foreach (var item in storageItems)
+    //    {
+    //        GameObject obj = Instantiate(storageItem, storageItemContent);
+    //        Debug.Log(storageItem);
+    //        Debug.Log(storageItemContent);
 
-            var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
+    //        var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
 
 
 
-            var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
-            var button = obj.GetComponent<Button>();
+    //        var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
+    //        var button = obj.GetComponent<Button>();
 
-            itemName.text = item.itemName + " x" + item.count;
-            itemIcon.sprite = item.icon;
+    //        itemName.text = item.itemName + " x" + item.count;
+    //        itemIcon.sprite = item.icon;
 
-            if (item.itemName == "Pistol" || item.itemName == "Shotgun" || item.itemName == "Riffle" || item.itemName == "Revolver")
-            {
-                itemName.text += " : ";
-                itemName.text += item.ammo;
-            }
+    //        if (item.itemName == "Pistol" || item.itemName == "Shotgun" || item.itemName == "Riffle" || item.itemName == "Revolver")
+    //        {
+    //            itemName.text += " : ";
+    //            itemName.text += item.ammo;
+    //        }
 
-            button.onClick.AddListener(() => SelectItem(obj, item));
+    //        button.onClick.AddListener(() => SelectItem(obj, item));
 
-            Debug.Log("storage: " + item.itemName); 
-        }
-    }
+    //        Debug.Log("storage: " + item.itemName); 
+    //    }
+    //}
     //==============================================================================
     public void SelectItem(GameObject selected, Item item)
     {
