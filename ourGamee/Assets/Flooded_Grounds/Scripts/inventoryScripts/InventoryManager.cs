@@ -185,12 +185,6 @@ public class InventoryManager : MonoBehaviour
 
 
 
-    
-
-
-
-
-
     public void OnPurchaseButtonClicked(int itemCost)
     {
         if (goldCoins >= itemCost)
@@ -254,6 +248,7 @@ public class InventoryManager : MonoBehaviour
                 Items.Add(item);
             }
             ListItems();
+            storageListItems(); 
         }
         else
         {
@@ -440,9 +435,11 @@ public class InventoryManager : MonoBehaviour
             Destroy(item.gameObject);
         }
 
-        foreach (var item in Items)
+        foreach (var item in storageItems)
         {
             GameObject obj = Instantiate(storageItem, storageItemContent);
+            Debug.Log(storageItem);
+            Debug.Log(storageItemContent);
 
             var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
 
@@ -459,7 +456,10 @@ public class InventoryManager : MonoBehaviour
                 itemName.text += " : ";
                 itemName.text += item.ammo;
             }
+
             button.onClick.AddListener(() => SelectItem(obj, item));
+
+            Debug.Log("storage: " + item.itemName); 
         }
     }
     //==============================================================================
@@ -474,7 +474,7 @@ public class InventoryManager : MonoBehaviour
             }
             // Scale the selected item
             selected.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
-
+            Debug.Log("Scaled: " + item.itemName);
             // Store the selected object for future reference
             selectedObject = selected;
             selectedItem = item;

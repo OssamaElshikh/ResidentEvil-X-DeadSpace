@@ -13,11 +13,14 @@ public class itemPurchace : MonoBehaviour
 
     public void Pickup(Item item)
     {
+        Debug.Log("picked item " + item.itemName);
         InventoryManager.Instance.Add(item);
         Debug.Log("item count " + item.count);
-        if (item.ItemsCount < 6)
-        {
-            Destroy(gameObject);
-        }
+
+        //if (item.ItemsCount < 6)
+        //{
+        //    Destroy(gameObject);
+        //}
+
     }
 }
