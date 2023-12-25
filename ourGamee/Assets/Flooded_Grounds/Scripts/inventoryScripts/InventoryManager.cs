@@ -579,7 +579,7 @@ public class InventoryManager : MonoBehaviour
 
                     ListItems();
                 }
-                if (selectedItem.itemName == "Normal Gunpowder" && combineItem.itemName == "High-Grade Gunpowder")
+                else if (selectedItem.itemName == "Normal Gunpowder" && combineItem.itemName == "High-Grade Gunpowder")
                 {
                     Debug.Log("Combined Normal Gunpowder with Normal Gunpowder");
                     Items.Remove(selectedItem);
@@ -603,7 +603,31 @@ public class InventoryManager : MonoBehaviour
 
                     ListItems();
                 }
-                if (selectedItem.itemName == "High-Grade Gunpowder" && combineItem.itemName == "High-Grade Gunpowder")
+                else if (selectedItem.itemName == "High-Grade Gunpowder" && combineItem.itemName == "Normal Gunpowder")
+                {
+                    Debug.Log("Combined Normal Gunpowder with Normal Gunpowder");
+                    Items.Remove(selectedItem);
+                    Items.Remove(combineItem);
+                    Item newItem = new Item { itemName = "shotgunAmmo", itemType = Item.ItemType.Ammo };
+
+                    newItem.icon = shotgunAmmo;
+                    newItem.count = 1;
+                    newItem.buyPrice = 40;
+                    newItem.sellPrice = 0;
+                    newItem.ammo = 8;
+
+                    if (Items.Contains(newItem))
+                    {
+                        GetExistingItemAndUpdateAmmo(newItem);
+                    }
+                    else
+                    {
+                        Items.Add(newItem);
+                    }
+
+                    ListItems();
+                }
+                else if (selectedItem.itemName == "High-Grade Gunpowder" && combineItem.itemName == "High-Grade Gunpowder")
                 {
                     Debug.Log("Combined Normal Gunpowder with Normal Gunpowder");
                     Items.Remove(selectedItem);

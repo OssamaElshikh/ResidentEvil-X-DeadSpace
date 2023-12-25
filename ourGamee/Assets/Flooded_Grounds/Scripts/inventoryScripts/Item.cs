@@ -20,7 +20,8 @@ public class Item : ScriptableObject
         Mixture,
         Grenade,
         KeyItem,
-        Gunpowder, Treasure
+        Gunpowder,
+        Treasure
     }
 
     public GameObject associatedGameObject;

@@ -36,6 +36,8 @@ public class StorageInventoryScript : MonoBehaviour
 
     public Image ErrorMessage;
 
+    public GameObject Gold;
+    public GameObject StorageCanvas ;
 
     private bool isPaused = false;
     private CursorLockMode previousLockMode; // To store the previous cursor lock mode
@@ -365,6 +367,7 @@ public class StorageInventoryScript : MonoBehaviour
                 storageItems.Add(selectedItem);
                 selectedItem = null;
                 selectedObject = null;
+                InventoryManager.Instance.ListItems();
                 ListItems();
                 storageListItems();
             }
@@ -381,6 +384,7 @@ public class StorageInventoryScript : MonoBehaviour
         else
         {
             InventoryManager.Instance.Add(selectedItem);
+            InventoryManager.Instance.ListItems(); 
             storageItems.Remove(selectedItem);
             selectedItem = null;
             selectedObject = null;
@@ -389,6 +393,25 @@ public class StorageInventoryScript : MonoBehaviour
 
         }
 
+    }
+    public void sell()
+    {
+        if (selectedItem != null && selectedObject != null)
+        {
+            Text goldText = Gold.GetComponentInChildren<Text>();
+            string sellString = goldText.text.ToString();
+
+            string[] healthSplit = sellString.Split(' ');
+
+            int newGold = int.Parse(healthSplit[1]) + selectedItem.sellPrice;
+
+            goldText.text = "Gold: " + newGold.ToString();
+
+            storageItems.Remove(selectedItem);
+
+            storageListItems();
+
+        }
     }
 
 }
