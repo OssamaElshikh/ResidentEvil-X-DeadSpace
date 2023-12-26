@@ -36706,6 +36706,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1201230312}
     - target: {fileID: 4275053956900665460, guid: 98c707f5521ca244ba1d82a26a5f43dd, type: 3}
+      propertyPath: sellCanvas
+      value: 
+      objectReference: {fileID: 1566892935}
+    - target: {fileID: 4275053956900665460, guid: 98c707f5521ca244ba1d82a26a5f43dd, type: 3}
       propertyPath: storeCanvas
       value: 
       objectReference: {fileID: 702671493}
@@ -70396,6 +70400,54 @@ PrefabInstance:
       propertyPath: m_Name
       value: NormalGunpowderPurchaseBtn
       objectReference: {fileID: 0}
+    - target: {fileID: 844948874879970146, guid: b8a596f6cd328ea4e9ca6055fef737a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 844948874879970146, guid: b8a596f6cd328ea4e9ca6055fef737a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 844948874879970146, guid: b8a596f6cd328ea4e9ca6055fef737a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 844948874879970146, guid: b8a596f6cd328ea4e9ca6055fef737a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1566892935}
+    - target: {fileID: 844948874879970146, guid: b8a596f6cd328ea4e9ca6055fef737a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 702671493}
+    - target: {fileID: 844948874879970146, guid: b8a596f6cd328ea4e9ca6055fef737a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 844948874879970146, guid: b8a596f6cd328ea4e9ca6055fef737a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 844948874879970146, guid: b8a596f6cd328ea4e9ca6055fef737a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 844948874879970146, guid: b8a596f6cd328ea4e9ca6055fef737a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 844948874879970146, guid: b8a596f6cd328ea4e9ca6055fef737a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 844948874879970146, guid: b8a596f6cd328ea4e9ca6055fef737a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 844948874879970146, guid: b8a596f6cd328ea4e9ca6055fef737a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1274433502950367087, guid: b8a596f6cd328ea4e9ca6055fef737a3, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -190.8
@@ -70639,6 +70691,10 @@ PrefabInstance:
     - target: {fileID: 2770939109141634101, guid: b8a596f6cd328ea4e9ca6055fef737a3, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2912626006342822799, guid: b8a596f6cd328ea4e9ca6055fef737a3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -92.5729
       objectReference: {fileID: 0}
     - target: {fileID: 2912626006342822799, guid: b8a596f6cd328ea4e9ca6055fef737a3, type: 3}
       propertyPath: m_SizeDelta.y

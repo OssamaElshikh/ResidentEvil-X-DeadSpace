@@ -7,7 +7,9 @@ public class ShopInteraction : MonoBehaviour
     public GameObject promptText; // Reference to the UI element displaying the prompt
     public GameObject storeCanvas; // Reference to the Store Canvas GameObject
     public GameObject inventoryCanvas; // Reference to the Inventory Canvas GameObject
-    
+    public GameObject sellCanvas; // Reference to the Inventory Canvas GameObject
+
+
 
     private bool inShopZone = false;
     private bool isPaused = false;
@@ -41,12 +43,14 @@ public class ShopInteraction : MonoBehaviour
     {
         storeCanvas.SetActive(true); // Activate the Store Canvas
         inventoryCanvas.SetActive(true); // Activate the Inventory Canvas
+        
     }
 
     void DeActivateStore()
     {
         storeCanvas.SetActive(false); // Activate the Store Canvas
         inventoryCanvas.SetActive(false); // Activate the Inventory Canvas
+        sellCanvas.SetActive(false);    
     }
 
 
