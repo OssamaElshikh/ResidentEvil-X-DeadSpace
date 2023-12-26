@@ -10,6 +10,8 @@ public class enemyDamage : MonoBehaviour
 
     public bool hasBeenDamaged = false;
     public AudioSource dieSound;
+
+    public Animator anim2;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +39,7 @@ public class enemyDamage : MonoBehaviour
                 }
                 if (collider.CompareTag("whiteExplosion"))
                 {
-                    Debug.Log("white");
+                    anim2.SetTrigger("knock");
                 }
             }
         }

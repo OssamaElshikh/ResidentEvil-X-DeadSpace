@@ -17,6 +17,8 @@ TagManager:
   - enemy
   - rightArm
   - explosion
+  - knife
+  - whiteExplosion
   layers:
   - Default
   - TransparentFX
