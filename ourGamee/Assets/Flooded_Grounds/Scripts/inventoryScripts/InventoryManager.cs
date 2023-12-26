@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class InventoryManager : MonoBehaviour
     public TextMeshProUGUI invKnifeDurabilityText;
     public TextMeshProUGUI buyGoldCoinsText; // Reference to the Text UI element displaying gold coins
     public TextMeshProUGUI invGoldCoinsText;
+    public TextMeshProUGUI StorageGoldCoinsText;
+    public TextMeshProUGUI invStorageGoldCoinsText;
+
+
 
     private int goldCoins = 110;
     public TextMeshProUGUI DebugText; // Reference to the Text UI element displaying gold coins
@@ -63,6 +68,8 @@ public class InventoryManager : MonoBehaviour
 
     public GameObject ui;
 
+    public bool purchasable;
+
 
      
 
@@ -84,8 +91,20 @@ public class InventoryManager : MonoBehaviour
         UpdateGoldCoinsInvText();
         UpdateGoldCoinsStoreText();
         UpdateInvKnifeDurabilityText();
+        UpdateStotageGoldCoinsText();
+        UpdateInvStotageGoldCoinsText();
 
     }
+
+    void UpdateStotageGoldCoinsText()
+    {
+        StorageGoldCoinsText.text = "Gold: " + goldCoins.ToString();
+    }
+    void UpdateInvStotageGoldCoinsText()
+    {
+        invStorageGoldCoinsText.text = "Gold: " + goldCoins.ToString();
+    }
+
 
     void UpdateKnifeGoldCoinsText()
     {
@@ -128,6 +147,8 @@ public class InventoryManager : MonoBehaviour
                 UpdateKnifeGoldCoinsText();
                 UpdateGoldCoinsInvText() ;
                 UpdateGoldCoinsStoreText();
+                UpdateStotageGoldCoinsText();
+                UpdateInvStotageGoldCoinsText();
                 // DebugTxt.text = "Durability charged";
             }
         }
@@ -191,16 +212,20 @@ public class InventoryManager : MonoBehaviour
     {
         if (goldCoins >= itemCost)
         {
-
+            purchasable = true;
             goldCoins -= itemCost;
             UpdateKnifeGoldCoinsText();
             UpdateGoldCoinsInvText();
             UpdateGoldCoinsStoreText();
+            UpdateStotageGoldCoinsText();
+            UpdateInvStotageGoldCoinsText();
+
             DebugText.text = "Purchase successful!";
             Debug.Log("purchased!!"); 
         }
         else
         {
+            purchasable = false;
             DebugText.text = "Not enough gold coins!";
             Debug.Log("not enough coins !!");
 
@@ -672,6 +697,7 @@ public class InventoryManager : MonoBehaviour
             // Item already exists, update its properties (e.g., ammo)
             existingItem.ammo += newItem.ammo; // Adjust as needed
         }
+        
 
         return existingItem;
     }
@@ -686,10 +712,28 @@ public class InventoryManager : MonoBehaviour
         {
             // Item already exists, update its properties (e.g., ammo)
             Debug.Log("Count before " + existingItem.count);
-
-            existingItem.count += 1; // Adjust as needed
-            //Debug.Log(existingItem.itemName);
+            if (existingItem.itemName == "shotgunAmmo")
+            {
+                existingItem.count += 8;
+            }
+            else if(existingItem.itemName == "riffleAmmo")
+            {
+                existingItem.count += 30;
+            }
+            else if(existingItem.itemName == "pistolAmmo")
+            {
+                existingItem.count += 12;
+            }
+            else if (existingItem.itemName == "revolverAmmo")
+            {
+                existingItem.count += 6;
+            }
+                
             Debug.Log("count after " + existingItem.count);
+        }
+        else
+        {
+            Items.Add(newItem);
         }
 
         return existingItem;

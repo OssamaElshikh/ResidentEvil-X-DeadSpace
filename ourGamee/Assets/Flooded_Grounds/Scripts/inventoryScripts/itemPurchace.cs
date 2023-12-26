@@ -13,9 +13,19 @@ public class itemPurchace : MonoBehaviour
 
     public void Pickup(Item item)
     {
-        Debug.Log("picked item " + item.itemName);
-        InventoryManager.Instance.Add(item);
-        Debug.Log("item count " + item.count);
+        if(InventoryManager.Instance.purchasable == true)
+        {
+            Debug.Log("picked item " + item.itemName);
+            InventoryManager.Instance.Add(item);
+            Debug.Log("item count " + item.count);
+
+        }
+        else
+        {
+            Debug.Log("unpicked item " + item.itemName);
+        }
+
+        
 
         //if (item.ItemsCount < 6)
         //{

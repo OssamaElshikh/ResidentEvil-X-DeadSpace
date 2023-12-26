@@ -15,8 +15,9 @@ MonoBehaviour:
   itemName: revolverAmmo
   buyPrice: 0
   sellPrice: 0
-  count: 1
-  ammo: 0
+  count: 6
   icon: {fileID: 21300000, guid: 0a7eac942cf1f446faa36775a5c5a9b2, type: 3}
   itemType: 1
+  ammo: 0
   ItemsCount: 0
+  associatedGameObject: {fileID: 0}
