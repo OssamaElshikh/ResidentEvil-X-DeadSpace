@@ -11,6 +11,7 @@ public class Item : ScriptableObject
     public ItemType itemType;
     public int ammo;
     public int ItemsCount;
+    public bool sellable;
 
     public enum ItemType
     {

@@ -20,4 +20,5 @@ MonoBehaviour:
   itemType: 7
   ammo: 0
   ItemsCount: 4
+  sellable: 1
   associatedGameObject: {fileID: 4944159361292024838, guid: f2d0ba7653ed3435d853019d6dff0743, type: 3}

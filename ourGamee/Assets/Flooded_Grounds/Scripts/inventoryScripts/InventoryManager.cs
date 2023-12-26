@@ -27,12 +27,15 @@ public class InventoryManager : MonoBehaviour
 
     public List<Item> Items = new List<Item>();
     public List<Item> storageItems = new List<Item>();
+    public List<Item> sellItems = new List<Item>();
 
     public Transform ItemContent;
     public GameObject InventoryItem;
 
     public Transform storageItemContent;
+    public Transform sellItemContent;
     public GameObject storageItem;
+    public GameObject sellItem;
 
     public Image ErrorMessage;
     public GameObject Health;
@@ -434,7 +437,7 @@ public class InventoryManager : MonoBehaviour
 
         foreach (var item in Items)
         {
-            GameObject obj = Instantiate(InventoryItem, ItemContent);
+            GameObject obj = Instantiate(sellItem, sellItemContent);
 
             var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
 
@@ -455,40 +458,36 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    //public void storageListItems()
-    //{
-    //    foreach (Transform item in storageItemContent)
-    //    {
-    //        Destroy(item.gameObject);
-    //    }
+    public void listSellItems()
+    {
+        
 
-    //    foreach (var item in storageItems)
-    //    {
-    //        GameObject obj = Instantiate(storageItem, storageItemContent);
-    //        Debug.Log(storageItem);
-    //        Debug.Log(storageItemContent);
+        foreach (var item in Items)
+        {
+            if(item.sellable == true)
+            {
 
-    //        var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
+            }
+            GameObject obj = Instantiate(InventoryItem, ItemContent);
 
+            var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
 
 
-    //        var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
-    //        var button = obj.GetComponent<Button>();
 
-    //        itemName.text = item.itemName + " x" + item.count;
-    //        itemIcon.sprite = item.icon;
+            var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
+            var button = obj.GetComponent<Button>();
 
-    //        if (item.itemName == "Pistol" || item.itemName == "Shotgun" || item.itemName == "Riffle" || item.itemName == "Revolver")
-    //        {
-    //            itemName.text += " : ";
-    //            itemName.text += item.ammo;
-    //        }
+            itemName.text = item.itemName + " x" + item.count;
+            itemIcon.sprite = item.icon;
 
-    //        button.onClick.AddListener(() => SelectItem(obj, item));
-
-    //        Debug.Log("storage: " + item.itemName); 
-    //    }
-    //}
+            if (item.itemName == "Pistol" || item.itemName == "Shotgun" || item.itemName == "Riffle" || item.itemName == "Revolver")
+            {
+                itemName.text += " : ";
+                itemName.text += item.ammo;
+            }
+            button.onClick.AddListener(() => SelectItem(obj, item));
+        }
+    }
     //==============================================================================
     public void SelectItem(GameObject selected, Item item)
     {
@@ -734,6 +733,7 @@ public class InventoryManager : MonoBehaviour
         else
         {
             Items.Add(newItem);
+            
         }
 
         return existingItem;
