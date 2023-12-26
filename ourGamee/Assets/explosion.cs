@@ -4,22 +4,20 @@ using UnityEngine;
 
 public class explosion : MonoBehaviour
 {
-    public enemyDamage ed;
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("enemy"))
-        {
-            ed.enemyHealth -= 5;
-            Debug.Log("bomb");
-        }
-    }
-    public void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.CompareTag("enemy"))
-        {
-            ed.enemyHealth -= 5;
-            Debug.Log("bomb");
-
-        }
-    }
+    public pickUpScript PickUpScript;
+        //public void OnTriggerEnter(Collider other)
+    
+    //    if (other.CompareTag("enemy"))
+    //    {
+    //        other.GetComponent<enemyDamage>().enemyHealth -= 2;
+    //        //ed.enemyHealth -= 5;
+    //        //Debug.Log("bomb");
+    //    }
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        PickUpScript.playerHealth -= 3;
+    //        Debug.Log(PickUpScript.playerHealth);
+    //            }
+    //}
+ 
 }

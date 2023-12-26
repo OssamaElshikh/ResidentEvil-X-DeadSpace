@@ -8,6 +8,7 @@ public class enemyDamage : MonoBehaviour
     public int enemyHealth = 5;
     public Animator anim;
 
+    public bool hasBeenDamaged = false;
     public AudioSource dieSound;
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,28 @@ public class enemyDamage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            hasBeenDamaged = false;
+
+        }
+        if (!hasBeenDamaged)
+        {
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 3);
+            foreach (Collider collider in colliders)
+            {
+                if (collider.CompareTag("explosion"))
+                {
+                    enemyHealth -= 3;
+                    hasBeenDamaged = true;
+                    break;
+                }
+                if (collider.CompareTag("whiteExplosion"))
+                {
+                    Debug.Log("white");
+                }
+            }
+        }
         if (enemyHealth <= 0)
         {
             anim.SetTrigger("die");
@@ -25,11 +48,12 @@ public class enemyDamage : MonoBehaviour
 
         }
     }
-    
+
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("collison");
-        if (collision.collider.CompareTag("pistolBullet")){
+        if (collision.collider.CompareTag("pistolBullet"))
+        {
             enemyHealth -= 2;
         }
         if (collision.collider.CompareTag("rifleBullet"))
@@ -49,9 +73,10 @@ public class enemyDamage : MonoBehaviour
 
             enemyHealth -= 5;
         }
+
         if (collision.collider.CompareTag("explosion"))
         {
-
+            Debug.Log("yooo");
             enemyHealth -= 5;
         }
 
@@ -66,8 +91,13 @@ public class enemyDamage : MonoBehaviour
     {
         if (other.CompareTag("explosion"))
         {
+            Debug.Log("yay");
             enemyHealth -= 5;
         }
     }
-
+    public void applyDamage()
+    {
+        enemyHealth -= 3;
+        Debug.Log("newbomb");
+    }
 }

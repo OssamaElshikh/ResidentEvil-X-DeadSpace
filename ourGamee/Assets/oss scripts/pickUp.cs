@@ -8,7 +8,7 @@ public class pickUpScript : MonoBehaviour
     // Start is called before the first frame update
     public int playerHealth = 8;
     private bool playerDead = false;
-    
+
     public bool candestroy = false;
     public int goldcount = 30;
     public bool hasRevCard = false;
@@ -61,8 +61,8 @@ public class pickUpScript : MonoBehaviour
          public bool bool14 = true;
          public bool bool15 = true;
     */
-     public GameObject revCard;
-     public bool bool16;
+    public GameObject revCard;
+    public bool bool16;
     public GameObject revDoor;
     public bool bool17;
     public GameObject spadeKey;
@@ -103,13 +103,13 @@ public class pickUpScript : MonoBehaviour
     public GameObject heavyGunPowder;
 
     public AudioSource dieAudio;
-    public bool dieAudioBool=true;
+    public bool dieAudioBool = true;
     public AudioSource openDoorAudio;
     public AudioSource hitAudio;
 
     private void Update()
     {
-        if (playerHealth <= 0) { playerAnim.SetTrigger("die");PlayDie(); }
+        if (playerHealth <= 0) { playerAnim.SetTrigger("die"); PlayDie(); }
 
 
         candestroy = false;
@@ -118,64 +118,64 @@ public class pickUpScript : MonoBehaviour
 
         // check the nearest object to pickup
 
-       /* if (bool1 == true && Vector3.Distance(transform.position, revolver.transform.position)<2  )
-        {
-            ui.SetActive(true);
-            currentObject = revolver;
-            candestroy = true;
-            
-        }
+        /* if (bool1 == true && Vector3.Distance(transform.position, revolver.transform.position)<2  )
+         {
+             ui.SetActive(true);
+             currentObject = revolver;
+             candestroy = true;
 
-        if (bool9 == true && Vector3.Distance(transform.position, gold1.transform.position) < 2)
-        {
-            ui.SetActive(true);
-            currentObject = gold1;
-            candestroy = true;
+         }
 
-        }
-        if (bool10 == true && Vector3.Distance(transform.position, gold2.transform.position) < 2)
-        {
-            ui.SetActive(true);
-            currentObject = gold2;
-            candestroy = true;
+         if (bool9 == true && Vector3.Distance(transform.position, gold1.transform.position) < 2)
+         {
+             ui.SetActive(true);
+             currentObject = gold1;
+             candestroy = true;
 
-        }
-        if (bool11 == true && Vector3.Distance(transform.position, gold3.transform.position) < 2)
-        {
-            ui.SetActive(true);
-            currentObject = gold3;
-            candestroy = true;
+         }
+         if (bool10 == true && Vector3.Distance(transform.position, gold2.transform.position) < 2)
+         {
+             ui.SetActive(true);
+             currentObject = gold2;
+             candestroy = true;
 
-        }
-        if (bool12 == true && Vector3.Distance(transform.position, gold4.transform.position) < 2)
-        {
-            ui.SetActive(true);
-            currentObject = gold4;
-            candestroy = true;
+         }
+         if (bool11 == true && Vector3.Distance(transform.position, gold3.transform.position) < 2)
+         {
+             ui.SetActive(true);
+             currentObject = gold3;
+             candestroy = true;
 
-        }
-        if (bool13 == true && Vector3.Distance(transform.position, gold5.transform.position) < 2)
-        {
-            ui.SetActive(true);
-            currentObject = gold5;
-            candestroy = true;
+         }
+         if (bool12 == true && Vector3.Distance(transform.position, gold4.transform.position) < 2)
+         {
+             ui.SetActive(true);
+             currentObject = gold4;
+             candestroy = true;
 
-        }
-        if (bool14 == true && Vector3.Distance(transform.position, gold6.transform.position) < 2)
-        {
-            ui.SetActive(true);
-            currentObject = gold6;
-            candestroy = true;
+         }
+         if (bool13 == true && Vector3.Distance(transform.position, gold5.transform.position) < 2)
+         {
+             ui.SetActive(true);
+             currentObject = gold5;
+             candestroy = true;
 
-        }
-        if (bool15 == true && Vector3.Distance(transform.position, gold7.transform.position) < 2)
-        {
-            ui.SetActive(true);
-            currentObject = gold7;
-            candestroy = true;
+         }
+         if (bool14 == true && Vector3.Distance(transform.position, gold6.transform.position) < 2)
+         {
+             ui.SetActive(true);
+             currentObject = gold6;
+             candestroy = true;
 
-        }
-       */
+         }
+         if (bool15 == true && Vector3.Distance(transform.position, gold7.transform.position) < 2)
+         {
+             ui.SetActive(true);
+             currentObject = gold7;
+             candestroy = true;
+
+         }
+        */
         if (bool16 == true && Vector3.Distance(transform.position, revCard.transform.position) < 2)
         {
             ui.SetActive(true);
@@ -230,59 +230,59 @@ public class pickUpScript : MonoBehaviour
             doorUI.SetActive(true);
             currentDoor = emeraldDoor;
         }
-      /*  if (bool25 == true && Vector3.Distance(transform.position,greenHerb.transform.position) < 2)
-        {
-            ui.SetActive(true);
-            currentObject = greenHerb;
-            candestroy = true;
-        }
-        if (bool26 == true && Vector3.Distance(transform.position, redHerb.transform.position) < 2)
-        {
-            ui.SetActive(true);
-            currentObject = redHerb;
-            candestroy = true;
-        }
-        if (bool27 == true && Vector3.Distance(transform.position, grenade.transform.position) < 2)
-        {
-            ui.SetActive(true);
-            currentObject = grenade;
-            candestroy = true;
-        }
-        if (bool28 == true && Vector3.Distance(transform.position, flashGrenade.transform.position) < 2)
-        {
-            ui.SetActive(true);
-            currentObject = flashGrenade;
-            candestroy = true;
-        }
-        if (bool29 == true && Vector3.Distance(transform.position,normalGunpowder.transform.position) < 2)
-        {
-            ui.SetActive(true);
-            currentObject = normalGunpowder;
-            candestroy = true;
-        }
-        if(bool30 == true && Vector3.Distance(transform.position,heavyGunPowder.transform.position) < 2)
-        {
-            ui.SetActive(true);
-            currentObject = heavyGunPowder;
-            candestroy = true;
-        }
-      */
-        if ( Vector3.Distance(transform.position, treasure.transform.position) < 3)
+        /*  if (bool25 == true && Vector3.Distance(transform.position,greenHerb.transform.position) < 2)
+          {
+              ui.SetActive(true);
+              currentObject = greenHerb;
+              candestroy = true;
+          }
+          if (bool26 == true && Vector3.Distance(transform.position, redHerb.transform.position) < 2)
+          {
+              ui.SetActive(true);
+              currentObject = redHerb;
+              candestroy = true;
+          }
+          if (bool27 == true && Vector3.Distance(transform.position, grenade.transform.position) < 2)
+          {
+              ui.SetActive(true);
+              currentObject = grenade;
+              candestroy = true;
+          }
+          if (bool28 == true && Vector3.Distance(transform.position, flashGrenade.transform.position) < 2)
+          {
+              ui.SetActive(true);
+              currentObject = flashGrenade;
+              candestroy = true;
+          }
+          if (bool29 == true && Vector3.Distance(transform.position,normalGunpowder.transform.position) < 2)
+          {
+              ui.SetActive(true);
+              currentObject = normalGunpowder;
+              candestroy = true;
+          }
+          if(bool30 == true && Vector3.Distance(transform.position,heavyGunPowder.transform.position) < 2)
+          {
+              ui.SetActive(true);
+              currentObject = heavyGunPowder;
+              candestroy = true;
+          }
+        */
+        if (Vector3.Distance(transform.position, treasure.transform.position) < 3)
         {
             winUI.SetActive(true);
         }
 
-            //for opening doors
-            if (Input.GetKeyDown(KeyCode.O))
+        //for opening doors
+        if (Input.GetKeyDown(KeyCode.O))
         {
-            
-                OpenDoor();
-            
+
+            OpenDoor();
+
         }
 
 
         //for picking up items
-            if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (candestroy == true)
             {
@@ -308,10 +308,10 @@ public class pickUpScript : MonoBehaviour
         if (currentObject == gold7) { bool15 = false; goldcount += 10; }
         */
         if (currentObject == revCard) { bool16 = false; hasRevCard = true; }
-        
+
         if (currentObject == spadeKey) { bool18 = false; hasSpadeKey = true; Debug.Log(hasSpadeKey); }
         if (currentObject == diamondKey) { bool20 = false; hasDiamondKey = true; }
-        
+
         if (currentObject == emerald) { bool23 = false; hasEmerald = true; }
         /*
         if(currentObject == greenHerb) {  bool25 = false;hasGreenHerb = true; }
@@ -331,7 +331,7 @@ public class pickUpScript : MonoBehaviour
     //performed when pressing open door
     public void OpenDoor()
     {
-        if (currentDoor == revDoor && hasRevCard==true)
+        if (currentDoor == revDoor && hasRevCard == true)
         {
             bool17 = false;
             revD.SetTrigger("revdoor");
@@ -352,13 +352,14 @@ public class pickUpScript : MonoBehaviour
             openDoorAudio.Play();
 
         }
-        if (currentDoor == normalDoor) {
+        if (currentDoor == normalDoor)
+        {
             bool22 = false;
             normalDoorA.SetTrigger("openDoor");
             openDoorAudio.Play();
 
         }
-        if (currentDoor == emeraldDoor && hasEmerald==true)
+        if (currentDoor == emeraldDoor && hasEmerald == true)
         {
             bool24 = false;
             emeraldDoorA.SetTrigger("openDoor");
@@ -386,10 +387,10 @@ public class pickUpScript : MonoBehaviour
             //Play Damage Animation
         }
     }
- 
-   void PlayDie()
+
+    void PlayDie()
     {
-        if (dieAudioBool )
+        if (dieAudioBool)
         {
             dieAudio.Play();
             dieAudioBool = false;
@@ -400,7 +401,8 @@ public class pickUpScript : MonoBehaviour
     {
         if (other.CompareTag("explosion"))
         {
-            Debug.Log("bomb");
+            playerHealth -= 3;
+            Debug.Log("playerH after bomb" + playerHealth);
         }
     }
 }
