@@ -276,8 +276,11 @@ public class InventoryManager : MonoBehaviour
             else
             {
                 Items.Add(item);
+                sellItems.Add(item);    
+                Debug.Log("added to sellitems" + item.name);
             }
             ListItems();
+            listSellItems();
             //storageListItems(); 
         }
         else
@@ -431,43 +434,13 @@ public class InventoryManager : MonoBehaviour
     public void ListItems()
     {
         foreach (Transform item in ItemContent)
-        {
+        {   
             Destroy(item.gameObject);
+            Debug.Log("item destroyed");
         }
 
         foreach (var item in Items)
         {
-            GameObject obj = Instantiate(sellItem, sellItemContent);
-
-            var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
-
-
-
-            var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
-            var button = obj.GetComponent<Button>();
-
-            itemName.text = item.itemName + " x" + item.count;
-            itemIcon.sprite = item.icon;
-
-            if (item.itemName == "Pistol" || item.itemName == "Shotgun" || item.itemName == "Riffle" || item.itemName == "Revolver")
-            {
-                itemName.text += " : ";
-                itemName.text += item.ammo;
-            }
-            button.onClick.AddListener(() => SelectItem(obj, item));
-        }
-    }
-
-    public void listSellItems()
-    {
-        
-
-        foreach (var item in Items)
-        {
-            if(item.sellable == true)
-            {
-
-            }
             GameObject obj = Instantiate(InventoryItem, ItemContent);
 
             var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
@@ -486,6 +459,44 @@ public class InventoryManager : MonoBehaviour
                 itemName.text += item.ammo;
             }
             button.onClick.AddListener(() => SelectItem(obj, item));
+        }
+
+    }
+
+    public void listSellItems()
+    {
+        foreach (Transform item in sellItemContent)
+        {
+            Destroy(item.gameObject);
+            Debug.Log("sell item destroyed");
+        }
+
+        foreach (var sellitem in sellItems)
+        {
+            if (sellitem.sellable == true)
+            {
+               
+
+                GameObject obj = Instantiate(sellItem, sellItemContent);
+
+                var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
+
+
+
+                var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
+                var button = obj.GetComponent<Button>();
+
+                itemName.text = sellitem.itemName + " x" + sellitem.count;
+                itemIcon.sprite = sellitem.icon;
+                Debug.Log("sellable == true");
+
+                if (sellitem.itemName == "Pistol" || sellitem.itemName == "Shotgun" || sellitem.itemName == "Riffle" || sellitem.itemName == "Revolver")
+                {
+                    itemName.text += " : ";
+                    itemName.text += sellitem.ammo;
+                }
+                button.onClick.AddListener(() => SelectItem(obj, sellitem));
+            }
         }
     }
     //==============================================================================
