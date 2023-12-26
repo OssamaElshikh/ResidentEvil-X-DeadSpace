@@ -6,7 +6,7 @@ using UnityEngine;
 public class firing : MonoBehaviour
 {
     public int pistolAmmo, rifleAmmo, shotGunAmmo,revAmmo = 0;
-    private InventoryManager KnifeDurabilityU;
+    //private InventoryManager KnifeDurabilityU;
 
 
     public int KnifeDUR;
@@ -88,10 +88,10 @@ public class firing : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K) && weapon == 5)
         {
 
-            KnifeDUR--;
-            Debug.Log("Knife Stab!"+ KnifeDUR);
-            KnifeDurabilityU = FindObjectOfType<InventoryManager>();
-            KnifeDurabilityU.UpdateKnifeDurabilityText();
+            //KnifeDUR--;
+            ////Debug.Log("Knife Stab!"+ KnifeDUR);
+            //KnifeDurabilityU = FindObjectOfType<InventoryManager>();
+            //KnifeDurabilityU.UpdateKnifeDurabilityText();
 
             anim.SetTrigger("stab");
         }
