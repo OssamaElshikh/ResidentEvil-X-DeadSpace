@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Item/New Item")]
 public class Item : ScriptableObject
@@ -12,6 +14,10 @@ public class Item : ScriptableObject
     public int ammo;
     public int ItemsCount;
     public bool sellable;
+    
+
+
+
 
     public enum ItemType
     {
@@ -31,6 +37,7 @@ public class Item : ScriptableObject
     {
         associatedGameObject = gameObject;
     }
+    
 
     public Vector3 GetGameObjectPosition()
     {

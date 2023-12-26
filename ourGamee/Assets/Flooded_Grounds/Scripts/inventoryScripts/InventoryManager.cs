@@ -19,6 +19,8 @@ public class InventoryManager : MonoBehaviour
     public TextMeshProUGUI invGoldCoinsText;
     public TextMeshProUGUI StorageGoldCoinsText;
     public TextMeshProUGUI invStorageGoldCoinsText;
+    public TextMeshProUGUI sellGoldCoinsText;
+
 
 
 
@@ -96,7 +98,13 @@ public class InventoryManager : MonoBehaviour
         UpdateInvKnifeDurabilityText();
         UpdateStotageGoldCoinsText();
         UpdateInvStotageGoldCoinsText();
+        UpdatesellGoldCoinsTxt();
 
+    }
+
+    void UpdatesellGoldCoinsTxt()
+    {
+        sellGoldCoinsText.text = "Gold: " + goldCoins.ToString();
     }
 
     void UpdateStotageGoldCoinsText()
@@ -152,6 +160,7 @@ public class InventoryManager : MonoBehaviour
                 UpdateGoldCoinsStoreText();
                 UpdateStotageGoldCoinsText();
                 UpdateInvStotageGoldCoinsText();
+                UpdatesellGoldCoinsTxt();
                 // DebugTxt.text = "Durability charged";
             }
         }
@@ -222,6 +231,7 @@ public class InventoryManager : MonoBehaviour
             UpdateGoldCoinsStoreText();
             UpdateStotageGoldCoinsText();
             UpdateInvStotageGoldCoinsText();
+            UpdatesellGoldCoinsTxt();
 
             DebugText.text = "Purchase successful!";
             Debug.Log("purchased!!"); 
@@ -272,6 +282,8 @@ public class InventoryManager : MonoBehaviour
             if (item.itemName=="shotgunAmmo"|| item.itemName == "riffleAmmo"|| item.itemName == "pistolAmmo" || item.itemName == "revolverAmmo")
             {
                 GetExistingItemAndUpdateCount(item);
+                
+
             }
             else
             {
@@ -344,6 +356,142 @@ public class InventoryManager : MonoBehaviour
         }
     }
     //==============================================================================
+
+    public void sell()
+    {
+        if (selectedItem != null && selectedObject != null)
+        {
+            if (selectedItem.itemName == "Green Herb")
+            {
+                goldCoins += selectedItem.sellPrice;
+                sellItems.Remove(selectedItem);
+                Items.Remove(selectedItem);
+                selectedItem = null;
+                selectedObject = null;
+                listSellItems();
+                ListItems();
+            }
+            else if (selectedItem.itemName == "Red Herb")
+            {
+                goldCoins += selectedItem.sellPrice;
+                sellItems.Remove(selectedItem);
+                Items.Remove(selectedItem);
+                selectedItem = null;
+                selectedObject = null;
+                listSellItems();
+                ListItems();
+
+            }
+            else if (selectedItem.itemName == "HandGrenade")
+            {
+                goldCoins += selectedItem.sellPrice;
+                sellItems.Remove(selectedItem);
+                Items.Remove(selectedItem);
+                selectedItem = null;
+                selectedObject = null;
+                listSellItems();
+                ListItems();
+            }
+            else if(selectedItem.itemName == "FlashGrenade")
+            {
+                goldCoins += selectedItem.sellPrice;
+                sellItems.Remove(selectedItem);
+                Items.Remove(selectedItem);
+                selectedItem = null;
+                selectedObject = null;
+                listSellItems();
+                ListItems();
+            }
+            else if(selectedItem.itemName == "NormalGunPowder")
+            {
+                goldCoins += selectedItem.sellPrice;
+                sellItems.Remove(selectedItem);
+                Items.Remove(selectedItem);
+                selectedItem = null;
+                selectedObject = null;
+                listSellItems();
+                ListItems();
+            }
+            else if (selectedItem.itemName == "High-Grade Gunpowder")
+            {
+                goldCoins += selectedItem.sellPrice;
+                sellItems.Remove(selectedItem);
+                Items.Remove(selectedItem);
+                selectedItem = null;
+                selectedObject = null;
+                listSellItems();
+                ListItems();
+            }
+            else if(selectedItem.itemName == "G+GMixture")
+            {
+                goldCoins += selectedItem.sellPrice;
+                sellItems.Remove(selectedItem);
+                Items.Remove(selectedItem);
+                selectedItem = null;
+                selectedObject = null;
+                listSellItems();
+                ListItems();
+
+            }
+            else if(selectedItem.itemName == "G+RMixture")
+            {
+                goldCoins += selectedItem.sellPrice;
+                sellItems.Remove(selectedItem);
+                Items.Remove(selectedItem);
+                selectedItem = null;
+                selectedObject = null;
+                listSellItems();
+                ListItems();
+            }
+            else if(selectedItem.itemName == "R+RMixture")
+            {
+                goldCoins += selectedItem.sellPrice;
+                sellItems.Remove(selectedItem);
+                Items.Remove(selectedItem);
+                selectedItem = null;
+                selectedObject = null;
+                listSellItems();
+                ListItems();
+            }
+            else if (selectedItem.itemName == "gold")
+            {
+                goldCoins += selectedItem.sellPrice;
+                sellItems.Remove(selectedItem);
+                Items.Remove(selectedItem);
+                selectedItem = null;
+                selectedObject = null;
+                listSellItems();
+                ListItems();
+            }
+            else if (selectedItem.itemName == "emerald")
+            {
+                goldCoins += selectedItem.sellPrice;
+                sellItems.Remove(selectedItem);
+                Items.Remove(selectedItem);
+                selectedItem = null;
+                selectedObject = null;
+                listSellItems();
+                ListItems();
+            }
+            else if (selectedItem.itemName == "ruby")
+            {
+                goldCoins += selectedItem.sellPrice;
+                sellItems.Remove(selectedItem);
+                Items.Remove(selectedItem);
+                selectedItem = null;
+                selectedObject = null;
+                listSellItems();
+                ListItems();
+            }
+            UpdateKnifeGoldCoinsText();
+            UpdateGoldCoinsInvText();
+            UpdateGoldCoinsStoreText();
+            UpdateStotageGoldCoinsText();
+            UpdateInvStotageGoldCoinsText();
+            UpdatesellGoldCoinsTxt();
+        }
+    }
+
 
     public void Equip()
     {
@@ -485,6 +633,7 @@ public class InventoryManager : MonoBehaviour
 
                 var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
                 var button = obj.GetComponent<Button>();
+               
 
                 itemName.text = sellitem.itemName + " x" + sellitem.count;
                 itemIcon.sprite = sellitem.icon;
@@ -713,6 +862,9 @@ public class InventoryManager : MonoBehaviour
     }
     //==============================================================================
 
+   
+
+
     public Item GetExistingItemAndUpdateCount(Item newItem)
     {
         // Check if an item with the same properties already exists in the list
@@ -743,7 +895,9 @@ public class InventoryManager : MonoBehaviour
         }
         else
         {
+
             Items.Add(newItem);
+            Debug.Log("ammo added");
             
         }
 
