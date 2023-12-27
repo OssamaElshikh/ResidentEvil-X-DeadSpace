@@ -22,7 +22,11 @@ public class InventoryManager : MonoBehaviour
     public TextMeshProUGUI invStorageGoldCoinsText;
     public TextMeshProUGUI sellGoldCoinsText;
 
-
+    public bool weapon1Equiped = true;
+    public bool weapon2Equiped;
+    public bool weapon3Equiped;
+    public bool weapon4Equiped;
+    public bool weapon5Equiped;
 
 
     private int goldCoins = 30;
@@ -134,7 +138,7 @@ public class InventoryManager : MonoBehaviour
     {
         if (fire != null)
         {
-            invKnifeDurabilityText.text = "Knife Durability: " + fire.KnifeDUR.ToString();
+            invKnifeDurabilityText.text = "Knife Durability: " + ed.knifeDurability.ToString();
         }
     }
 
@@ -507,6 +511,34 @@ public class InventoryManager : MonoBehaviour
                 Debug.Log("Equipped weapon: " + selectedItem.itemName);
                 Text weaponText = Weapon.GetComponentInChildren<Text>();
                 weaponText.text = selectedItem.itemName;
+                if (selectedItem.itemName == "Pistol")
+                {
+                    weapon1Equiped = true;
+                    weapon2Equiped = false;
+                    weapon3Equiped = false;
+                    weapon4Equiped = false;
+                }
+                else if (selectedItem.itemName == "Shotgun")
+                {
+                    weapon1Equiped = false;
+                    weapon2Equiped = true;
+                    weapon3Equiped = false;
+                    weapon4Equiped = false;
+                }
+                else if (selectedItem.itemName == "Riffle")
+                {
+                    weapon1Equiped = false;
+                    weapon2Equiped = false;
+                    weapon3Equiped = true;
+                    weapon4Equiped = false;
+                }
+                else if (selectedItem.itemName == "Revolver")
+                {
+                    weapon1Equiped = false;
+                    weapon2Equiped = false;
+                    weapon3Equiped = false;
+                    weapon4Equiped = true;
+                }
             }
             else if (selectedItem.itemType == Item.ItemType.Grenade)
             {

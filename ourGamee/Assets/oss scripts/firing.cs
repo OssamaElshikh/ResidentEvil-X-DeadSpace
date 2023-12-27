@@ -26,10 +26,9 @@ public class firing : MonoBehaviour
     public AudioSource relodeAudio;
     public AudioSource fireAudio;
 
-
     public int bulletSpeed = 2;
 
-
+    private InventoryManager Instance;
     // 1 for pistol 2 for shotgun 3 for rifle 4 for revolver
     public int weapon = 0;
     public StarterAssets.StarterAssetsInputs st;
@@ -61,7 +60,7 @@ public class firing : MonoBehaviour
 
     private void Start()
     {
-        
+        Instance = FindObjectOfType<InventoryManager>();
         isAiming = false;
         weapon = 0;
     }
@@ -186,10 +185,10 @@ public class firing : MonoBehaviour
 
 
         }
-        if (Input.GetKeyDown(KeyCode.U) && isAiming==false) { weapon = 1; SetActiveWeapon(); }
-        if (Input.GetKeyDown(KeyCode.I) && isAiming == false) { weapon = 2; SetActiveWeapon(); }
-        if (Input.GetKeyDown(KeyCode.O) && isAiming == false) { weapon = 3; SetActiveWeapon(); }
-        if (Input.GetKeyDown(KeyCode.P) && isAiming == false && pickUpScript.hasRevolver==true) { weapon = 4; SetActiveWeapon(); }
+        if (Input.GetKeyDown(KeyCode.U) && isAiming == false && Instance.weapon1Equiped == true) { weapon = 1; SetActiveWeapon(); }
+        if (Input.GetKeyDown(KeyCode.I) && isAiming == false && Instance.weapon2Equiped == true) { weapon = 2; SetActiveWeapon(); }
+        if (Input.GetKeyDown(KeyCode.O) && isAiming == false && Instance.weapon3Equiped == true) { weapon = 3; SetActiveWeapon(); }
+        if (Input.GetKeyDown(KeyCode.P) && isAiming == false && pickUpScript.hasRevolver == true && Instance.weapon4Equiped == true) { weapon = 4; SetActiveWeapon(); }
         if (Input.GetKeyDown(KeyCode.Z) && isAiming == false) { weapon = 5; SetActiveWeapon(); }
         if (Input.GetKeyDown(KeyCode.X)) { EmptyHand(); }
 

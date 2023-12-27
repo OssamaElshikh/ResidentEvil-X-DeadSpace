@@ -22,6 +22,8 @@ public class enemyDamage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        KnifeDurabilityU = FindObjectOfType<InventoryManager>();
+
         knifeDurability = 10;
     }
 
@@ -70,9 +72,9 @@ public class enemyDamage : MonoBehaviour
                 {
                     Debug.Log("knifeHit");
                     knifeDurability--;
-                    //Debug.Log("Knife Stab!"+ KnifeDUR);
-                    //KnifeDurabilityU = FindObjectOfType<InventoryManager>();
-                    //KnifeDurabilityU.UpdateKnifeDurabilityText();
+                    //Debug.Log("Knife Stab!" + KnifeDUR);
+                    KnifeDurabilityU.UpdateKnifeDurabilityText();
+
                     enemyHealth -= 2;
                     hasBeenDamaged2 = true;
                     break;
