@@ -511,6 +511,7 @@ public class InventoryManager : MonoBehaviour
             {
                 Debug.Log("Equipped grenade: " + selectedItem.itemName);
                 Text grenadeText = Grenade.GetComponentInChildren<Text>();
+                grenadeText.text = selectedItem.itemName;
             }
         }
     }
