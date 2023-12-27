@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class pickUpScript : MonoBehaviour
 {
@@ -24,6 +26,7 @@ public class pickUpScript : MonoBehaviour
     public bool hasHeavyGunpoder = false;
 
 
+
     //door animators:
     public Animator playerAnim;
     public Animator revD;
@@ -32,7 +35,8 @@ public class pickUpScript : MonoBehaviour
     public Animator diamondDoorA;
     public Animator emeraldDoorA;
 
-
+    public AudioSource winAudio;
+    public GameObject loseUi;
 
     //public GameObject rifle;
     //public bool rifleFlag=true;
@@ -87,7 +91,7 @@ public class pickUpScript : MonoBehaviour
     public bool bool30;
     public GameObject treasure;
 
-
+    public bool dead =false;
 
     private GameObject currentObject;
     private GameObject currentDoor;
@@ -109,7 +113,19 @@ public class pickUpScript : MonoBehaviour
 
     private void Update()
     {
-        if (playerHealth <= 0) { playerAnim.SetTrigger("die"); PlayDie(); }
+
+        //cheat
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            playerHealth += 8;
+        }
+        if (playerHealth <= 0) { playerAnim.SetTrigger("die"); PlayDie();dead = true; loseUi.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                SceneManager.LoadScene(0); // call main menu
+
+            }
+            Invoke("PauseGame", 8); }
 
 
         candestroy = false;
@@ -270,6 +286,13 @@ public class pickUpScript : MonoBehaviour
         if (Vector3.Distance(transform.position, treasure.transform.position) < 3)
         {
             winUI.SetActive(true);
+            winAudio.Play();
+            Invoke("PauseGame", 3);
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                SceneManager.LoadScene(0); // call main menu
+
+            }
         }
 
         //for opening doors
@@ -404,5 +427,10 @@ public class pickUpScript : MonoBehaviour
             playerHealth -= 3;
             Debug.Log("playerH after bomb" + playerHealth);
         }
+    }
+    private void PauseGame()
+    {
+        Time.timeScale = 0f;
+
     }
 }

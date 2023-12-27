@@ -8,15 +8,24 @@ public class ItemPickup : MonoBehaviour
 
     float pickupDistance = 2f;
 
+    public AudioSource pickAudio;
+
+    public GameObject canv;
     private void Update()
     {
-
+        if (IsPlayerInRange())
+        {
+            
+            canv.SetActive(true);
+            Invoke("Dis", 3);
+        }
       
+       
         // Check if the player is within the pickup distance and presses the "E" key
         if (Input.GetKeyDown(KeyCode.E) && IsPlayerInRange())
         {
             Pickup();
-
+           
         }
     }
     void Pickup()
@@ -26,7 +35,9 @@ public class ItemPickup : MonoBehaviour
         if (item.ItemsCount < 6)
         {
             Destroy(gameObject);
+            pickAudio.Play();
         }
+        canv.SetActive(false);
     }
     bool IsPlayerInRange()
     {
@@ -47,6 +58,9 @@ public class ItemPickup : MonoBehaviour
     {
         Pickup();
     }
-
+    void Dis()
+    {
+        canv.SetActive(false);
+    }
 
 }
