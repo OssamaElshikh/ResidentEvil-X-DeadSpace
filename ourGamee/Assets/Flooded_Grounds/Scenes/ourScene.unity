@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.8
   m_CustomReflection: {fileID: 8900000, guid: 3b5eaa969aa89fb45b025e2ff7d7695a, type: 3}
   m_Sun: {fileID: 87893644}
-  m_IndirectSpecularColor: {r: 0.4349039, g: 0.4714324, b: 0.50329775, a: 0.8}
+  m_IndirectSpecularColor: {r: 0.43456554, g: 0.47156525, b: 0.50328773, a: 0.8}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6402,7 +6402,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 81.99968
+      value: 86.99
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6410,7 +6410,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 51.98
+      value: 95.28001
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -78035,7 +78035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2070925441746177912, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 81.99968
+      value: 86.99
       objectReference: {fileID: 0}
     - target: {fileID: 2070925441746177912, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -78043,7 +78043,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2070925441746177912, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 51.98
+      value: 95.28001
       objectReference: {fileID: 0}
     - target: {fileID: 2070925441746177912, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -78349,7 +78349,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -100071,6 +100071,10 @@ MonoBehaviour:
   rifleCap: 30
   shotGunCap: 8
   revolverCap: 6
+  pistolCapCount: 12
+  rifleCapCount: 30
+  shotGunCapCount: 8
+  revolverCapCount: 6
   pistAv: 0
   rifAv: 0
   shotAv: 0
@@ -100084,6 +100088,10 @@ MonoBehaviour:
   revTrans: {fileID: 1469181606}
   riffleTrans: {fileID: 1280910847}
   anim: {fileID: 2123500297}
+  pistolCooldown: 0.2
+  shotgunCooldown: 0.5
+  rifleCooldown: 0.2
+  revolverCooldown: 1
   isAiming: 0
 --- !u!114 &2123500305
 MonoBehaviour:
@@ -102622,7 +102630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5909638726856406778, guid: 33359195ec64940a2a39784f366ce28c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 81.18
+      value: 81.2
       objectReference: {fileID: 0}
     - target: {fileID: 5909638726856406778, guid: 33359195ec64940a2a39784f366ce28c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -102630,7 +102638,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5909638726856406778, guid: 33359195ec64940a2a39784f366ce28c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 52
+      value: 95.3
       objectReference: {fileID: 0}
     - target: {fileID: 5909638726856406778, guid: 33359195ec64940a2a39784f366ce28c, type: 3}
       propertyPath: m_LocalRotation.w

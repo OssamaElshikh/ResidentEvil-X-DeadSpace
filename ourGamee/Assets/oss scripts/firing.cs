@@ -63,6 +63,13 @@ public class firing : MonoBehaviour
 
     public Animator anim;
 
+    public float pistolCooldown = 0.2f;
+    public float shotgunCooldown = 0.5f;
+    public float rifleCooldown = 0.2f;
+    public float revolverCooldown = 1f;
+
+    private float currentCooldown = 0f;
+
     public bool isAiming;
 
     private void Start()
@@ -74,6 +81,22 @@ public class firing : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKey(KeyCode.K))
+        {
+            if (currentCooldown <= 0f)
+            {
+                Fire();
+                currentCooldown = GetCooldownForWeapon();
+            }
+            else
+            {
+                Debug.Log("Cooldown in progress...");
+            }
+        }
+        if (currentCooldown > 0f)
+        {
+            currentCooldown -= Time.deltaTime;
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -103,7 +126,45 @@ public class firing : MonoBehaviour
         }
 
             //firing
-            if (st.isAiming == false)
+          
+
+       // if (Input.GetKeyDown(KeyCode.U) && isAiming == false && Instance.weapon1Equiped == true) { weapon = 1; SetActiveWeapon(); }
+        //if (Input.GetKeyDown(KeyCode.I) && isAiming == false && Instance.weapon2Equiped == true) { weapon = 2; SetActiveWeapon(); }
+        //if (Input.GetKeyDown(KeyCode.O) && isAiming == false && Instance.weapon3Equiped == true) { weapon = 3; SetActiveWeapon(); }
+        //if (Input.GetKeyDown(KeyCode.P) && isAiming == false && pickUpScript.hasRevolver == true && Instance.weapon4Equiped == true) { weapon = 4; SetActiveWeapon(); }
+        if (Input.GetKeyDown(KeyCode.Z) && isAiming == false) { weapon = 5; SetActiveWeapon(); }
+        if (Input.GetKeyDown(KeyCode.X)) { EmptyHand(); }
+
+
+
+
+    }
+
+    public void equipweapon()
+    {
+        if(Instance.weapon1Equiped == true)
+        {
+            weapon = 1; SetActiveWeapon();
+        }
+        else if (Instance.weapon2Equiped == true)
+        {
+            weapon = 2; SetActiveWeapon();
+        }
+        else if (Instance.weapon3Equiped == true)
+        {
+            weapon = 3; SetActiveWeapon();
+        }
+        else if(Instance.weapon4Equiped == true && pickUpScript.hasRevolver == true)
+        {
+            weapon = 4; SetActiveWeapon();
+        }
+
+
+
+    }
+    void Fire()
+    {
+        if (st.isAiming == false)
         {
 
 
@@ -120,11 +181,11 @@ public class firing : MonoBehaviour
 
                     // Set the velocity of the bullet
                     bullet.GetComponent<Rigidbody>().velocity = bulletPoint.forward * bulletSpeed;
-                    
+
                     pistolCapCount--;
 
                     fireAudio.Play();
-                    
+
                 }
                 else
                 {
@@ -134,7 +195,7 @@ public class firing : MonoBehaviour
 
             //shotgun
             if (Input.GetKeyDown(KeyCode.K) && weapon == 2)
-                {
+            {
                 if (shotGunCapCount > 0)
                 {
 
@@ -156,22 +217,22 @@ public class firing : MonoBehaviour
             //rifle
             if (Input.GetKey(KeyCode.K) && weapon == 3)
             {
-                if(rifleCapCount> 0)
+                if (rifleCapCount > 0)
                 {
 
-                
-                Quaternion bulletRotation = Quaternion.Euler(0f, -90f, 90f);
 
-                var bullet = Instantiate(riffleBullet, riffleTrans.position, bulletRotation);
+                    Quaternion bulletRotation = Quaternion.Euler(0f, -90f, 90f);
 
-                bullet.GetComponent<Rigidbody>().velocity = riffleTrans.forward * bulletSpeed;
-                
-                    
-                rifleCapCount--;
+                    var bullet = Instantiate(riffleBullet, riffleTrans.position, bulletRotation);
+
+                    bullet.GetComponent<Rigidbody>().velocity = riffleTrans.forward * bulletSpeed;
 
 
+                    rifleCapCount--;
 
-                fireAudio.Play();
+
+
+                    fireAudio.Play();
                 }
                 else
                 {
@@ -205,7 +266,7 @@ public class firing : MonoBehaviour
 
 
             if (Input.GetKeyDown(KeyCode.R))
-                {
+            {
                 if (weapon == 1)
                 {
                     pistAv += pistolCap;
@@ -241,40 +302,24 @@ public class firing : MonoBehaviour
 
 
         }
-
-       // if (Input.GetKeyDown(KeyCode.U) && isAiming == false && Instance.weapon1Equiped == true) { weapon = 1; SetActiveWeapon(); }
-        //if (Input.GetKeyDown(KeyCode.I) && isAiming == false && Instance.weapon2Equiped == true) { weapon = 2; SetActiveWeapon(); }
-        //if (Input.GetKeyDown(KeyCode.O) && isAiming == false && Instance.weapon3Equiped == true) { weapon = 3; SetActiveWeapon(); }
-        //if (Input.GetKeyDown(KeyCode.P) && isAiming == false && pickUpScript.hasRevolver == true && Instance.weapon4Equiped == true) { weapon = 4; SetActiveWeapon(); }
-        if (Input.GetKeyDown(KeyCode.Z) && isAiming == false) { weapon = 5; SetActiveWeapon(); }
-        if (Input.GetKeyDown(KeyCode.X)) { EmptyHand(); }
-
-
-
-
+        fireAudio.Play();
     }
 
-    public void equipweapon()
+    float GetCooldownForWeapon()
     {
-        if(Instance.weapon1Equiped == true)
+        switch (weapon)
         {
-            weapon = 1; SetActiveWeapon();
+            case 1: // Pistol
+                return pistolCooldown;
+            case 2: // Shotgun
+                return shotgunCooldown;
+            case 3: // Rifle
+                return rifleCooldown;
+            case 4: // Revolver
+                return revolverCooldown;
+            default:
+                return 0f; // Default to no cooldown
         }
-        else if (Instance.weapon2Equiped == true)
-        {
-            weapon = 2; SetActiveWeapon();
-        }
-        else if (Instance.weapon3Equiped == true)
-        {
-            weapon = 3; SetActiveWeapon();
-        }
-        else if(Instance.weapon4Equiped == true && pickUpScript.hasRevolver == true)
-        {
-            weapon = 4; SetActiveWeapon();
-        }
-
-
-
     }
     void SetActiveWeapon()
     {
