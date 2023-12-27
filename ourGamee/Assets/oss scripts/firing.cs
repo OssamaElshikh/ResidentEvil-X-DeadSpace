@@ -88,10 +88,10 @@ public class firing : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K) && weapon == 5)
         {
 
-            KnifeDUR--;
-            Debug.Log("Knife Stab!"+ KnifeDUR);
-            KnifeDurabilityU = FindObjectOfType<InventoryManager>();
-            KnifeDurabilityU.UpdateKnifeDurabilityText();
+            //KnifeDUR--;
+            //Debug.Log("Knife Stab!"+ KnifeDUR);
+            //KnifeDurabilityU = FindObjectOfType<InventoryManager>();
+            //KnifeDurabilityU.UpdateKnifeDurabilityText();
 
             anim.SetTrigger("stab");
         }
@@ -154,21 +154,21 @@ public class firing : MonoBehaviour
                 if (weapon == 1 )
                 {
                     pistAv += pistolCap;
-                    anim.SetTrigger("relode");
+                    anim.SetTrigger("reload");
                     relodeAudio.Play();
 
                 }
                 if (weapon == 2)
                 {
                     rifAv += rifleCap;
-                    anim.SetTrigger("relode");
+                    anim.SetTrigger("reload");
                     relodeAudio.Play();
 
                 }
                 if (weapon == 3)
                 {
                     shotAv += shotGunCap;
-                    anim.SetTrigger("relode");
+                    anim.SetTrigger("reload");
                     relodeAudio.Play();
 
                 }
@@ -191,7 +191,7 @@ public class firing : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.O) && isAiming == false) { weapon = 3; SetActiveWeapon(); }
         if (Input.GetKeyDown(KeyCode.P) && isAiming == false && pickUpScript.hasRevolver==true) { weapon = 4; SetActiveWeapon(); }
         if (Input.GetKeyDown(KeyCode.Z) && isAiming == false) { weapon = 5; SetActiveWeapon(); }
-
+        if (Input.GetKeyDown(KeyCode.X)) { EmptyHand(); }
 
 
 
@@ -241,6 +241,14 @@ public class firing : MonoBehaviour
             revolver.SetActive(false);
             knife.SetActive(true);
         }
-
+       
+    }
+    void EmptyHand()
+    {
+        pistol.SetActive(false);
+        riffle.SetActive(false);
+        shotgun.SetActive(false);
+        revolver.SetActive(false);
+        knife.SetActive(false);
     }
 }

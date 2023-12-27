@@ -9,37 +9,73 @@ public class enemyDamage : MonoBehaviour
     public Animator anim;
 
     public bool hasBeenDamaged = false;
+    public bool hasBeenDamaged2 = false;
+
+    private InventoryManager KnifeDurabilityU;
+
+
     public AudioSource dieSound;
 
-    public Animator anim2;
+    public int knifeDurability = 10;
+
+    //public Animator anim2;
     // Start is called before the first frame update
     void Start()
     {
-        
+        knifeDurability = 10;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.T) || Input.GetKeyDown(KeyCode.F))
         {
             hasBeenDamaged = false;
+
+
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            hasBeenDamaged2 = false;
 
         }
         if (!hasBeenDamaged)
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, 3);
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 2);
             foreach (Collider collider in colliders)
             {
                 if (collider.CompareTag("explosion"))
                 {
-                    enemyHealth -= 3;
+                    enemyHealth -= 2;
                     hasBeenDamaged = true;
                     break;
                 }
                 if (collider.CompareTag("whiteExplosion"))
                 {
-                    anim2.SetTrigger("knock");
+                    Knock();
+                    hasBeenDamaged = true;
+                    break;
+                }
+
+
+            }
+        }
+        if (!hasBeenDamaged2)
+        {
+
+            Collider[] colliders2 = Physics.OverlapSphere(transform.position, 1);
+            foreach (Collider collider in colliders2)
+            {
+                if (collider.CompareTag("knife") && knifeDurability > 0)
+                {
+                    Debug.Log("knifeHit");
+                    knifeDurability--;
+                    //Debug.Log("Knife Stab!"+ KnifeDUR);
+                    //KnifeDurabilityU = FindObjectOfType<InventoryManager>();
+                    //KnifeDurabilityU.UpdateKnifeDurabilityText();
+                    enemyHealth -= 2;
+                    hasBeenDamaged2 = true;
+                    break;
                 }
             }
         }
@@ -101,5 +137,10 @@ public class enemyDamage : MonoBehaviour
     {
         enemyHealth -= 3;
         Debug.Log("newbomb");
+    }
+    void Knock()
+    {
+        anim.SetTrigger("knock");
+
     }
 }

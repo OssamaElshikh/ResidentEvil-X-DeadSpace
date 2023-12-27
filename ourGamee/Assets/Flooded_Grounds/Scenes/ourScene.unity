@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.8
   m_CustomReflection: {fileID: 8900000, guid: 3b5eaa969aa89fb45b025e2ff7d7695a, type: 3}
   m_Sun: {fileID: 87893644}
-  m_IndirectSpecularColor: {r: 0.4349039, g: 0.4714324, b: 0.50329775, a: 0.8}
+  m_IndirectSpecularColor: {r: 0.43456554, g: 0.47156525, b: 0.50328773, a: 0.8}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1319,8 +1319,9 @@ MonoBehaviour:
   enemyHealth: 5
   anim: {fileID: 38941112}
   hasBeenDamaged: 0
+  hasBeenDamaged2: 1
   dieSound: {fileID: 391860634}
-  anim2: {fileID: 38941112}
+  knifeDurability: 10
 --- !u!136 &38941114
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -19067,8 +19068,9 @@ MonoBehaviour:
   enemyHealth: 5
   anim: {fileID: 0}
   hasBeenDamaged: 0
+  hasBeenDamaged2: 1
   dieSound: {fileID: 0}
-  anim2: {fileID: 0}
+  knifeDurability: 10
 --- !u!1001 &446384376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29955,8 +29957,9 @@ MonoBehaviour:
   enemyHealth: 5
   anim: {fileID: 723003464}
   hasBeenDamaged: 0
+  hasBeenDamaged2: 1
   dieSound: {fileID: 391860634}
-  anim2: {fileID: 723003464}
+  knifeDurability: 10
 --- !u!1001 &723100428
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31728,8 +31731,9 @@ MonoBehaviour:
   enemyHealth: 5
   anim: {fileID: 726324170}
   hasBeenDamaged: 0
+  hasBeenDamaged2: 1
   dieSound: {fileID: 391860634}
-  anim2: {fileID: 0}
+  knifeDurability: 10
 --- !u!136 &726324172
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -34807,8 +34811,9 @@ MonoBehaviour:
   enemyHealth: 5
   anim: {fileID: 791314419}
   hasBeenDamaged: 0
+  hasBeenDamaged2: 1
   dieSound: {fileID: 391860634}
-  anim2: {fileID: 0}
+  knifeDurability: 10
 --- !u!1001 &794077112
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43362,8 +43367,9 @@ MonoBehaviour:
   enemyHealth: 5
   anim: {fileID: 958518277}
   hasBeenDamaged: 0
+  hasBeenDamaged2: 1
   dieSound: {fileID: 391860634}
-  anim2: {fileID: 0}
+  knifeDurability: 10
 --- !u!1001 &963907829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50645,8 +50651,9 @@ MonoBehaviour:
   enemyHealth: 5
   anim: {fileID: 1159718304}
   hasBeenDamaged: 0
+  hasBeenDamaged2: 1
   dieSound: {fileID: 391860634}
-  anim2: {fileID: 0}
+  knifeDurability: 10
 --- !u!136 &1159718301
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -56168,8 +56175,9 @@ MonoBehaviour:
   enemyHealth: 5
   anim: {fileID: 1262830822}
   hasBeenDamaged: 0
+  hasBeenDamaged2: 1
   dieSound: {fileID: 391860634}
-  anim2: {fileID: 0}
+  knifeDurability: 10
 --- !u!1001 &1265000097
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60756,8 +60764,9 @@ MonoBehaviour:
   enemyHealth: 5
   anim: {fileID: 1381960053}
   hasBeenDamaged: 0
+  hasBeenDamaged2: 1
   dieSound: {fileID: 391860634}
-  anim2: {fileID: 0}
+  knifeDurability: 10
 --- !u!1001 &1382140045
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76613,8 +76622,9 @@ MonoBehaviour:
   enemyHealth: 5
   anim: {fileID: 1626382875}
   hasBeenDamaged: 0
+  hasBeenDamaged2: 1
   dieSound: {fileID: 391860634}
-  anim2: {fileID: 0}
+  knifeDurability: 10
 --- !u!136 &1626382877
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -76813,6 +76823,10 @@ PrefabInstance:
     - target: {fileID: 7981277627280360503, guid: 439aee47e402f4beab70ba3a8af6118b, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981277627280360503, guid: 439aee47e402f4beab70ba3a8af6118b, type: 3}
+      propertyPath: m_TagString
+      value: knife
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -85421,8 +85435,9 @@ MonoBehaviour:
   enemyHealth: 5
   anim: {fileID: 1791420286}
   hasBeenDamaged: 0
+  hasBeenDamaged2: 1
   dieSound: {fileID: 391860634}
-  anim2: {fileID: 0}
+  knifeDurability: 10
 --- !u!136 &1791420288
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -86523,8 +86538,9 @@ MonoBehaviour:
   enemyHealth: 5
   anim: {fileID: 1815069534}
   hasBeenDamaged: 0
+  hasBeenDamaged2: 1
   dieSound: {fileID: 391860634}
-  anim2: {fileID: 1815069534}
+  knifeDurability: 10
 --- !u!1001 &1816973281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92976,8 +92992,9 @@ MonoBehaviour:
   enemyHealth: 5
   anim: {fileID: 1982836921}
   hasBeenDamaged: 0
+  hasBeenDamaged2: 1
   dieSound: {fileID: 391860634}
-  anim2: {fileID: 0}
+  knifeDurability: 10
 --- !u!1 &1983551144
 GameObject:
   m_ObjectHideFlags: 0
@@ -100088,7 +100105,7 @@ MonoBehaviour:
   grenade2: {fileID: 1339690406208628, guid: a31f08c655e974a1294603cdb26572df, type: 3}
   explostion2: {fileID: 578148899698172871, guid: 61f49fd3775e14e099cb24032f490d57, type: 3}
   totalThrows: 100
-  throwCoolDown: 2
+  throwCoolDown: 5
   throwForce: 15
   throwUpwardForce: 0
   hasExploded: 0

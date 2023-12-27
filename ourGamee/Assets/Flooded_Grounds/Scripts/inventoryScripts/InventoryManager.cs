@@ -10,7 +10,8 @@ public class InventoryManager : MonoBehaviour
 
     public TextMeshProUGUI knifeGoldCoinsText;
     public TextMeshProUGUI KnifeDurabilityText;
-    private firing fire; // Reference to the firing script
+    private firing fire;
+    private enemyDamage ed;// Reference to the firing script
 
 
     public static InventoryManager Instance;
@@ -126,7 +127,7 @@ public class InventoryManager : MonoBehaviour
     {
         if (fire != null)
         {
-            KnifeDurabilityText.text = "Knife Durability: " + fire.KnifeDUR.ToString();
+            KnifeDurabilityText.text = "Knife Durability: " + ed.knifeDurability.ToString();
         }
     }
     public void UpdateInvKnifeDurabilityText()
