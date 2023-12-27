@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.8
   m_CustomReflection: {fileID: 8900000, guid: 3b5eaa969aa89fb45b025e2ff7d7695a, type: 3}
   m_Sun: {fileID: 87893644}
-  m_IndirectSpecularColor: {r: 0.43456554, g: 0.47156525, b: 0.50328773, a: 0.8}
+  m_IndirectSpecularColor: {r: 0.4349039, g: 0.4714324, b: 0.50329775, a: 0.8}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -100830,12 +100830,44 @@ PrefabInstance:
       value: 1379
       objectReference: {fileID: 0}
     - target: {fileID: 6879152128942281910, guid: 610bcc6498cd15f47a1f1b83e8a47e30, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6879152128942281910, guid: 610bcc6498cd15f47a1f1b83e8a47e30, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6879152128942281910, guid: 610bcc6498cd15f47a1f1b83e8a47e30, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1400161430}
     - target: {fileID: 6879152128942281910, guid: 610bcc6498cd15f47a1f1b83e8a47e30, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2123500299}
+    - target: {fileID: 6879152128942281910, guid: 610bcc6498cd15f47a1f1b83e8a47e30, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6879152128942281910, guid: 610bcc6498cd15f47a1f1b83e8a47e30, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Equip
+      objectReference: {fileID: 0}
+    - target: {fileID: 6879152128942281910, guid: 610bcc6498cd15f47a1f1b83e8a47e30, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: equipweapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 6879152128942281910, guid: 610bcc6498cd15f47a1f1b83e8a47e30, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: firing, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6879152128942281910, guid: 610bcc6498cd15f47a1f1b83e8a47e30, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6879152128942281910, guid: 610bcc6498cd15f47a1f1b83e8a47e30, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6914333937652669398, guid: 610bcc6498cd15f47a1f1b83e8a47e30, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag

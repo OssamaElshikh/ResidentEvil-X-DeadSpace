@@ -85,9 +85,9 @@ public class InventoryManager : MonoBehaviour
 
     private void Start()
     {
-        fire = FindObjectOfType<firing>();
+        ed = FindObjectOfType<enemyDamage>();
 
-        if (fire != null)
+        if (ed != null)
         {
             UpdateKnifeDurabilityText();
             UpdateKnifeGoldCoinsText();

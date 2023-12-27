@@ -39,6 +39,13 @@ public class firing : MonoBehaviour
     public int shotGunCap = 8;
     public int revolverCap = 6;
 
+
+    public int pistolCapCount = 12;
+    public int rifleCapCount = 30;
+    public int shotGunCapCount = 8;
+    public int revolverCapCount = 6;
+
+
     public int pistAv;
     public int rifAv;
     public int shotAv;
@@ -103,54 +110,103 @@ public class firing : MonoBehaviour
             //pistol
             if (Input.GetKeyDown(KeyCode.K) && weapon == 1)
             {
-                // Create a rotation Quaternion with a 90-degree rotation around the Y-axis
-                Quaternion bulletRotation = Quaternion.Euler(-90f, 0f, 0f);
+                if (pistolCapCount > 0)
+                {
+                    // Create a rotation Quaternion with a 90-degree rotation around the Y-axis
+                    Quaternion bulletRotation = Quaternion.Euler(-90f, 0f, 0f);
 
-                // Instantiate the bullet prefab with the specified rotation
-                var bullet = Instantiate(bulletPrefab, bulletPoint.position, bulletRotation);
+                    // Instantiate the bullet prefab with the specified rotation
+                    var bullet = Instantiate(bulletPrefab, bulletPoint.position, bulletRotation);
 
-                // Set the velocity of the bullet
-                bullet.GetComponent<Rigidbody>().velocity = bulletPoint.forward * bulletSpeed;
+                    // Set the velocity of the bullet
+                    bullet.GetComponent<Rigidbody>().velocity = bulletPoint.forward * bulletSpeed;
+                    
+                    pistolCapCount--;
 
-                fireAudio.Play();
+                    fireAudio.Play();
+                    
+                }
+                else
+                {
+                    Debug.Log("Reload needed");
+                }
             }
 
             //shotgun
             if (Input.GetKeyDown(KeyCode.K) && weapon == 2)
                 {
+                if (shotGunCapCount > 0)
+                {
+
+
                     Quaternion bulletRotation = Quaternion.Euler(0f, -90f, 90f);
 
                     var bullet = Instantiate(shotgunbullet, shotguntrans.position, bulletRotation);
 
                     bullet.GetComponent<Rigidbody>().velocity = shotguntrans.forward * bulletSpeed;
-                fireAudio.Play();
+                    fireAudio.Play();
+                    shotGunCapCount--;
+                }
+                else
+                {
+                    Debug.Log("Reload needed");
+                }
 
             }
             //rifle
             if (Input.GetKey(KeyCode.K) && weapon == 3)
             {
+                if(rifleCapCount> 0)
+                {
+
+                
                 Quaternion bulletRotation = Quaternion.Euler(0f, -90f, 90f);
 
                 var bullet = Instantiate(riffleBullet, riffleTrans.position, bulletRotation);
 
                 bullet.GetComponent<Rigidbody>().velocity = riffleTrans.forward * bulletSpeed;
-                fireAudio.Play();
+                
+                    
+                rifleCapCount--;
 
+
+
+                fireAudio.Play();
+                }
+                else
+                {
+                    Debug.Log("Reload needed");
+                }
             }
             //revolver
             if (Input.GetKeyDown(KeyCode.K) && weapon == 4)
             {
-                Quaternion bulletRotation = Quaternion.Euler(-90f, 0f, 0f);
+                if (revolverCapCount > 0)
+                {
 
-                var bullet = Instantiate(revBullet, revTrans.position, bulletRotation);
 
-                bullet.GetComponent<Rigidbody>().velocity = revTrans.forward * bulletSpeed;
-                fireAudio.Play();
+                    Quaternion bulletRotation = Quaternion.Euler(-90f, 0f, 0f);
 
+                    var bullet = Instantiate(revBullet, revTrans.position, bulletRotation);
+
+                    bullet.GetComponent<Rigidbody>().velocity = revTrans.forward * bulletSpeed;
+
+                    revolverCapCount--;
+
+                    fireAudio.Play();
+
+
+                }
+                else
+                {
+                    Debug.Log("Reload needed");
+                }
             }
+
+
             if (Input.GetKeyDown(KeyCode.R))
                 {
-                if (weapon == 1 )
+                if (weapon == 1)
                 {
                     pistAv += pistolCap;
                     anim.SetTrigger("reload");
@@ -185,13 +241,37 @@ public class firing : MonoBehaviour
 
 
         }
-        if (Input.GetKeyDown(KeyCode.U) && isAiming == false && Instance.weapon1Equiped == true) { weapon = 1; SetActiveWeapon(); }
-        if (Input.GetKeyDown(KeyCode.I) && isAiming == false && Instance.weapon2Equiped == true) { weapon = 2; SetActiveWeapon(); }
-        if (Input.GetKeyDown(KeyCode.O) && isAiming == false && Instance.weapon3Equiped == true) { weapon = 3; SetActiveWeapon(); }
-        if (Input.GetKeyDown(KeyCode.P) && isAiming == false && pickUpScript.hasRevolver == true && Instance.weapon4Equiped == true) { weapon = 4; SetActiveWeapon(); }
+
+       // if (Input.GetKeyDown(KeyCode.U) && isAiming == false && Instance.weapon1Equiped == true) { weapon = 1; SetActiveWeapon(); }
+        //if (Input.GetKeyDown(KeyCode.I) && isAiming == false && Instance.weapon2Equiped == true) { weapon = 2; SetActiveWeapon(); }
+        //if (Input.GetKeyDown(KeyCode.O) && isAiming == false && Instance.weapon3Equiped == true) { weapon = 3; SetActiveWeapon(); }
+        //if (Input.GetKeyDown(KeyCode.P) && isAiming == false && pickUpScript.hasRevolver == true && Instance.weapon4Equiped == true) { weapon = 4; SetActiveWeapon(); }
         if (Input.GetKeyDown(KeyCode.Z) && isAiming == false) { weapon = 5; SetActiveWeapon(); }
         if (Input.GetKeyDown(KeyCode.X)) { EmptyHand(); }
 
+
+
+
+    }
+
+    public void equipweapon()
+    {
+        if(Instance.weapon1Equiped == true)
+        {
+            weapon = 1; SetActiveWeapon();
+        }
+        else if (Instance.weapon2Equiped == true)
+        {
+            weapon = 2; SetActiveWeapon();
+        }
+        else if (Instance.weapon3Equiped == true)
+        {
+            weapon = 3; SetActiveWeapon();
+        }
+        else if(Instance.weapon4Equiped == true && pickUpScript.hasRevolver == true)
+        {
+            weapon = 4; SetActiveWeapon();
+        }
 
 
 
