@@ -24,7 +24,7 @@ public class InventoryManager : MonoBehaviour
 
 
 
-    private int goldCoins = 110;
+    private int goldCoins = 30;
     public TextMeshProUGUI DebugText; // Reference to the Text UI element displaying gold coins
 
     public List<Item> Items = new List<Item>();
