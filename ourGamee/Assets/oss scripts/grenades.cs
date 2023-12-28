@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
+using static UnityEditor.Progress;
 
 public class grenades : MonoBehaviour
 {
@@ -30,27 +32,43 @@ public class grenades : MonoBehaviour
 
 
     bool readyToThrow;
+    InventoryManager inventoryManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        readyToThrow=true;
+        inventoryManager = FindObjectOfType<InventoryManager>();
+        readyToThrow =true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T) && readyToThrow && totalThrows > 0)
+        if (Input.GetKeyDown(KeyCode.T) && readyToThrow && totalThrows > 0 && inventoryManager.haveGrenade == true)
         {
+            Item existingItem = inventoryManager.Items.Find(item => item.itemName.Equals("Hand Grenade "));
             anim.SetTrigger("bomb");
             hasExploded = false;
             Invoke("Throw", 1.2f);
+            inventoryManager.haveGrenade = false;
+            inventoryManager.Items.Remove(existingItem);
+            inventoryManager.sellItems.Remove(existingItem);
+            inventoryManager.ListItems();
+            inventoryManager.listSellItems();
+
         }
-        if (Input.GetKeyDown(KeyCode.F) && readyToThrow && totalThrows > 0)
+        if (Input.GetKeyDown(KeyCode.F) && readyToThrow && totalThrows > 0 && inventoryManager.haveFlashGrenade == true)
         {
+            Item existingItem = inventoryManager.Items.Find(item => item.itemName.Equals("Flash Grenade"));
             anim.SetTrigger("bomb");
             hasExploded = false;
             Invoke("Throw2", 1.2f);
+            inventoryManager.haveFlashGrenade = false;
+            inventoryManager.Items.Remove(existingItem);
+            inventoryManager.sellItems.Remove(existingItem);
+            inventoryManager.ListItems();
+            inventoryManager.listSellItems();
+
         }
 
     }

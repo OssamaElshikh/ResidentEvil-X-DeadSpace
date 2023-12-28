@@ -30,12 +30,16 @@ public class ItemPickup : MonoBehaviour
     }
     void Pickup()
     {
-        InventoryManager.Instance.Add(item);
-        Debug.Log("item count " + item.count);
-        if (item.ItemsCount < 6)
+        //InventoryManager.Instance.Add(item); 
+        bool itemAdded = InventoryManager.Instance.Add(item);
+
+        Debug.Log("item count " + InventoryManager.Instance.Items.Count);
+        if (itemAdded)
         {
+
             Destroy(gameObject);
             pickAudio.Play();
+
         }
         canv.SetActive(false);
     }

@@ -75,11 +75,19 @@ public class InventoryManager : MonoBehaviour
     private bool isPaused = false;
     private CursorLockMode previousLockMode; // To store the previous cursor lock mode
 
+    public bool haveGrenade;
+    public bool haveFlashGrenade;
+
 
     public GameObject ui;
 
     public Item Pist;
-
+    public Item YellowMix;
+    public Item RRMix;
+    public Item GGmix;
+    public Item PistAmmo;
+    public Item shotAmmo;
+    public Item riffAmmo;
     public bool purchasable;
 
 
@@ -283,7 +291,7 @@ public class InventoryManager : MonoBehaviour
 
     }
     //==============================================================================
-    public void Add(Item item)
+    public bool Add(Item item)
     {
         if (Items.Count < 6)
         {
@@ -324,11 +332,14 @@ public class InventoryManager : MonoBehaviour
             }
             ListItems();
             listSellItems();
+            return true;
             //storageListItems(); 
         }
         else
         {
+
             ErrorMessage.gameObject.SetActive(true);
+            return false;
         }
     }
 
@@ -568,7 +579,18 @@ public class InventoryManager : MonoBehaviour
             }
             else if (selectedItem.itemType == Item.ItemType.Grenade)
             {
-                Debug.Log("Equipped grenade: " + selectedItem.itemName);
+                if (selectedItem.itemName == "Hand Grenade ")
+                {
+                    haveGrenade = true;
+                    haveFlashGrenade = false;
+
+                }
+                else
+                {
+                    haveGrenade = false;
+                    haveFlashGrenade = true;
+                }
+                    Debug.Log("Equipped grenade: " + selectedItem.itemName);
                 Text grenadeText = Grenade.GetComponentInChildren<Text>();
                 grenadeText.text = selectedItem.itemName;
             }
@@ -590,7 +612,10 @@ public class InventoryManager : MonoBehaviour
                 string[] healthSplit = healthString.Split(' ');
                 int newHealth = int.Parse(healthSplit[1]) + 2;
                 healthText.text = "Health: " + newHealth.ToString();
+                sellItems.Remove(selectedItem);
+                listSellItems();
                 Remove();
+                
             }
             else if (selectedItem.itemName == "Red Herb")
             {
@@ -599,34 +624,47 @@ public class InventoryManager : MonoBehaviour
                 string[] stasisSplit = stasisString.Split(' ');
                 int newStasis = int.Parse(stasisSplit[1]) + 2;
                 stasisText.text = "Stasis: " + newStasis.ToString();
+                sellItems.Remove(selectedItem);
+                listSellItems();
                 Remove();
+                
             }
-            else if (selectedItem.itemName == "Emerald Green Mix")
+            else if (selectedItem.itemName == "G+GMixture")
             {
                 Text healthText = Health.GetComponentInChildren<Text>();
                 string healthString = healthText.text.ToString();
                 string[] healthSplit = healthString.Split(' ');
                 int newHealth = int.Parse(healthSplit[1]) + 6;
                 healthText.text = "Health: " + newHealth.ToString();
+                sellItems.Remove(selectedItem);
+                listSellItems();
                 Remove();
+                
             }
-            else if (selectedItem.itemName == "Scarlet Red Mix")
+            else if (selectedItem.itemName == "R+RMixture")
             {
                 Text stasisText = Stasis.GetComponentInChildren<Text>();
                 string stasisString = stasisText.text.ToString();
                 string[] stasisSplit = stasisString.Split(' ');
                 int newStasis = int.Parse(stasisSplit[1]) + 6;
                 stasisText.text = "Stasis: " + newStasis.ToString();
+                sellItems.Remove(selectedItem);
+                listSellItems();
                 Remove();
+                
+
             }
-            else if (selectedItem.itemName == "Yellow Mix")
+            else if (selectedItem.itemName == "G+RMixture")
             {
                 Text healthText = Health.GetComponentInChildren<Text>();
                 string healthString = healthText.text.ToString();
                 string[] healthSplit = healthString.Split(' ');
                 int newHealth = int.Parse(healthSplit[1]) + 8;
                 healthText.text = "Health: " + newHealth.ToString();
+                sellItems.Remove(selectedItem);
+                listSellItems();
                 Remove();
+                
             }
         }
     }
@@ -746,52 +784,56 @@ public class InventoryManager : MonoBehaviour
                     Debug.Log("Combined Green Herb with Green Herb");
                     Items.Remove(selectedItem);
                     Items.Remove(combineItem);
-                    Item newItem = new Item { itemName = "Emerald Green Mix", itemType = Item.ItemType.Mixture };
-                    newItem.icon = greenMixIcon;
-                    newItem.count = 1;
-                    newItem.buyPrice = 0;
-                    newItem.sellPrice = 30;
-                    Items.Add(newItem);
+                    sellItems.Remove(selectedItem);
+                    sellItems.Remove(combineItem);
+                    
+                    Items.Add(GGmix);
+                    sellItems.Add(GGmix); 
                     ListItems();
+                    listSellItems();
                 }
                 else if (selectedItem.itemName == "Red Herb" && combineItem.itemName == "Red Herb")
                 {
                     Debug.Log("Combined Red Herb with Red Herb");
                     Items.Remove(selectedItem);
                     Items.Remove(combineItem);
-                    Item newItem = new Item { itemName = "Scarlet Red Mix", itemType = Item.ItemType.Mixture };
-                    newItem.icon = redMixIcon;
-                    newItem.count = 1;
-                    newItem.buyPrice = 0;
-                    newItem.sellPrice = 10;
-                    Items.Add(newItem);
+                    sellItems.Remove(selectedItem);
+                    sellItems.Remove(combineItem);
+                    
+                    Items.Add(RRMix);
+                    sellItems.Add(RRMix);
                     ListItems();
+                    listSellItems();
                 }
                 else if (selectedItem.itemName == "Green Herb" && combineItem.itemName == "Red Herb")
                 {
                     Debug.Log("Combined Green Herb with Red Herb");
                     Items.Remove(selectedItem);
                     Items.Remove(combineItem);
-                    Item newItem = new Item { itemName = "Yellow Mix", itemType = Item.ItemType.Mixture };
-                    newItem.icon = yellowMixIcon;
-                    newItem.count = 1;
-                    newItem.buyPrice = 0;
-                    newItem.sellPrice = 20;
-                    Items.Add(newItem);
+                    sellItems.Remove(selectedItem);
+                    sellItems.Remove(combineItem);
+                    
+                    Items.Add(YellowMix);
+                    sellItems.Add(YellowMix);
                     ListItems();
+                    listSellItems();
                 }
                 else if (selectedItem.itemName == "Red Herb" && combineItem.itemName == "Green Herb")
                 {
                     Debug.Log("Combined Red Herb with Green Herb");
                     Items.Remove(selectedItem);
                     Items.Remove(combineItem);
+                    sellItems.Remove(selectedItem);
+                    sellItems.Remove(combineItem);
                     Item newItem = new Item { itemName = "Yellow Mix", itemType = Item.ItemType.Mixture };
                     newItem.icon = yellowMixIcon;
                     newItem.count = 1;
                     newItem.buyPrice = 0;
                     newItem.sellPrice = 20;
-                    Items.Add(newItem);
+                    Items.Add(YellowMix);
+                    sellItems.Add(YellowMix);
                     ListItems();
+                    listSellItems();
                 }
                 else
                 {
@@ -809,7 +851,7 @@ public class InventoryManager : MonoBehaviour
                     Debug.Log("Combined Normal Gunpowder with Normal Gunpowder");
                     Items.Remove(selectedItem);
                     Items.Remove(combineItem);
-                    Item newItem = new Item { itemName = "pistol Ammo", itemType = Item.ItemType.Ammo };
+                    Item newItem = new Item { itemName = "pistolAmmo", itemType = Item.ItemType.Ammo };
 
                     newItem.icon = pistolAmmo;
                     newItem.count = 1;
@@ -817,11 +859,23 @@ public class InventoryManager : MonoBehaviour
                     newItem.sellPrice = 0;
                     newItem.ammo = 12;
 
-                    if (Items.Contains(newItem))
+
+
+                    bool itemExists = false;
+
+                    // Check if an item with the same itemName exists in the list
+                    foreach (Item existingItem in Items)
                     {
-                        GetExistingItemAndUpdateCount(newItem);
+                        if (existingItem.itemName == newItem.itemName)
+                        {
+                            itemExists = true;
+                            Debug.Log("Item exists in list");
+                            GetExistingItemAndUpdateCount(existingItem);
+                            break; // Exit the loop since we found a matching item
+                        }
                     }
-                    else
+
+                    if (!itemExists)
                     {
                         Items.Add(newItem);
                     }
@@ -840,12 +894,21 @@ public class InventoryManager : MonoBehaviour
                     newItem.buyPrice = 40;
                     newItem.sellPrice = 0;
                     newItem.ammo = 8;
+                    bool itemExists = false;
 
-                    if (Items.Contains(newItem))
+                    // Check if an item with the same itemName exists in the list
+                    foreach (Item existingItem in Items)
                     {
-                        GetExistingItemAndUpdateCount(newItem);
+                        if (existingItem.itemName == newItem.itemName)
+                        {
+                            itemExists = true;
+                            Debug.Log("Item exists in list");
+                            GetExistingItemAndUpdateCount(existingItem);
+                            break; // Exit the loop since we found a matching item
+                        }
                     }
-                    else
+
+                    if (!itemExists)
                     {
                         Items.Add(newItem);
                     }
@@ -865,11 +928,21 @@ public class InventoryManager : MonoBehaviour
                     newItem.sellPrice = 0;
                     newItem.ammo = 8;
 
-                    if (Items.Contains(newItem))
+                    bool itemExists = false;
+
+                    // Check if an item with the same itemName exists in the list
+                    foreach (Item existingItem in Items)
                     {
-                        GetExistingItemAndUpdateCount(newItem);
+                        if (existingItem.itemName == newItem.itemName)
+                        {
+                            itemExists = true;
+                            Debug.Log("Item exists in list");
+                            GetExistingItemAndUpdateCount(existingItem);
+                            break; // Exit the loop since we found a matching item
+                        }
                     }
-                    else
+
+                    if (!itemExists)
                     {
                         Items.Add(newItem);
                     }
@@ -887,11 +960,21 @@ public class InventoryManager : MonoBehaviour
                     newItem.buyPrice = 50;
                     newItem.sellPrice = 0;
                     newItem.ammo = 30;
-                    if (Items.Contains(newItem))
+                    bool itemExists = false;
+
+                    // Check if an item with the same itemName exists in the list
+                    foreach (Item existingItem in Items)
                     {
-                        GetExistingItemAndUpdateCount(newItem);
+                        if (existingItem.itemName == newItem.itemName)
+                        {
+                            itemExists = true;
+                            Debug.Log("Item exists in list");
+                            GetExistingItemAndUpdateCount(existingItem);
+                            break; // Exit the loop since we found a matching item
+                        }
                     }
-                    else
+
+                    if (!itemExists)
                     {
                         Items.Add(newItem);
                     }
@@ -908,7 +991,6 @@ public class InventoryManager : MonoBehaviour
             isCombining = false;
         }
     }
-
     //==============================================================================
 
     public Item GetExistingItemAndUpdateAmmo(Item newItem)
