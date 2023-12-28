@@ -241,7 +241,7 @@ public class InventoryManager : MonoBehaviour
 
     public void OnPurchaseButtonClicked(int itemCost)
     {
-        if (goldCoins >= itemCost)
+        if (goldCoins >= itemCost && Items.Count<6)
         {
             purchasable = true;
             goldCoins -= itemCost;
@@ -258,7 +258,7 @@ public class InventoryManager : MonoBehaviour
         else
         {
             purchasable = false;
-            DebugText.text = "Not enough gold coins!";
+            DebugText.text = "Not enough gold coins! \\ no space";
             Debug.Log("not enough coins !!");
 
         }
@@ -353,7 +353,7 @@ public class InventoryManager : MonoBehaviour
     {
         if (selectedItem != null && selectedObject != null)
         {
-            if (selectedItem.itemType == Item.ItemType.Weapon && selectedItem.itemName == "pisol")
+            if (selectedItem.itemType == Item.ItemType.Weapon && selectedItem.itemName == "pistol")
             {
                 ErrorMessage.gameObject.SetActive(true);
             }
@@ -372,7 +372,7 @@ public class InventoryManager : MonoBehaviour
 
     public void MoveToInventory()
     {
-        if (Items.Count > 6)
+        if (Items.Count >= 6)
         {
             ErrorMessage.gameObject.SetActive(true);
         }
