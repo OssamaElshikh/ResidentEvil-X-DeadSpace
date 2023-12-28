@@ -81,7 +81,7 @@ public class InventoryManager : MonoBehaviour
     public bool purchasable;
 
 
-     
+
 
     private void Start()
     {
@@ -161,7 +161,7 @@ public class InventoryManager : MonoBehaviour
                 UpdateKnifeDurabilityText();
                 UpdateInvKnifeDurabilityText();
                 UpdateKnifeGoldCoinsText();
-                UpdateGoldCoinsInvText() ;
+                UpdateGoldCoinsInvText();
                 UpdateGoldCoinsStoreText();
                 UpdateStotageGoldCoinsText();
                 UpdateInvStotageGoldCoinsText();
@@ -239,7 +239,7 @@ public class InventoryManager : MonoBehaviour
             UpdatesellGoldCoinsTxt();
 
             DebugText.text = "Purchase successful!";
-            Debug.Log("purchased!!"); 
+            Debug.Log("purchased!!");
         }
         else
         {
@@ -265,35 +265,49 @@ public class InventoryManager : MonoBehaviour
     }
     public void ActivateInventory()
     {
-        
-        
-            // Toggle the inventory canvas state
-            
 
-            // Set the Inventory Canvas based on the state
-            inventoryCanvas.SetActive(true);
 
-        
+        // Toggle the inventory canvas state
+
+
+        // Set the Inventory Canvas based on the state
+        inventoryCanvas.SetActive(true);
+
+
 
     }
     //==============================================================================
     public void Add(Item item)
     {
-        if (Items.Count < 6 )
+        if (Items.Count < 6)
         {
-            
+
             //Debug.Log("items count " + item.ItemsCount);
 
-            if (item.itemName=="shotgunAmmo"|| item.itemName == "riffleAmmo"|| item.itemName == "pistolAmmo" || item.itemName == "revolverAmmo")
+            if (item.itemName == "shotgunAmmo" || item.itemName == "riffleAmmo" || item.itemName == "pistolAmmo" || item.itemName == "revolverAmmo")
             {
                 GetExistingItemAndUpdateCount(item);
-                
+
 
             }
+
+            else if (item.itemName == "Shotgun" && item.ammo < 8)
+            {
+                item.ammo = 8;
+                Items.Add(item);
+                sellItems.Add(item);
+            }
+            else if (item.itemName == "Riffle" && item.ammo < 30)
+            {
+                item.ammo = 30;
+                Items.Add(item);
+                sellItems.Add(item);
+            }
+
             else
             {
                 Items.Add(item);
-                sellItems.Add(item);    
+                sellItems.Add(item);
                 Debug.Log("added to sellitems" + item.name);
             }
             ListItems();
@@ -310,7 +324,7 @@ public class InventoryManager : MonoBehaviour
     {
         if (selectedItem != null && selectedObject != null)
         {
-            if (selectedItem.itemType == Item.ItemType.Weapon && selectedItem.itemName== "pisol")
+            if (selectedItem.itemType == Item.ItemType.Weapon && selectedItem.itemName == "pisol")
             {
                 ErrorMessage.gameObject.SetActive(true);
             }
@@ -338,7 +352,7 @@ public class InventoryManager : MonoBehaviour
             Add(selectedItem);
 
         }
-       
+
     }
 
     //==============================================================================
@@ -397,7 +411,7 @@ public class InventoryManager : MonoBehaviour
                 listSellItems();
                 ListItems();
             }
-            else if(selectedItem.itemName == "FlashGrenade")
+            else if (selectedItem.itemName == "FlashGrenade")
             {
                 goldCoins += selectedItem.sellPrice;
                 sellItems.Remove(selectedItem);
@@ -407,7 +421,7 @@ public class InventoryManager : MonoBehaviour
                 listSellItems();
                 ListItems();
             }
-            else if(selectedItem.itemName == "NormalGunPowder")
+            else if (selectedItem.itemName == "NormalGunPowder")
             {
                 goldCoins += selectedItem.sellPrice;
                 sellItems.Remove(selectedItem);
@@ -427,7 +441,7 @@ public class InventoryManager : MonoBehaviour
                 listSellItems();
                 ListItems();
             }
-            else if(selectedItem.itemName == "G+GMixture")
+            else if (selectedItem.itemName == "G+GMixture")
             {
                 goldCoins += selectedItem.sellPrice;
                 sellItems.Remove(selectedItem);
@@ -438,7 +452,7 @@ public class InventoryManager : MonoBehaviour
                 ListItems();
 
             }
-            else if(selectedItem.itemName == "G+RMixture")
+            else if (selectedItem.itemName == "G+RMixture")
             {
                 goldCoins += selectedItem.sellPrice;
                 sellItems.Remove(selectedItem);
@@ -448,7 +462,7 @@ public class InventoryManager : MonoBehaviour
                 listSellItems();
                 ListItems();
             }
-            else if(selectedItem.itemName == "R+RMixture")
+            else if (selectedItem.itemName == "R+RMixture")
             {
                 goldCoins += selectedItem.sellPrice;
                 sellItems.Remove(selectedItem);
@@ -616,7 +630,7 @@ public class InventoryManager : MonoBehaviour
     public void ListItems()
     {
         foreach (Transform item in ItemContent)
-        {   
+        {
             Destroy(item.gameObject);
             Debug.Log("item destroyed");
         }
@@ -632,10 +646,15 @@ public class InventoryManager : MonoBehaviour
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
             var button = obj.GetComponent<Button>();
 
-            itemName.text = item.itemName + " x" + item.count;
+            itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
 
             if (item.itemName == "Pistol" || item.itemName == "Shotgun" || item.itemName == "Riffle" || item.itemName == "Revolver")
+            {
+                itemName.text += " : ";
+                itemName.text += item.ammo;
+            }
+            else if (item.itemType == Item.ItemType.Ammo)
             {
                 itemName.text += " : ";
                 itemName.text += item.ammo;
@@ -657,7 +676,7 @@ public class InventoryManager : MonoBehaviour
         {
             if (sellitem.sellable == true)
             {
-               
+
 
                 GameObject obj = Instantiate(sellItem, sellItemContent);
 
@@ -667,7 +686,7 @@ public class InventoryManager : MonoBehaviour
 
                 var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
                 var button = obj.GetComponent<Button>();
-               
+
 
                 itemName.text = sellitem.itemName + " x" + sellitem.count;
                 itemIcon.sprite = sellitem.icon;
@@ -788,7 +807,7 @@ public class InventoryManager : MonoBehaviour
 
                     if (Items.Contains(newItem))
                     {
-                        GetExistingItemAndUpdateAmmo(newItem);
+                        GetExistingItemAndUpdateCount(newItem);
                     }
                     else
                     {
@@ -812,7 +831,7 @@ public class InventoryManager : MonoBehaviour
 
                     if (Items.Contains(newItem))
                     {
-                        GetExistingItemAndUpdateAmmo(newItem);
+                        GetExistingItemAndUpdateCount(newItem);
                     }
                     else
                     {
@@ -836,7 +855,7 @@ public class InventoryManager : MonoBehaviour
 
                     if (Items.Contains(newItem))
                     {
-                        GetExistingItemAndUpdateAmmo(newItem);
+                        GetExistingItemAndUpdateCount(newItem);
                     }
                     else
                     {
@@ -858,7 +877,7 @@ public class InventoryManager : MonoBehaviour
                     newItem.ammo = 30;
                     if (Items.Contains(newItem))
                     {
-                        GetExistingItemAndUpdateAmmo(newItem);
+                        GetExistingItemAndUpdateCount(newItem);
                     }
                     else
                     {
@@ -890,13 +909,13 @@ public class InventoryManager : MonoBehaviour
             // Item already exists, update its properties (e.g., ammo)
             existingItem.ammo += newItem.ammo; // Adjust as needed
         }
-        
+
 
         return existingItem;
     }
     //==============================================================================
 
-   
+
 
 
     public Item GetExistingItemAndUpdateCount(Item newItem)
@@ -910,29 +929,41 @@ public class InventoryManager : MonoBehaviour
             Debug.Log("Count before " + existingItem.count);
             if (existingItem.itemName == "shotgunAmmo")
             {
-                existingItem.count += 8;
+                existingItem.ammo += 8;
             }
-            else if(existingItem.itemName == "riffleAmmo")
+            else if (existingItem.itemName == "riffleAmmo")
             {
-                existingItem.count += 30;
+                existingItem.ammo += 30;
             }
-            else if(existingItem.itemName == "pistolAmmo")
+            else if (existingItem.itemName == "pistolAmmo")
             {
-                existingItem.count += 12;
+                existingItem.ammo += 12;
             }
             else if (existingItem.itemName == "revolverAmmo")
             {
-                existingItem.count += 6;
+                existingItem.ammo += 6;
             }
-                
+
             Debug.Log("count after " + existingItem.count);
         }
         else
         {
 
+            if (newItem.itemName == "shotgunAmmo" && newItem.ammo < 8)
+            {
+                newItem.ammo = 8;
+
+
+            }
+            if (newItem.itemName == "riffleAmmo" && newItem.ammo < 8)
+            {
+                newItem.ammo = 30;
+
+
+            }
             Items.Add(newItem);
             Debug.Log("ammo added");
-            
+
         }
 
         return existingItem;

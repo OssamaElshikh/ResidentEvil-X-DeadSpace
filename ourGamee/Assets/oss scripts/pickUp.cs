@@ -26,7 +26,7 @@ public class pickUpScript : MonoBehaviour
     public bool hasHeavyGunpoder = false;
 
 
-
+    public TMPro.TMP_Text healthText;
     //door animators:
     public Animator playerAnim;
     public Animator revD;
@@ -91,6 +91,10 @@ public class pickUpScript : MonoBehaviour
     public bool bool30;
     public GameObject treasure;
 
+    public GameObject coins0, coins1, coins2, coins3, coins4, coins5, coins6, coins7
+        , coins8, coins9, coins10, coins11, coins12, coins13;
+
+
     public bool dead =false;
 
     private GameObject currentObject;
@@ -106,6 +110,9 @@ public class pickUpScript : MonoBehaviour
     public GameObject normalGunpowder;
     public GameObject heavyGunPowder;
 
+    public bool b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13;
+
+
     public AudioSource dieAudio;
     public bool dieAudioBool = true;
     public AudioSource openDoorAudio;
@@ -113,7 +120,8 @@ public class pickUpScript : MonoBehaviour
 
     private void Update()
     {
-
+        
+        healthText.SetText("Player Health: "+ playerHealth);
         //cheat
         if (Input.GetKeyDown(KeyCode.B))
         {
@@ -134,64 +142,106 @@ public class pickUpScript : MonoBehaviour
 
         // check the nearest object to pickup
 
-        /* if (bool1 == true && Vector3.Distance(transform.position, revolver.transform.position)<2  )
+         if (b0 == true && Vector3.Distance(transform.position, coins0.transform.position)<2  )
          {
              ui.SetActive(true);
-             currentObject = revolver;
+             currentObject = coins0;
              candestroy = true;
 
          }
+        if (b1 == true && Vector3.Distance(transform.position, coins1.transform.position) < 2)
+        {
+            ui.SetActive(true);
+            currentObject = coins1;
+            candestroy = true;
 
-         if (bool9 == true && Vector3.Distance(transform.position, gold1.transform.position) < 2)
-         {
-             ui.SetActive(true);
-             currentObject = gold1;
-             candestroy = true;
+        }
+        if (b2 == true && Vector3.Distance(transform.position, coins2.transform.position) < 2)
+        {
+            ui.SetActive(true);
+            currentObject = coins2;
+            candestroy = true;
 
-         }
-         if (bool10 == true && Vector3.Distance(transform.position, gold2.transform.position) < 2)
-         {
-             ui.SetActive(true);
-             currentObject = gold2;
-             candestroy = true;
+        }
+        if (b3 == true && Vector3.Distance(transform.position, coins3.transform.position) < 2)
+        {
+            ui.SetActive(true);
+            currentObject = coins3;
+            candestroy = true;
 
-         }
-         if (bool11 == true && Vector3.Distance(transform.position, gold3.transform.position) < 2)
-         {
-             ui.SetActive(true);
-             currentObject = gold3;
-             candestroy = true;
+        }
+        if (b4 == true && Vector3.Distance(transform.position, coins4.transform.position) < 2)
+        {
+            ui.SetActive(true);
+            currentObject = coins4;
+            candestroy = true;
 
-         }
-         if (bool12 == true && Vector3.Distance(transform.position, gold4.transform.position) < 2)
-         {
-             ui.SetActive(true);
-             currentObject = gold4;
-             candestroy = true;
+        }
+        if (b5 == true && Vector3.Distance(transform.position, coins5.transform.position) < 2)
+        {
+            ui.SetActive(true);
+            currentObject = coins5;
+            candestroy = true;
 
-         }
-         if (bool13 == true && Vector3.Distance(transform.position, gold5.transform.position) < 2)
-         {
-             ui.SetActive(true);
-             currentObject = gold5;
-             candestroy = true;
+        }
+        if (b6 == true && Vector3.Distance(transform.position, coins6.transform.position) < 2)
+        {
+            ui.SetActive(true);
+            currentObject = coins6;
+            candestroy = true;
 
-         }
-         if (bool14 == true && Vector3.Distance(transform.position, gold6.transform.position) < 2)
-         {
-             ui.SetActive(true);
-             currentObject = gold6;
-             candestroy = true;
+        }
+        if (b7 == true && Vector3.Distance(transform.position, coins7.transform.position) < 2)
+        {
+            ui.SetActive(true);
+            currentObject = coins7;
+            candestroy = true;
 
-         }
-         if (bool15 == true && Vector3.Distance(transform.position, gold7.transform.position) < 2)
-         {
-             ui.SetActive(true);
-             currentObject = gold7;
-             candestroy = true;
+        }
+        if (b8 == true && Vector3.Distance(transform.position, coins8.transform.position) < 2)
+        {
+            ui.SetActive(true);
+            currentObject = coins8;
+            candestroy = true;
 
-         }
-        */
+        }
+        if (b9 == true && Vector3.Distance(transform.position, coins9.transform.position) < 2)
+        {
+            ui.SetActive(true);
+            currentObject = coins9;
+            candestroy = true;
+
+        }
+        if (b10 == true && Vector3.Distance(transform.position, coins10.transform.position) < 2)
+        {
+            ui.SetActive(true);
+            currentObject = coins10;
+            candestroy = true;
+
+        }
+        if (b11 == true && Vector3.Distance(transform.position, coins11.transform.position) < 2)
+        {
+            ui.SetActive(true);
+            currentObject = coins11;
+            candestroy = true;
+
+        }
+        if (b12 == true && Vector3.Distance(transform.position, coins12.transform.position) < 2)
+        {
+            ui.SetActive(true);
+            currentObject = coins12;
+            candestroy = true;
+
+        }
+        if (b13 == true && Vector3.Distance(transform.position, coins13.transform.position) < 2)
+        {
+            ui.SetActive(true);
+            currentObject = coins13;
+            candestroy = true;
+
+        }
+
+
         if (bool16 == true && Vector3.Distance(transform.position, revCard.transform.position) < 2)
         {
             ui.SetActive(true);
@@ -321,6 +371,21 @@ public class pickUpScript : MonoBehaviour
     public void PickUPs()
     {
         if (currentObject == revolver) { bool1 = false; hasRevolver = true; }
+        if (currentObject == coins0) { b0 = false;  }
+        if (currentObject == coins1) { b1 = false;  }
+        if (currentObject == coins2) { b2 = false;  }
+        if (currentObject == coins3) { b3 = false; }
+        if (currentObject == coins4) { b4 = false;  }
+        if (currentObject == coins5) { b5 = false; }
+        if (currentObject == coins6) { b6 = false;  }
+        if (currentObject == coins7) { b7 = false;  }
+        if (currentObject == coins8) { b8 = false;  }
+        if (currentObject == coins9) { b9 = false;  }
+        if (currentObject == coins10) { b10 = false;  }
+        if (currentObject == coins11) { b11 = false;  }
+        if (currentObject == coins12) { b12 = false;  }
+        if (currentObject == coins13) { b13 = false;  }
+
         /*
         if (currentObject == gold1) { bool9 = false; goldcount += 10; }
         if (currentObject == gold2) { bool10 = false; goldcount += 10; }
@@ -332,7 +397,7 @@ public class pickUpScript : MonoBehaviour
         */
         if (currentObject == revCard) { bool16 = false; hasRevCard = true; }
 
-        if (currentObject == spadeKey) { bool18 = false; hasSpadeKey = true; Debug.Log(hasSpadeKey); }
+        if (currentObject == spadeKey) { bool18 = false; hasSpadeKey = true;  }
         if (currentObject == diamondKey) { bool20 = false; hasDiamondKey = true; }
 
         if (currentObject == emerald) { bool23 = false; hasEmerald = true; }

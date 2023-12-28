@@ -125,10 +125,121 @@ public class firing : MonoBehaviour
             anim.SetTrigger("stab");
         }
 
-            //firing
-          
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (weapon == 1)
+            {
+                Item foundItem = Instance.Items.Find(item => item.itemName == "pistolAmmo");
+                Item found = Instance.Items.Find(item => item.itemName == "Pistol");
+                if (foundItem == null)
+                {
 
-       // if (Input.GetKeyDown(KeyCode.U) && isAiming == false && Instance.weapon1Equiped == true) { weapon = 1; SetActiveWeapon(); }
+                    Debug.Log("No Amoo in Inventory");
+                }
+                else
+                {
+                    Debug.Log("there is pistolAmmo");
+                    while (found.ammo < 12 && foundItem.ItemsCount > 0)
+                    {
+
+                        foundItem.ammo--;
+                        found.ammo++;
+                        Instance.ListItems();
+                        if (foundItem.ammo == 0)
+                        {
+                            Instance.Items.Remove(foundItem);
+                            Instance.ListItems();
+                        }
+
+                    }
+                    anim.SetTrigger("reload");
+                    relodeAudio.Play();
+                }
+            }
+
+
+
+
+
+
+            if (weapon == 2)
+            {
+                Item foundItem = Instance.Items.Find(item => item.itemName == "shotgunAmmo");
+                Item found = Instance.Items.Find(item => item.itemName == "Shotgun");
+                if (foundItem == null)
+                {
+
+                    Debug.Log("No Amoo in Inventory");
+                }
+                else
+                {
+                    Debug.Log("there is shotgunAmmo");
+                    Debug.Log(shotGunCapCount + foundItem.count);
+                    while (found.ammo < 8 && foundItem.ammo > 0)
+                    {
+                        //Debug.Log("Inside While");
+                        foundItem.ammo--;
+                        found.ammo++;
+                        Instance.ListItems();
+                        if (foundItem.ammo == 0)
+                        {
+                            Instance.Items.Remove(foundItem);
+                            Instance.ListItems();
+                        }
+
+                    }
+                    anim.SetTrigger("reload");
+                    relodeAudio.Play();
+                }
+
+
+
+            }
+            if (weapon == 3)
+            {
+                Item foundItem = Instance.Items.Find(item => item.itemName == "shotgunAmmo");
+                if (foundItem == null)
+                {
+
+                    Debug.Log("No Amoo in Inventory");
+                }
+                else
+                {
+                    Debug.Log("there is riffle ammo");
+                    while (shotGunCapCount < 8 && foundItem.ItemsCount > 0)
+                    {
+                        anim.SetTrigger("reload");
+                        relodeAudio.Play();
+                        foundItem.ItemsCount--;
+                        shotGunCapCount++;
+                        Instance.ListItems();
+                        if (foundItem.ItemsCount == 0)
+                        {
+                            Instance.Items.Remove(foundItem);
+                            Instance.ListItems();
+                        }
+
+                    }
+                    anim.SetTrigger("reload");
+                    relodeAudio.Play();
+                }
+
+            }
+            if (weapon == 4)
+            {
+                revAv += revolverCap;
+                anim.SetTrigger("relode");
+                relodeAudio.Play();
+
+            }
+
+
+        }
+
+        //firing
+
+
+        // if (Input.GetKeyDown(KeyCode.U) && isAiming == false && Instance.weapon1Equiped == true) { weapon = 1; SetActiveWeapon(); }
         //if (Input.GetKeyDown(KeyCode.I) && isAiming == false && Instance.weapon2Equiped == true) { weapon = 2; SetActiveWeapon(); }
         //if (Input.GetKeyDown(KeyCode.O) && isAiming == false && Instance.weapon3Equiped == true) { weapon = 3; SetActiveWeapon(); }
         //if (Input.GetKeyDown(KeyCode.P) && isAiming == false && pickUpScript.hasRevolver == true && Instance.weapon4Equiped == true) { weapon = 4; SetActiveWeapon(); }
@@ -171,8 +282,10 @@ public class firing : MonoBehaviour
             //pistol
             if (Input.GetKeyDown(KeyCode.K) && weapon == 1)
             {
-                if (pistolCapCount > 0)
+                Item foundItem = Instance.Items.Find(item => item.itemName == "Pistol");
+                if (foundItem.ammo > 0)
                 {
+
                     // Create a rotation Quaternion with a 90-degree rotation around the Y-axis
                     Quaternion bulletRotation = Quaternion.Euler(-90f, 0f, 0f);
 
@@ -182,7 +295,8 @@ public class firing : MonoBehaviour
                     // Set the velocity of the bullet
                     bullet.GetComponent<Rigidbody>().velocity = bulletPoint.forward * bulletSpeed;
 
-                    pistolCapCount--;
+                    foundItem.ammo--;
+                    Instance.ListItems();
 
                     fireAudio.Play();
 
@@ -196,7 +310,8 @@ public class firing : MonoBehaviour
             //shotgun
             if (Input.GetKeyDown(KeyCode.K) && weapon == 2)
             {
-                if (shotGunCapCount > 0)
+                Item foundItem = Instance.Items.Find(item => item.itemName == "Shotgun");
+                if (foundItem.ammo > 0)
                 {
 
 
@@ -206,7 +321,9 @@ public class firing : MonoBehaviour
 
                     bullet.GetComponent<Rigidbody>().velocity = shotguntrans.forward * bulletSpeed;
                     fireAudio.Play();
-                    shotGunCapCount--;
+                    foundItem.ammo--;
+                    Instance.ListItems();
+                    
                 }
                 else
                 {
@@ -217,7 +334,8 @@ public class firing : MonoBehaviour
             //rifle
             if (Input.GetKey(KeyCode.K) && weapon == 3)
             {
-                if (rifleCapCount > 0)
+                Item foundItem = Instance.Items.Find(item => item.itemName == "Riffle");
+                if (foundItem.ammo > 0)
                 {
 
 
@@ -228,7 +346,8 @@ public class firing : MonoBehaviour
                     bullet.GetComponent<Rigidbody>().velocity = riffleTrans.forward * bulletSpeed;
 
 
-                    rifleCapCount--;
+                    foundItem.ammo--;
+                    Instance.ListItems();
 
 
 
@@ -242,7 +361,9 @@ public class firing : MonoBehaviour
             //revolver
             if (Input.GetKeyDown(KeyCode.K) && weapon == 4)
             {
-                if (revolverCapCount > 0)
+                Item foundItem = Instance.Items.Find(item => item.itemName == "Revolver");
+
+                if (foundItem.ammo > 0)
                 {
 
 
@@ -252,7 +373,7 @@ public class firing : MonoBehaviour
 
                     bullet.GetComponent<Rigidbody>().velocity = revTrans.forward * bulletSpeed;
 
-                    revolverCapCount--;
+                    foundItem.ammo--;
 
                     fireAudio.Play();
 
@@ -265,44 +386,10 @@ public class firing : MonoBehaviour
             }
 
 
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                if (weapon == 1)
-                {
-                    pistAv += pistolCap;
-                    anim.SetTrigger("reload");
-                    relodeAudio.Play();
-
-                }
-                if (weapon == 2)
-                {
-                    rifAv += rifleCap;
-                    anim.SetTrigger("reload");
-                    relodeAudio.Play();
-
-                }
-                if (weapon == 3)
-                {
-                    shotAv += shotGunCap;
-                    anim.SetTrigger("reload");
-                    relodeAudio.Play();
-
-                }
-                if (weapon == 4)
-                {
-                    revAv += revolverCap;
-                    anim.SetTrigger("relode");
-                    relodeAudio.Play();
-
-                }
-
-
-            }
-
 
 
         }
-        fireAudio.Play();
+        
     }
 
     float GetCooldownForWeapon()
@@ -374,5 +461,6 @@ public class firing : MonoBehaviour
         shotgun.SetActive(false);
         revolver.SetActive(false);
         knife.SetActive(false);
+        weapon = 0;
     }
 }

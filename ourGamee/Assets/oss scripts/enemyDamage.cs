@@ -13,15 +13,16 @@ public class enemyDamage : MonoBehaviour
 
     private InventoryManager KnifeDurabilityU;
 
-
+    public GameObject coins;
     public AudioSource dieSound;
-
+    public bool playA;
     public int knifeDurability = 10;
 
     //public Animator anim2;
     // Start is called before the first frame update
     void Start()
     {
+        
         KnifeDurabilityU = FindObjectOfType<InventoryManager>();
 
         knifeDurability = 10;
@@ -84,8 +85,8 @@ public class enemyDamage : MonoBehaviour
         if (enemyHealth <= 0)
         {
             anim.SetTrigger("die");
-            dieSound.Play();
-
+            coins.SetActive(true);
+            PlaySound();
         }
     }
 
@@ -144,5 +145,13 @@ public class enemyDamage : MonoBehaviour
     {
         anim.SetTrigger("knock");
 
+    }
+    void PlaySound()
+    {
+        if (!playA)
+        {
+            dieSound.Play();
+            playA = true;
+        }
     }
 }
