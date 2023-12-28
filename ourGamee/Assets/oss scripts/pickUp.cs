@@ -118,6 +118,10 @@ public class pickUpScript : MonoBehaviour
     public AudioSource openDoorAudio;
     public AudioSource hitAudio;
 
+    public InventoryManager InventoryManager;
+
+
+
     private void Update()
     {
         
@@ -370,21 +374,120 @@ public class pickUpScript : MonoBehaviour
     //performed when pressing pickup key
     public void PickUPs()
     {
+
         if (currentObject == revolver) { bool1 = false; hasRevolver = true; }
-        if (currentObject == coins0) { b0 = false;  }
-        if (currentObject == coins1) { b1 = false;  }
-        if (currentObject == coins2) { b2 = false;  }
-        if (currentObject == coins3) { b3 = false; }
-        if (currentObject == coins4) { b4 = false;  }
-        if (currentObject == coins5) { b5 = false; }
-        if (currentObject == coins6) { b6 = false;  }
-        if (currentObject == coins7) { b7 = false;  }
-        if (currentObject == coins8) { b8 = false;  }
-        if (currentObject == coins9) { b9 = false;  }
-        if (currentObject == coins10) { b10 = false;  }
-        if (currentObject == coins11) { b11 = false;  }
-        if (currentObject == coins12) { b12 = false;  }
-        if (currentObject == coins13) { b13 = false;  }
+        if (currentObject == coins0) { b0 = false; InventoryManager.goldCoins += 10; InventoryManager.UpdateKnifeGoldCoinsText();
+            InventoryManager.UpdateGoldCoinsInvText();
+            InventoryManager.UpdateGoldCoinsStoreText();
+            InventoryManager.UpdateInvKnifeDurabilityText();
+            InventoryManager.UpdateStotageGoldCoinsText();
+            InventoryManager.UpdateInvStotageGoldCoinsText();
+            InventoryManager.UpdatesellGoldCoinsTxt();
+        }
+        if (currentObject == coins1) { b1 = false; InventoryManager.goldCoins += 10; InventoryManager.UpdateKnifeGoldCoinsText();
+            InventoryManager.UpdateGoldCoinsInvText();
+            InventoryManager.UpdateGoldCoinsStoreText();
+            InventoryManager.UpdateInvKnifeDurabilityText();
+            InventoryManager.UpdateStotageGoldCoinsText();
+            InventoryManager.UpdateInvStotageGoldCoinsText();
+            InventoryManager.UpdatesellGoldCoinsTxt();
+        }
+        if (currentObject == coins2) { b2 = false; InventoryManager.goldCoins += 10; InventoryManager.UpdateKnifeGoldCoinsText();
+            InventoryManager.UpdateGoldCoinsInvText();
+            InventoryManager.UpdateGoldCoinsStoreText();
+            InventoryManager.UpdateInvKnifeDurabilityText();
+            InventoryManager.UpdateStotageGoldCoinsText();
+            InventoryManager.UpdateInvStotageGoldCoinsText();
+            InventoryManager.UpdatesellGoldCoinsTxt();
+        }
+        if (currentObject == coins3) { b3 = false; InventoryManager.goldCoins += 10; InventoryManager.UpdateKnifeGoldCoinsText();
+            InventoryManager.UpdateGoldCoinsInvText();
+            InventoryManager.UpdateGoldCoinsStoreText();
+            InventoryManager.UpdateInvKnifeDurabilityText();
+            InventoryManager.UpdateStotageGoldCoinsText();
+            InventoryManager.UpdateInvStotageGoldCoinsText();
+            InventoryManager.UpdatesellGoldCoinsTxt();
+        }
+        if (currentObject == coins4) { b4 = false; InventoryManager.goldCoins += 10; InventoryManager.UpdateKnifeGoldCoinsText();
+            InventoryManager.UpdateGoldCoinsInvText();
+            InventoryManager.UpdateGoldCoinsStoreText();
+            InventoryManager.UpdateInvKnifeDurabilityText();
+            InventoryManager.UpdateStotageGoldCoinsText();
+            InventoryManager.UpdateInvStotageGoldCoinsText();
+            InventoryManager.UpdatesellGoldCoinsTxt();
+        }
+        if (currentObject == coins5) { b5 = false; InventoryManager.goldCoins += 10; InventoryManager.UpdateKnifeGoldCoinsText();
+            InventoryManager.UpdateGoldCoinsInvText();
+            InventoryManager.UpdateGoldCoinsStoreText();
+            InventoryManager.UpdateInvKnifeDurabilityText();
+            InventoryManager.UpdateStotageGoldCoinsText();
+            InventoryManager.UpdateInvStotageGoldCoinsText();
+            InventoryManager.UpdatesellGoldCoinsTxt();
+        }
+        if (currentObject == coins6) { b6 = false; InventoryManager.goldCoins += 10; InventoryManager.UpdateKnifeGoldCoinsText();
+            InventoryManager.UpdateGoldCoinsInvText();
+            InventoryManager.UpdateGoldCoinsStoreText();
+            InventoryManager.UpdateInvKnifeDurabilityText();
+            InventoryManager.UpdateStotageGoldCoinsText();
+            InventoryManager.UpdateInvStotageGoldCoinsText();
+            InventoryManager.UpdatesellGoldCoinsTxt();
+        }
+        if (currentObject == coins7) { b7 = false; InventoryManager.goldCoins += 10; InventoryManager.UpdateKnifeGoldCoinsText();
+            InventoryManager.UpdateGoldCoinsInvText();
+            InventoryManager.UpdateGoldCoinsStoreText();
+            InventoryManager.UpdateInvKnifeDurabilityText();
+            InventoryManager.UpdateStotageGoldCoinsText();
+            InventoryManager.UpdateInvStotageGoldCoinsText();
+            InventoryManager.UpdatesellGoldCoinsTxt();
+        }
+        if (currentObject == coins8) { b8 = false; InventoryManager.goldCoins += 10; InventoryManager.UpdateKnifeGoldCoinsText();
+            InventoryManager.UpdateGoldCoinsInvText();
+            InventoryManager.UpdateGoldCoinsStoreText();
+            InventoryManager.UpdateInvKnifeDurabilityText();
+            InventoryManager.UpdateStotageGoldCoinsText();
+            InventoryManager.UpdateInvStotageGoldCoinsText();
+            InventoryManager.UpdatesellGoldCoinsTxt();
+        }
+        if (currentObject == coins9) { b9 = false; InventoryManager.goldCoins += 10; InventoryManager.UpdateKnifeGoldCoinsText();
+            InventoryManager.UpdateGoldCoinsInvText();
+            InventoryManager.UpdateGoldCoinsStoreText();
+            InventoryManager.UpdateInvKnifeDurabilityText();
+            InventoryManager.UpdateStotageGoldCoinsText();
+            InventoryManager.UpdateInvStotageGoldCoinsText();
+            InventoryManager.UpdatesellGoldCoinsTxt();
+        }
+        if (currentObject == coins10) { b10 = false; InventoryManager.goldCoins += 10; InventoryManager.UpdateKnifeGoldCoinsText();
+            InventoryManager.UpdateGoldCoinsInvText();
+            InventoryManager.UpdateGoldCoinsStoreText();
+            InventoryManager.UpdateInvKnifeDurabilityText();
+            InventoryManager.UpdateStotageGoldCoinsText();
+            InventoryManager.UpdateInvStotageGoldCoinsText();
+            InventoryManager.UpdatesellGoldCoinsTxt();
+        }
+        if (currentObject == coins11) { b11 = false; InventoryManager.goldCoins += 10; InventoryManager.UpdateKnifeGoldCoinsText();
+            InventoryManager.UpdateGoldCoinsInvText();
+            InventoryManager.UpdateGoldCoinsStoreText();
+            InventoryManager.UpdateInvKnifeDurabilityText();
+            InventoryManager.UpdateStotageGoldCoinsText();
+            InventoryManager.UpdateInvStotageGoldCoinsText();
+            InventoryManager.UpdatesellGoldCoinsTxt();
+        }
+        if (currentObject == coins12) { b12 = false; InventoryManager.goldCoins += 10; InventoryManager.UpdateKnifeGoldCoinsText();
+            InventoryManager.UpdateGoldCoinsInvText();
+            InventoryManager.UpdateGoldCoinsStoreText();
+            InventoryManager.UpdateInvKnifeDurabilityText();
+            InventoryManager.UpdateStotageGoldCoinsText();
+            InventoryManager.UpdateInvStotageGoldCoinsText();
+            InventoryManager.UpdatesellGoldCoinsTxt();
+        }
+        if (currentObject == coins13) { b13 = false; InventoryManager.goldCoins += 10; InventoryManager.UpdateKnifeGoldCoinsText();
+            InventoryManager.UpdateGoldCoinsInvText();
+            InventoryManager.UpdateGoldCoinsStoreText();
+            InventoryManager.UpdateInvKnifeDurabilityText();
+            InventoryManager.UpdateStotageGoldCoinsText();
+            InventoryManager.UpdateInvStotageGoldCoinsText();
+            InventoryManager.UpdatesellGoldCoinsTxt();
+        }
 
         /*
         if (currentObject == gold1) { bool9 = false; goldcount += 10; }
@@ -411,8 +514,8 @@ public class pickUpScript : MonoBehaviour
         */
 
 
-
-        Destroy(currentObject);
+        currentObject.SetActive(false);
+        //Destroy(currentObject);
         candestroy = false;
     }
 

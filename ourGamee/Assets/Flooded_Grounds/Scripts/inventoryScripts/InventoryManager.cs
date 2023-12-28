@@ -29,7 +29,7 @@ public class InventoryManager : MonoBehaviour
     public bool weapon5Equiped;
 
 
-    private int goldCoins = 30;
+    public int goldCoins = 30;
     public TextMeshProUGUI DebugText; // Reference to the Text UI element displaying gold coins
 
     public List<Item> Items = new List<Item>();
@@ -107,22 +107,22 @@ public class InventoryManager : MonoBehaviour
 
     }
 
-    void UpdatesellGoldCoinsTxt()
+    public void UpdatesellGoldCoinsTxt()
     {
         sellGoldCoinsText.text = "Gold: " + goldCoins.ToString();
     }
 
-    void UpdateStotageGoldCoinsText()
+    public void UpdateStotageGoldCoinsText()
     {
         StorageGoldCoinsText.text = "Gold: " + goldCoins.ToString();
     }
-    void UpdateInvStotageGoldCoinsText()
+    public void UpdateInvStotageGoldCoinsText()
     {
         invStorageGoldCoinsText.text = "Gold: " + goldCoins.ToString();
     }
 
 
-    void UpdateKnifeGoldCoinsText()
+    public void UpdateKnifeGoldCoinsText()
     {
         knifeGoldCoinsText.text = "Gold: " + goldCoins.ToString();
     }
