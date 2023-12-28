@@ -42,25 +42,25 @@ namespace StarterAssets
 
 			}
 		}
-        public void Update()
-        {
-			if (Input.GetMouseButtonDown(0))
-            {
-				isAiming = !isAiming;
-				if (isAiming)
-				{
-					camera2.Priority = 0;
+  //      public void Update()
+  //      {
+		//	if (Input.GetMouseButtonDown(0))
+  //          {
+		//		isAiming = !isAiming;
+		//		if (isAiming)
+		//		{
+		//			camera2.Priority = 0;
 
-				}
-				else
-				{
-					camera2.Priority = 15;
+		//		}
+		//		else
+		//		{
+		//			camera2.Priority = 15;
 
-				}
-			}
+		//		}
+		//	}
 
-			anim.SetBool("aiming", isAiming);
-		}
+		//	anim.SetBool("aiming", isAiming);
+		//}
 
 		public void OnJump(InputValue value)
 		{
@@ -109,28 +109,7 @@ namespace StarterAssets
 		{
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 		}
-		private void HandleAim(bool isAimingPressed)
-		{
-			if (isAimingPressed)
-			{
-				// Toggle aiming state
-				isAiming = !isAiming;
-				
-
-				// Activate/deactivate cameras based on aiming state
-				if (isAiming)
-				{
-					camera2.Priority = 0;
-					
-				}
-				else
-				{
-					camera2.Priority = 15;
-					
-				}
-			}
-
-		}
+		
 
 
 
