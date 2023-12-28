@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-
+using Cinemachine;
 using UnityEngine;
 
 public class firing : MonoBehaviour
@@ -8,13 +8,14 @@ public class firing : MonoBehaviour
     public int pistolAmmo, rifleAmmo, shotGunAmmo,revAmmo = 0;
     private InventoryManager KnifeDurabilityU;
 
-
     public int KnifeDUR;
     public GameObject pistol;
     public GameObject revolver;
     public GameObject shotgun;
     public GameObject riffle;
     public GameObject knife;
+
+    public CinemachineVirtualCamera camera2;
 
     public pickUpScript pickUpScript;
 
@@ -81,6 +82,9 @@ public class firing : MonoBehaviour
 
     void Update()
     {
+        if  (Input.GetKey(KeyCode.LeftShift)){
+            isAiming = false;
+        }
         if (Input.GetKey(KeyCode.K))
         {
             if (currentCooldown <= 0f)
@@ -113,6 +117,15 @@ public class firing : MonoBehaviour
             {
                 anim.SetBool("pistolAiming", isAiming);
             }
+          
+        }
+        if (isAiming)
+        {
+            camera2.Priority = 15;
+        }
+        else
+        {
+            camera2.Priority = 5;
         }
         if (Input.GetKeyDown(KeyCode.K) && weapon == 5)
         {
@@ -139,7 +152,7 @@ public class firing : MonoBehaviour
                 else
                 {
                     Debug.Log("there is pistolAmmo");
-                    while (found.ammo < 12 && foundItem.ItemsCount > 0)
+                    while (found.ammo < 12 && foundItem.ammo > 0)
                     {
 
                         foundItem.ammo--;
@@ -174,7 +187,7 @@ public class firing : MonoBehaviour
                 else
                 {
                     Debug.Log("there is shotgunAmmo");
-                    Debug.Log(shotGunCapCount + foundItem.count);
+
                     while (found.ammo < 8 && foundItem.ammo > 0)
                     {
                         //Debug.Log("Inside While");
@@ -197,7 +210,8 @@ public class firing : MonoBehaviour
             }
             if (weapon == 3)
             {
-                Item foundItem = Instance.Items.Find(item => item.itemName == "shotgunAmmo");
+                Item foundItem = Instance.Items.Find(item => item.itemName == "riffleAmmo");
+                Item found = Instance.Items.Find(item => item.itemName == "Riffle");
                 if (foundItem == null)
                 {
 
@@ -206,14 +220,14 @@ public class firing : MonoBehaviour
                 else
                 {
                     Debug.Log("there is riffle ammo");
-                    while (shotGunCapCount < 8 && foundItem.ItemsCount > 0)
+                    while (found.ammo < 30 && foundItem.ammo > 0)
                     {
                         anim.SetTrigger("reload");
                         relodeAudio.Play();
-                        foundItem.ItemsCount--;
-                        shotGunCapCount++;
+                        foundItem.ammo--;
+                        found.ammo++;
                         Instance.ListItems();
-                        if (foundItem.ItemsCount == 0)
+                        if (foundItem.ammo == 0)
                         {
                             Instance.Items.Remove(foundItem);
                             Instance.ListItems();
@@ -227,15 +241,38 @@ public class firing : MonoBehaviour
             }
             if (weapon == 4)
             {
-                revAv += revolverCap;
-                anim.SetTrigger("relode");
-                relodeAudio.Play();
+                Item foundItem = Instance.Items.Find(item => item.itemName == "revolverAmmo");
+                Item found = Instance.Items.Find(item => item.itemName == "Revolver");
+                if (foundItem == null)
+                {
+
+                    Debug.Log("No Amoo in Inventory");
+                }
+                else
+                {
+                    Debug.Log("there is shotgunAmmo");
+
+                    while (found.ammo < 6 && foundItem.ammo > 0)
+                    {
+                        //Debug.Log("Inside While");
+                        foundItem.ammo--;
+                        found.ammo++;
+                        Instance.ListItems();
+                        if (foundItem.ammo == 0)
+                        {
+                            Instance.Items.Remove(foundItem);
+                            Instance.ListItems();
+                        }
+
+                    }
+                    anim.SetTrigger("reload");
+                    relodeAudio.Play();
+                }
 
             }
 
 
         }
-
         //firing
 
 
@@ -275,7 +312,7 @@ public class firing : MonoBehaviour
     }
     void Fire()
     {
-        if (st.isAiming == false)
+        if (isAiming == true)
         {
 
 
@@ -462,5 +499,10 @@ public class firing : MonoBehaviour
         revolver.SetActive(false);
         knife.SetActive(false);
         weapon = 0;
+        Instance.weapon1Equiped = false;
+        Instance.weapon2Equiped = false;
+        Instance.weapon3Equiped = false;
+        Instance.weapon4Equiped = false;
+
     }
 }

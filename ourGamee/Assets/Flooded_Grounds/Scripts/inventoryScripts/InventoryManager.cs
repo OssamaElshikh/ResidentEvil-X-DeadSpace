@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -78,6 +77,8 @@ public class InventoryManager : MonoBehaviour
 
     public GameObject ui;
 
+    public Item Pist;
+
     public bool purchasable;
 
 
@@ -85,6 +86,7 @@ public class InventoryManager : MonoBehaviour
 
     private void Start()
     {
+        Add(Pist);
         ed = FindObjectOfType<enemyDamage>();
 
         if (ed != null)
@@ -300,6 +302,12 @@ public class InventoryManager : MonoBehaviour
             else if (item.itemName == "Riffle" && item.ammo < 30)
             {
                 item.ammo = 30;
+                Items.Add(item);
+                sellItems.Add(item);
+            }
+            else if (item.itemName == "Pistol" && item.ammo < 12)
+            {
+                item.ammo = 12;
                 Items.Add(item);
                 sellItems.Add(item);
             }
@@ -955,9 +963,15 @@ public class InventoryManager : MonoBehaviour
 
 
             }
-            if (newItem.itemName == "riffleAmmo" && newItem.ammo < 8)
+            if (newItem.itemName == "riffleAmmo" && newItem.ammo < 30)
             {
                 newItem.ammo = 30;
+
+
+            }
+            if (newItem.itemName == "pistolAmmo" && newItem.ammo < 12)
+            {
+                newItem.ammo = 12;
 
 
             }
