@@ -851,6 +851,9 @@ public class InventoryManager : MonoBehaviour
                     Debug.Log("Combined Normal Gunpowder with Normal Gunpowder");
                     Items.Remove(selectedItem);
                     Items.Remove(combineItem);
+                    sellItems.Remove(selectedItem);
+                    sellItems.Remove(combineItem);
+                    listSellItems();
                     Item newItem = new Item { itemName = "pistolAmmo", itemType = Item.ItemType.Ammo };
 
                     newItem.icon = pistolAmmo;
@@ -887,6 +890,9 @@ public class InventoryManager : MonoBehaviour
                     Debug.Log("Combined Normal Gunpowder with Normal Gunpowder");
                     Items.Remove(selectedItem);
                     Items.Remove(combineItem);
+                    sellItems.Remove(selectedItem);
+                    sellItems.Remove(combineItem);
+                    listSellItems();
                     Item newItem = new Item { itemName = "shotgunAmmo", itemType = Item.ItemType.Ammo };
 
                     newItem.icon = shotgunAmmo;
@@ -920,6 +926,9 @@ public class InventoryManager : MonoBehaviour
                     Debug.Log("Combined Normal Gunpowder with Normal Gunpowder");
                     Items.Remove(selectedItem);
                     Items.Remove(combineItem);
+                    sellItems.Remove(selectedItem);
+                    sellItems.Remove(combineItem);
+                    listSellItems();
                     Item newItem = new Item { itemName = "shotgunAmmo", itemType = Item.ItemType.Ammo };
 
                     newItem.icon = shotgunAmmo;
@@ -954,6 +963,9 @@ public class InventoryManager : MonoBehaviour
                     Debug.Log("Combined Normal Gunpowder with Normal Gunpowder");
                     Items.Remove(selectedItem);
                     Items.Remove(combineItem);
+                    sellItems.Remove(selectedItem);
+                    sellItems.Remove(combineItem);
+                    listSellItems();
                     Item newItem = new Item { itemName = "riffleAmmo", itemType = Item.ItemType.Ammo };
                     newItem.icon = riffleAmmo;
                     newItem.count = 1;
