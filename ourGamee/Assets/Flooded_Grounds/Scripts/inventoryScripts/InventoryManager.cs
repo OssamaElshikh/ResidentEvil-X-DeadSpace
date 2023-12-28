@@ -409,7 +409,7 @@ public class InventoryManager : MonoBehaviour
                 ListItems();
 
             }
-            else if (selectedItem.itemName == "HandGrenade")
+            else if (selectedItem.itemName == "Hand Grenade ")
             {
                 goldCoins += selectedItem.sellPrice;
                 sellItems.Remove(selectedItem);
@@ -419,7 +419,7 @@ public class InventoryManager : MonoBehaviour
                 listSellItems();
                 ListItems();
             }
-            else if (selectedItem.itemName == "FlashGrenade")
+            else if (selectedItem.itemName == "Flash Grenade")
             {
                 goldCoins += selectedItem.sellPrice;
                 sellItems.Remove(selectedItem);
@@ -429,7 +429,7 @@ public class InventoryManager : MonoBehaviour
                 listSellItems();
                 ListItems();
             }
-            else if (selectedItem.itemName == "NormalGunPowder")
+            else if (selectedItem.itemName == "Normal Gunpowder")
             {
                 goldCoins += selectedItem.sellPrice;
                 sellItems.Remove(selectedItem);

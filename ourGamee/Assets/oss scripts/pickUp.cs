@@ -143,6 +143,7 @@ public class pickUpScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 SceneManager.LoadScene(0); // call main menu
+                Time.timeScale = 1f;
 
             }
             Invoke("PauseGame", 8); }
@@ -340,6 +341,7 @@ public class pickUpScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 SceneManager.LoadScene(0); // call main menu
+                Time.timeScale = 1f;
 
             }
         }
