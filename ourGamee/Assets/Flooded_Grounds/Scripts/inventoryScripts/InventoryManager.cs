@@ -323,6 +323,12 @@ public class InventoryManager : MonoBehaviour
                 Items.Add(item);
                 sellItems.Add(item);
             }
+            else if (item.itemName == "Revolver" && item.ammo < 6)
+            {
+                item.ammo = 6;
+                Items.Add(item);
+                sellItems.Add(item);
+            }
 
             else
             {

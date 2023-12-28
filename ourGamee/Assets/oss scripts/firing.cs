@@ -302,7 +302,7 @@ public class firing : MonoBehaviour
         {
             weapon = 3; SetActiveWeapon();
         }
-        else if(Instance.weapon4Equiped == true && pickUpScript.hasRevolver == true)
+        else if(Instance.weapon4Equiped == true)
         {
             weapon = 4; SetActiveWeapon();
         }
