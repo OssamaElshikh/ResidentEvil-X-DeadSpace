@@ -73,7 +73,7 @@ public class enemyDamage : MonoBehaviour
                 {
                     Debug.Log("knifeHit");
                     knifeDurability--;
-                    //Debug.Log("Knife Stab!" + KnifeDUR);
+                    Debug.Log("Knife Stab!" + knifeDurability);
                     KnifeDurabilityU.UpdateKnifeDurabilityText();
 
                     enemyHealth -= 2;

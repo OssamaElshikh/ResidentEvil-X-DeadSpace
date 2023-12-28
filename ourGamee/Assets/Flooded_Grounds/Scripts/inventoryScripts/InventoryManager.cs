@@ -9,8 +9,9 @@ public class InventoryManager : MonoBehaviour
 
     public TextMeshProUGUI knifeGoldCoinsText;
     public TextMeshProUGUI KnifeDurabilityText;
+    
     private firing fire;
-    private enemyDamage ed;// Reference to the firing script
+    private enemyDamage enemydamage;// Reference to the firing script
 
 
     public static InventoryManager Instance;
@@ -27,7 +28,7 @@ public class InventoryManager : MonoBehaviour
     public bool weapon4Equiped;
     public bool weapon5Equiped;
 
-
+    
     public int goldCoins = 30;
     public TextMeshProUGUI DebugText; // Reference to the Text UI element displaying gold coins
 
@@ -87,9 +88,9 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         Add(Pist);
-        ed = FindObjectOfType<enemyDamage>();
+        enemydamage = FindObjectOfType<enemyDamage>();
 
-        if (ed != null)
+        if (enemydamage != null)
         {
             UpdateKnifeDurabilityText();
             UpdateKnifeGoldCoinsText();
@@ -131,35 +132,36 @@ public class InventoryManager : MonoBehaviour
 
     public void UpdateKnifeDurabilityText()
     {
-        if (fire != null)
+        if (enemydamage != null)
         {
-            KnifeDurabilityText.text = "Knife Durability: " + ed.knifeDurability.ToString();
+            KnifeDurabilityText.text = "Knife Durability: " + enemydamage.knifeDurability.ToString();
         }
     }
     public void UpdateInvKnifeDurabilityText()
     {
-        if (fire != null)
+        if (enemydamage != null)
         {
-            invKnifeDurabilityText.text = "Knife Durability: " + ed.knifeDurability.ToString();
+            invKnifeDurabilityText.text = "Knife Durability: " + enemydamage.knifeDurability.ToString();
         }
     }
 
     public void OnRepairButtonPressed()
     {
-        if (fire != null)
+        if (enemydamage != null)
+
         {
             if (goldCoins < 100)
             {
                 // DebugTxt.text = ("Not Enough Coins.");
             }
-            else if (fire.KnifeDUR == 10)
+            else if (enemydamage.knifeDurability == 10)
             {
                 // DebugTxt.text = ("Durability is already Full.");
             }
             else
             {
                 goldCoins -= 100;
-                fire.KnifeDUR = 10;
+                enemydamage.knifeDurability = 10;
                 UpdateKnifeDurabilityText();
                 UpdateInvKnifeDurabilityText();
                 UpdateKnifeGoldCoinsText();
@@ -184,6 +186,8 @@ public class InventoryManager : MonoBehaviour
 
     void Update()
     {
+       
+        
         if (!isPaused && Input.GetKeyDown(KeyCode.H))
         {
             PauseGame();
