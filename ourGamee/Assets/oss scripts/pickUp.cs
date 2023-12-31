@@ -142,7 +142,7 @@ public class pickUpScript : MonoBehaviour
         if (playerHealth <= 0) { playerAnim.SetTrigger("die"); PlayDie();dead = true; loseUi.SetActive(true);
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                SceneManager.LoadScene(0); // call main menu
+                SceneManager.LoadScene("MainMenu"); // call main menu
                 Time.timeScale = 1f;
 
             }

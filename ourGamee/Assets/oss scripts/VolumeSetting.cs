@@ -7,7 +7,7 @@ public class VolumeSetting : MonoBehaviour
 {
    [SerializeField] AudioMixer mixer;
         const string Mixer_Music = "music";
-        const string Mixer_SFX = "SFX_music";
+        const string Mixer_SFX = "SFX";
 
 
     public void SetMusicVolume(float value)
